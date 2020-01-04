@@ -69,9 +69,11 @@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <!-- <li>
+                        {% if (session.get('admin')['username']) %}
+                        <li>
                             <a href="{{ url('register') }}">Register</a>
-                        </li> -->
+                        </li>
+                        {% endif %}
                         <li>
                             <a href="{{ url('loginadmin') }}">Login</a>
                         </li>
