@@ -26,7 +26,12 @@ class IndexController extends Controller
 
     public function createAction()
     {
-        
+        $id = $this->session->get('admin')['username'];
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+        (new Response())->redirect('loginadmin')->send();          
+        }
     }
 
     public function loginadminAction()
@@ -40,19 +45,21 @@ class IndexController extends Controller
     }
 
     public function storeAction(){
+
         $admin = new admin();
         $admin->username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
         // echo $password;
         // die();
         $admin->password = $this->security->hash($password);
+        $user = admin::findFirst("username = '$admin->username'");
+        if ($user) { 
+            echo "Sudah ada username";
+            die();
+        }
+
         $admin->save();
-        // echo $admin->password;
-        // die();
-        // echo $admin->username;
-        // echo $admin->password;
-        // die();
-        $this->response->redirect('loginadmin');
+        $this->response->redirect('halamanadmin');
     }
 
     // public function create1Action()
@@ -116,39 +123,8 @@ class IndexController extends Controller
             // die();
         (new Response())->redirect('loginadmin')->send();          
         }
-        // else{
-        //         // echo "tidak berhasil login";
-        //         // die();
-        // (new Response())->redirect('loginadmin')->send();
-        // }
     }
         
-    // public function adminverifikasiAction()
-    // {
-    //     $_isAdmin = $this->session->get('admin');
-    //     if ($_isAdmin) {
-    //         return $this->response->redirect('halamanadmin');
-    //     } else{
-    //         return $this->response->redirect('loginadmin');
-    //     }
-    // }
-
-    // public function verifikasiAction()
-    // {
-    //     $data = Dokter::findFirst();
-    //     if ($data) {
-    //         $data->status = 1;
-    //         if ($data->save() === false) {
-    //             foreach ($data->getMessages() as $message) {
-    //                 echo $message, "\n";
-    //             }
-    //         } else {
-    //             $this->response->redirect('dokter/home');
-    //         }
-    //     }
-    // }
-
-
 
     public function lihatdetailAction($id)
     {       
