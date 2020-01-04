@@ -80,7 +80,7 @@
     <div>	
         <p>{{messages['file']}}</p>
 	  <button style="margin-top: 50px; margin-bottom: 50px;" type="submit" class="btn btn-primary">Unggah Surat</button>
-	  <button href="{{ url('detailnomor') }}" style="margin-top: 50px; margin-bottom: 50px;"" class="btn btn-danger">Kembali</button>
+	  <a href="{{ url('detailnomor') }}" style="margin-top: 50px; margin-bottom: 50px;"" class="btn btn-danger">Kembali</a>
     </div>
 	</form>
 
