@@ -12,6 +12,6 @@ return new Config([
         'dbname' => 'kptelkomsurat'
     ],
     'url' => [
-        'baseUrl' => 'http://localhost/kptelkomsurat/'
+        'baseUrl' => 'http://localhost/newtelkomsurat/'
     ]
 ]);
