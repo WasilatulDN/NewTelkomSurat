@@ -63,6 +63,10 @@
           Apabila ingin mengubah file yang telah diunggah, silahkan mengunggah kembali pada form di bawah.
         </div>
       {% endif %}
+
+        <p><?php echo $this->flashSession->output() ?></p>
+            
+            
       <div  class="form-group">
         <div style="font-size: 10pt;" class="alert alert-primary" role="alert">
           Ukuran file <a class="alert-link">maksimal 2 MB</a><br>Pastikan file yang diunggah berekstensi <a class="alert-link">.pdf atau .jpg</a>.

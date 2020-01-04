@@ -26,6 +26,7 @@ class IndexController extends Controller
 
     public function createAction()
     {
+        $this->flashSession->clear();
         $id = $this->session->get('admin')['username'];
         if ($id == NULL) {
             // echo "berhasil login";
@@ -36,6 +37,7 @@ class IndexController extends Controller
 
     public function loginadminAction()
     {
+        $this->flashSession->clear();
         $id = $this->session->get('admin')['username'];
         if ($id != NULL) {
             // echo "berhasil login";
@@ -54,12 +56,16 @@ class IndexController extends Controller
         $admin->password = $this->security->hash($password);
         $user = admin::findFirst("username = '$admin->username'");
         if ($user) { 
-            echo "Sudah ada username";
-            die();
+            $this->flashSession->error("Gagal register. Username telah digunakan.");
+            return $this->response->redirect('register');
         }
+        else
+        {
+            $admin->save();
+            $this->response->redirect('halamanadmin');
 
-        $admin->save();
-        $this->response->redirect('halamanadmin');
+        }
+        
     }
 
     // public function create1Action()
@@ -362,24 +368,23 @@ class IndexController extends Controller
 
     public function uploadAction($id)
     {
+        // $this->flashSession->clear();
         $this->view->data = nomor_surat::findFirst("id='$id'");
 
     }
 
     public function storeuploadAction()
     {
-        // $val2 = new FileValidation();
-        // $messages2 = $val2->validate($_FILES);
-        // if (count($messages2)) {
-		// 	foreach ($messages2 as $m) {
-        //         echo("error cuy");
-        //         $this->messages[$m->getField()] = $m;
-        //     }
-        //     // $this->dispatcher->forward(['action'=>'upload']);
-        // }
-        // else
-        // {
-            $id = $this->request->getPost('id');
+        $id = $this->request->getPost('id');
+        $val2 = new FileValidation();
+        $messages2 = $val2->validate($_FILES);
+        if (count($messages2)) {
+			$this->flashSession->error("GAGAL UPLOAD. Pastikan format file .jpg atau .pdf dan ukuran tidak melebihi 2MB");
+            return $this->response->redirect('upload' . '/' . $id);
+        }
+        else
+        {
+            
             $surat = nomor_surat::findFirst("id='$id'");
 
             if (true == $this->request->hasFiles() && $this->request->isPost()) {
@@ -405,7 +410,7 @@ class IndexController extends Controller
 
             $this->response->redirect('detailnomor');
 
-        // }
+        }
         
 
     }

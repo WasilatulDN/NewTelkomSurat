@@ -106,7 +106,10 @@
             </nav>
 
 
-
+            <div style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
+            <p><?php echo $this->flashSession->output() ?></p>
+            
+            </div>
             <form action="{{ url("register") }}" method = "post" style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
                 <div class="form-group">
                     <label>Username</label>
