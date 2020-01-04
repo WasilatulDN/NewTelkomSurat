@@ -78,7 +78,7 @@
 
     		<input style="font-size: 10pt;" type="file" name="file" required>		
     <div>	
-        <p>{{messages['file']}}</p>
+        <!-- <p>{{messages['file']}}</p> -->
 	  <button style="margin-top: 50px; margin-bottom: 50px;" type="submit" class="btn btn-primary">Unggah Surat</button>
 	  <a href="{{ url('detailnomor') }}" style="margin-top: 50px; margin-bottom: 50px;"" class="btn btn-danger">Kembali</a>
     </div>
