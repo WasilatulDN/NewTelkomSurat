@@ -55,7 +55,34 @@
                 <h3></h3>
             </div>
 
-           <ul style="margin-left: 10px;" class="list-unstyled">
+           {% if (session.get('admin')['username']) %}
+            <ul style="margin-left: 10px;" class="list-unstyled">
+
+                <li>
+                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                </li>
+                <li>
+                    <a href="{{ url('detailnomor') }}">Upload Surat</a>
+                </li>
+                <li>
+                    <a href="{{ url('halamanadmin') }}">Beranda Admin</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="{{ url('register') }}">Daftar</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('logout') }}">Keluar</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            {% else %}
+
+            <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
                     <a href="{{ url('') }}">Generate Nomor Surat</a>
@@ -66,17 +93,19 @@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                       {% if (session.get('admin')['username']) %}
-                        <li>
+                        
+                        <!-- <li>
                             <a href="{{ url('register') }}">Register</a>
-                        </li>
-                        {% endif %}
+                        </li> -->
+                        
                         <li>
-                            <a href="{{ url('loginadmin') }}">Login</a>
+                            <a href="{{ url('loginadmin') }}">Masuk</a>
                         </li>
+                        
                     </ul>
                 </li>
             </ul>
+            {% endif %}
 
 
         </nav>

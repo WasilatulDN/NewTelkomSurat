@@ -67,14 +67,18 @@
                     <a href="{{ url('detailnomor') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
+                    <a href="{{ url('halamanadmin') }}">Beranda Admin</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ url('register') }}">Register</a>
+                            <a href="{{ url('register') }}">Daftar</a>
                         </li>
                         <li>
-                            <a href="{{ url('loginadmin') }}">Login</a>
+                            <a href="{{ url('logout') }}">Keluar</a>
                         </li>
+                        
                     </ul>
                 </li>
             </ul>
@@ -92,11 +96,11 @@
                         <span></span>
                         <span></span>
                         <span></span>
-                    </button><a style="margin-left: 50px; float: right;" type="submit" href="{{ url("logout") }}" class="btn btn-primary">Keluar</a>
+                    </button><!-- <a style="margin-left: 50px; float: right;" type="submit" href="{{ url("logout") }}" class="btn btn-primary">Keluar</a> -->
 <!--                         <a href="{{ url('logout') }}">
                             Logout
                         </a> -->
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Selamat Datang, {{ session.get('admin')['username'] }}!</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Selamat Datang Admin, {{ session.get('admin')['username'] }}!</h2>
                    <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->

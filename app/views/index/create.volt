@@ -64,14 +64,18 @@
                     <a href="{{ url('detailnomor') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
+                    <a href="{{ url('halamanadmin') }}">Beranda Admin</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ url('register') }}">Register</a>
+                            <a href="{{ url('register') }}">Daftar</a>
                         </li>
                         <li>
-                            <a href="{{ url('loginadmin') }}">Login</a>
+                            <a href="{{ url('logout') }}">Keluar</a>
                         </li>
+                        
                     </ul>
                 </li>
             </ul>
