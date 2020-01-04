@@ -62,19 +62,19 @@
                     <a href="{{ url('') }}">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('detailnomor') }}">Upload Surat</a>
+                    <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('halamanadmin') }}">Beranda Admin</a>
+                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ url('register') }}">Daftar</a>
+                            <a href="{{ url('admin/register') }}">Daftar</a>
                         </li>
                         <li>
-                            <a href="{{ url('logout') }}">Keluar</a>
+                            <a href="{{ url('admin/logout') }}">Keluar</a>
                         </li>
                     </ul>
                 </li>
@@ -88,7 +88,7 @@
                     <a href="{{ url('') }}">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('detailnomor') }}">Upload Surat</a>
+                    <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
@@ -99,7 +99,7 @@
                         </li> -->
                         
                         <li>
-                            <a href="{{ url('loginadmin') }}">Masuk</a>
+                            <a href="{{ url('admin/login') }}">Masuk</a>
                         </li>
                         
                     </ul>
@@ -138,7 +138,7 @@
             
             </div>
         <div>
-            <form action="{{ url("storelogin") }}" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
+            <form action="{{ url("admin/login") }}" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
                 <div class="form-group">
                     <label>Username</label>
 

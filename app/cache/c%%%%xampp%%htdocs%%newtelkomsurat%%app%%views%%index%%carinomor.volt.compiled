@@ -57,17 +57,17 @@
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('detailnomor') ?>">Upload Surat</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         
                         <li>
-                            <a href="{{ url('admin/login') }}">Login</a>
+                            <a href="<?= $this->url->get('loginadmin') ?>">Login</a>
                         </li>
                     </ul>
                 </li>
@@ -100,10 +100,10 @@
 
 
 
-	<form action="{{ url('surat/list') }}" style="margin-left: 90px; margin-top: 0px; width: 30%; font-family:'GothamRounded-Medium';">
+	<form action="<?= $this->url->get('detailnomor') ?>" style="margin-left: 90px; margin-top: 0px; width: 30%; font-family:'GothamRounded-Medium';">
 	
 
-        <a style="margin-top: 30px;" href="{{ url('') }}" class="btn btn-success">Generate Nomor Surat Disini</a>
+        <a style="margin-top: 30px;" href="<?= $this->url->get('') ?>" class="btn btn-success">Generate Nomor Surat Disini</a>
 	  <button style="margin-top: 20px;" type="submit" class="btn btn-primary">Lihat Daftar Surat Disini</button>
 	</form>
 	

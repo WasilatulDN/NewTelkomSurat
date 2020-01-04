@@ -61,19 +61,19 @@
                     <a href="{{ url('') }}">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('detailnomor') }}">Upload Surat</a>
+                    <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('halamanadmin') }}">Beranda Admin</a>
+                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ url('register') }}">Daftar</a>
+                            <a href="{{ url('admin/register') }}">Daftar</a>
                         </li>
                         <li>
-                            <a href="{{ url('logout') }}">Keluar</a>
+                            <a href="{{ url('admin/logout') }}">Keluar</a>
                         </li>
                         
                     </ul>
@@ -110,7 +110,7 @@
             <p><?php echo $this->flashSession->output() ?></p>
             
             </div>
-            <form action="{{ url("register") }}" method = "post" style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
+            <form action="{{ url("admin/register") }}" method = "post" style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
                 <div class="form-group">
                     <label>Username</label>
                     <input type="text" class="form-control" placeholder="Masukkan username" name="username" required>

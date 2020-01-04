@@ -80,7 +80,7 @@
 
           
 
-            <a href="{{ url('halamanadmin') }}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-danger">Kembali</a>
+            <a href="{{ url('surat/list') }}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-danger">Kembali</a>
 
 
 </body>

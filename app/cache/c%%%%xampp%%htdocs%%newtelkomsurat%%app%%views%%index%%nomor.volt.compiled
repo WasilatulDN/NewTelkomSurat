@@ -78,57 +78,26 @@
                 <h3></h3>
             </div>
 
-           {% if (session.get('admin')['username']) %}
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
-                </li>
-                <li>
-                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="{{ url('admin/register') }}">Daftar</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
-            {% else %}
-
-            <ul style="margin-left: 10px;" class="list-unstyled">
-
-                <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
-                </li>
-                <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('detailnomor') ?>">Upload Surat</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        
                         <!-- <li>
-                            <a href="{{ url('register') }}">Register</a>
+                            <a href="<?= $this->url->get('register') ?>">Register</a>
                         </li> -->
-                        
                         <li>
-                            <a href="{{ url('admin/login') }}">Masuk</a>
+                            <a href="<?= $this->url->get('loginadmin') ?>">Login</a>
                         </li>
-                        
                     </ul>
                 </li>
             </ul>
-            {% endif %}
 
 
         </nav>
@@ -160,7 +129,7 @@
 	<div style="margin-left: 90px; margin-top: 100px; width: 100%; font-family:'GothamRounded-Medium';">
 	  <div class="form-group">
 	    <label style="font-size: 15pt;">Nomor Surat Anda</label>
-	    <h2  id="nomor" style="font-weight: bold;">{{ data.no_surat }}</h2>
+	    <h2  id="nomor" style="font-weight: bold;"><?= $data->no_surat ?></h2>
         <button type="button" class="btn btn-warning" onclick="copyToClipboard('#nomor')">Salin</button>
 
 
@@ -169,7 +138,7 @@
 
                 </div>
 
-                <a style="margin-top: 30px; float: none;" class="btn btn-danger" href="{{ url('') }}">Kembali</a>
+                <a style="margin-top: 30px; float: none;" class="btn btn-danger" href="<?= $this->url->get('') ?>">Kembali</a>
             </div>
 
 

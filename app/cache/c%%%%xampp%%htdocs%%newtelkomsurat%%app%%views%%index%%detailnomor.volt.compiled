@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="style5.css">
 
 
+
+    <!-- tabulator -->
+    <link href="<?= $this->url->get('tabulator.min.css') ?>" rel="stylesheet">
+    <script src="<?= $this->url->get('tabulator.min.js') ?>"></script>
+
 	 <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
@@ -45,7 +50,6 @@
 
 <body>
 
-
 <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
@@ -57,22 +61,23 @@
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('detailnomor') ?>">Upload Surat</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        
+                        <!-- <li>
+                            <a href="<?= $this->url->get('register') ?>">Register</a>
+                        </li> -->
                         <li>
-                            <a href="{{ url('admin/login') }}">Login</a>
+                            <a href="<?= $this->url->get('loginadmin') ?>">Login</a>
                         </li>
                     </ul>
                 </li>
             </ul>
-
            
         </nav>
 
@@ -88,7 +93,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Cari Surat</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Cek Surat Anda</h2>
                    <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -100,12 +105,46 @@
 
 
 
-	<form action="{{ url('surat/list') }}" style="margin-left: 90px; margin-top: 0px; width: 30%; font-family:'GothamRounded-Medium';">
-	
 
-        <a style="margin-top: 30px;" href="{{ url('') }}" class="btn btn-success">Generate Nomor Surat Disini</a>
-	  <button style="margin-top: 20px;" type="submit" class="btn btn-primary">Lihat Daftar Surat Disini</button>
-	</form>
+	<div class="home-content">
+        <h2 class="dashboard-title"></h2>
+        <div id="example-table"></div>
+    </div>
+
+    <script>
+
+
+            
+
+
+    // tabelnya
+        var table = new Tabulator("#example-table", {
+            height: "350px",
+            pagination:"local",
+            paginationSize:10,
+            layout:"fitColumns",
+            placeholder: "Tidak Ada Data",
+            columns: [
+                {title: "No", field: "no", formatter: "rownum", width: 10},
+                {title: "Tanggal", field: "tanggal"},
+                {title: "No Surat", field: "no_surat"},
+                {title: "Nama", field: "nama"},
+                {title: "Nama Surat", field: "nama_surat"},
+                {title: "Jenis Surat", field: "jenis_surat"},
+                {title: "Status Unggah", field: "status"},
+                {
+                    title: "Upload Surat", field: "link", formatter: "link", formatterParams: {
+                        labelField: "name",
+                        label: "Upload disini",
+                        urlPrefix: "<?= $this->url->get('upload/') ?>",
+                        target: "_blank",
+                    }
+                },
+            ],
+        });
+        table.setData("<?= $this->url->get('listsurat') ?>");
+    </script>
+</div>
 	
 
 </body>
