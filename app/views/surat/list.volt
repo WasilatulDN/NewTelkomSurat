@@ -3,7 +3,7 @@
 <head>
 	<title>Generate Nomor Surat</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="icon" href="favicon.png" type="png" sizes="16x16">
+	<link rel="icon" href="../favicon.png" type="png" sizes="16x16">
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +11,13 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="../style5.css">
 
 
 
     <!-- tabulator -->
-    <link href="<?= $this->url->get('tabulator.min.css') ?>" rel="stylesheet">
-    <script src="<?= $this->url->get('tabulator.min.js') ?>"></script>
+    <link href="{{ url("tabulator.min.css") }}" rel="stylesheet">
+    <script src="{{ url("tabulator.min.js") }}"></script>
 
 	 <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -53,31 +53,62 @@
 <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-        		<img style="height: 100px; margin-top: 30px;" src="logo.png" class="rounded mx-auto d-block">
+        		<img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
 
+            {% if (session.get('admin')['username']) %}
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
+                    <a href="{{ url('') }}">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="<?= $this->url->get('detailnomor') ?>">Upload Surat</a>
+                    <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
+                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <!-- <li>
-                            <a href="<?= $this->url->get('register') ?>">Register</a>
-                        </li> -->
                         <li>
-                            <a href="<?= $this->url->get('loginadmin') ?>">Login</a>
+                            <a href="{{ url('admin/register') }}">Daftar</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('admin/logout') }}">Keluar</a>
                         </li>
                     </ul>
                 </li>
             </ul>
+
+            {% else %}
+
+            <ul style="margin-left: 10px;" class="list-unstyled">
+
+                <li>
+                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                </li>
+                <li>
+                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        
+                        <!-- <li>
+                            <a href="{{ url('register') }}">Register</a>
+                        </li> -->
+                        
+                        <li>
+                            <a href="{{ url('admin/login') }}">Masuk</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+            </ul>
+            {% endif %}
            
         </nav>
 
@@ -136,13 +167,13 @@
                     title: "Upload Surat", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",
                         label: "Upload disini",
-                        urlPrefix: "<?= $this->url->get('upload/') ?>",
+                        urlPrefix: "{{ url('surat/upload/') }}",
                         target: "_blank",
                     }
                 },
             ],
         });
-        table.setData("<?= $this->url->get('listsurat') ?>");
+        table.setData("{{ url('surat/listsurat') }}");
     </script>
 </div>
 	

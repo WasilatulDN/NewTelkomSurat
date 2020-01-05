@@ -4,7 +4,7 @@
 <head>
     <title>Generate Nomor Surat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="favicon.png" type="png" sizes="16x16">
+    <link rel="icon" href="../favicon.png" type="png" sizes="16x16">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="../style5.css">
 
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -50,31 +50,62 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="logo.png" class="rounded mx-auto d-block">
+            <img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
 
+           {% if (session.get('admin')['username']) %}
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
+                    <a href="{{ url('') }}">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="<?= $this->url->get('carinomor') ?>">Upload Surat</a>
+                    <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
+                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="<?= $this->url->get('register') ?>">Register</a>
+                            <a href="{{ url('admin/register') }}">Daftar</a>
                         </li>
                         <li>
-                            <a href="<?= $this->url->get('loginadmin') ?>">Login</a>
+                            <a href="{{ url('admin/logout') }}">Keluar</a>
                         </li>
                     </ul>
                 </li>
             </ul>
+
+            {% else %}
+
+            <ul style="margin-left: 10px;" class="list-unstyled">
+
+                <li>
+                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                </li>
+                <li>
+                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        
+                        <!-- <li>
+                            <a href="{{ url('register') }}">Register</a>
+                        </li> -->
+                        
+                        <li>
+                            <a href="{{ url('admin/login') }}">Masuk</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+            </ul>
+            {% endif %}
 
 
         </nav>
@@ -91,7 +122,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Register Admin</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Error</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -101,21 +132,21 @@
                 </div>
             </nav>
 
+            <div>
+                <h1 style="margin-top: 15%; text-align: center; font-weight: bold; font-family:'GothamRounded-Medium'; font-size: 40pt;">Nomor surat telah terpakai.</h1>
+                <h4 style="margin: 0 auto; text-align: center; font-family:'GothamRounded-Medium';">Pada tanggal tersebut, nomor surat yang tersedia telah digunakan seluruhnya. Silahkan generate kembali menggunakan tanggal yang berbeda.</h4>
+                
+            </div>
 
 
-            <form action="<?= $this->url->get('register') ?>" method = "post" style="margin-left: 90px; margin-top: 100px; width: 30%; font-family:'GothamRounded-Medium';">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" placeholder="Masukkan username" name="username" required>
+            <div class="container">
+              <div class="row">
+                <div class="col text-center">
+                  <a style="margin-top: 30px;" href="{{ url('') }}" class="btn btn-danger">Kembali</a>
                 </div>
-
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Masukkan password" name="password" required>
-                </div>
-
-
-                <button style="margin-top: 30px;" type="submit" class="btn btn-primary">Daftar</button>
+              </div>
+            </div>
+            
             </form>
 
 

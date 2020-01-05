@@ -7,7 +7,7 @@ use App\Validation\FileValidation;
 
 class SuratController extends Controller
 {
-    public function detailnomorAction()
+    public function listAction()
     {
         
     }
@@ -68,7 +68,7 @@ class SuratController extends Controller
         $cek = nomor_surat::findFirst("nomor='$nomor'");
         if($cek)
         {
-            $this->response->redirect('nomorterpakai');
+            $this->response->redirect('surat/nomorterpakai');
         }
         else{
             if($jenissurat == 5)
@@ -93,7 +93,7 @@ class SuratController extends Controller
             $surat->no_surat = $nomorsurat;
             $surat->tanggal = $this->request->getPost('tanggal');
             $surat->save();
-            $this->response->redirect('nomor');
+            $this->response->redirect('surat/nomor');
         }
 
         
@@ -157,7 +157,6 @@ class SuratController extends Controller
 
     public function uploadAction($id)
     {
-        // $this->flashSession->clear();
         $this->view->data = nomor_surat::findFirst("id='$id'");
 
     }
@@ -169,7 +168,7 @@ class SuratController extends Controller
         $messages2 = $val2->validate($_FILES);
         if (count($messages2)) {
 			$this->flashSession->error("GAGAL UPLOAD. Pastikan format file .jpg atau .pdf dan ukuran tidak melebihi 2MB");
-            return $this->response->redirect('upload' . '/' . $id);
+            return $this->response->redirect('surat/upload' . '/' . $id);
         }
         else
         {         
@@ -195,7 +194,7 @@ class SuratController extends Controller
     
             $surat->save();
 
-            $this->response->redirect('detailnomor');
+            $this->response->redirect('surat/list');
         }
         
     }

@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Generate Nomor Surat</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="favicon.png" type="png" sizes="16x16">
+	<title>Generate Nomor Surat</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="icon" href="../../favicon.png" type="png" sizes="16x16">
 
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="../../style5.css">
 
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
+	 <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-    <script>
-        $(function() {
+	<script>
+		 $(function(){
 
-            $(".dropdown-menu").on('click', 'a', function() {
-                $(".btn:first-child").text($(this).text());
-                $(".btn:first-child").val($(this).text());
-            });
+		    $(".dropdown-menu").on('click', 'a', function(){
+		      $(".btn:first-child").text($(this).text());
+		      $(".btn:first-child").val($(this).text());
+		   });
 
-        });
+		});
 
-        $(document).ready(function() {
-            $('#sidebarCollapse').on('click', function() {
+		 $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
             });
         });
-    </script>
+  	</script>
 
 </head>
 
@@ -46,16 +44,15 @@
 
 <body>
 
-
-    <div class="wrapper">
+<div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="logo.png" class="rounded mx-auto d-block">
+            <img style="height: 100px; margin-top: 30px;" src="../../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
 
-           {% if (session.get('admin')['username']) %}
+            {% if (session.get('admin')['username']) %}
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
@@ -122,7 +119,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Error</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Generate Nomor Surat</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -131,24 +128,53 @@
 
                 </div>
             </nav>
-
-            <div>
-                <h1 style="margin-top: 15%; text-align: center; font-weight: bold; font-family:'GothamRounded-Medium'; font-size: 40pt;">Nomor surat telah terpakai.</h1>
-                <h4 style="margin: 0 auto; text-align: center; font-family:'GothamRounded-Medium';">Pada tanggal tersebut, nomor surat yang tersedia telah digunakan seluruhnya. Silahkan generate kembali menggunakan tanggal yang berbeda.</h4>
-                
-            </div>
-
-
-            <div class="container">
-              <div class="row">
-                <div class="col text-center">
-                  <a style="margin-top: 30px;" href="{{ url('') }}" class="btn btn-danger">Kembali</a>
-                </div>
-              </div>
-            </div>
             
-            </form>
 
+
+<h2 style="margin-top: 90px; margin-left: 90px;">Upload Surat Anda</h2>
+
+
+
+	<form action="{{ url("surat/storeupload") }}" method = "post" enctype="multipart/form-data" style="margin-left: 90px; margin-top: 40px; width: 25%; font-family:'GothamRounded-Medium';">
+	  
+
+      {%if data.file == NULL%}
+      {% else %}
+
+        <div class="alert alert-success" role="alert">
+          Surat ini telah <a class="alert-link">berhasil diunggah</a> oleh <a class="alert-link">{{data.nama_pengupload}}</a>.
+        </div>
+
+        <div style="font-size: 10pt;" class="alert alert-danger" role="alert">
+          Apabila ingin mengubah file yang telah diunggah, silahkan mengunggah kembali pada form di bawah.
+        </div>
+      {% endif %}
+
+        <p><?php echo $this->flashSession->output() ?></p>
+            
+            
+      <div  class="form-group">
+        <div style="font-size: 10pt;" class="alert alert-primary" role="alert">
+          Ukuran file <a class="alert-link">maksimal 2 MB</a><br>Pastikan file yang diunggah berekstensi <a class="alert-link">.pdf atau .jpg</a>.
+        </div>
+
+        <input type="hidden" name="id" class="form-control" value={{data.id}}>
+        <label>Nama Anda</label>
+        <input type="text" class="form-control" name="pengupload" placeholder="Masukkan nama anda" required>
+      </div>
+        <div style="margin-top: 15px;">
+	  	<label>Unggah Surat</label>
+	  </div>
+
+    		<input style="font-size: 10pt;" type="file" name="file" required>		
+    <div>	
+        <!-- <p>{{messages['file']}}</p> -->
+	  <button style="margin-top: 50px; margin-bottom: 50px;" type="submit" class="btn btn-primary">Unggah Surat</button>
+	  <a href="{{ url('surat/list') }}" style="margin-top: 50px; margin-bottom: 50px;"" class="btn btn-danger">Kembali</a>
+    </div>
+	</form>
+
+	
 
 </body>
 

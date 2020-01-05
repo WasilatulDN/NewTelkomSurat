@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jan 2020 pada 08.23
--- Versi server: 10.1.36-MariaDB
--- Versi PHP: 7.2.11
+-- Generation Time: Jan 05, 2020 at 05:33 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,28 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
-  `password` varchar(1000) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(18, 'lutfi', '$2y$12$VVJxTVd6L2lLU3pXSy9RVOpmgLHz.7md.M9V05mNLDBSvzckb8c3S'),
-(19, 'kp', '$2y$12$bFdFNHB0UW5FM1NHTE10e.UiyTtR21sp7ICrQWOIT6Y.StRILPW5W'),
-(20, 'mami', '$2y$12$ZElyNzBsa1ZFQUZKOXZGQuOYmvf31m3dL01Dcbep.HQsFmaD0GqKi');
+(1, 'admin', '$2y$12$ZlZuM2dULzlhMnVxdG9wM.o/Y20wld00ZBTeKOehVs8GCUafa.5sy');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nomor_surat`
+-- Table structure for table `nomor_surat`
 --
 
 CREATE TABLE `nomor_surat` (
@@ -58,51 +56,40 @@ CREATE TABLE `nomor_surat` (
   `no_surat` varchar(100) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `nama_pengupload` varchar(200) DEFAULT NULL,
-  `file` blob
+  `file` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `nomor_surat`
---
-
-INSERT INTO `nomor_surat` (`id`, `name`, `nama_surat`, `jenis_surat`, `nomor`, `no_surat`, `tanggal`, `nama_pengupload`, `file`) VALUES
-(1, 'Lut', 'fiyanti33@gmail.com', '0000', 0, NULL, NULL, NULL, NULL),
-(2, 'Maho', 'maho@gmail.com', 'Hindu', 0, NULL, NULL, NULL, NULL),
-(3, 'kuku', 'kaka', 'Islam', 0, NULL, NULL, NULL, NULL),
-(4, 'adin', 'Kakaka', 'Hindu', 0, NULL, NULL, NULL, NULL),
-(5, 'kaak', 'kaak', 'YN000', 0, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `nomor_surat`
+-- Indexes for table `nomor_surat`
 --
 ALTER TABLE `nomor_surat`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `nomor_surat`
+-- AUTO_INCREMENT for table `nomor_surat`
 --
 ALTER TABLE `nomor_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

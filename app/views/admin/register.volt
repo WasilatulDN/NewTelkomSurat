@@ -4,7 +4,7 @@
 <head>
     <title>Generate Nomor Surat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="favicon.png" type="png" sizes="16x16">
+    <link rel="icon" href="../favicon.png" type="png" sizes="16x16">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="../style5.css">
 
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -50,7 +50,7 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="logo.png" class="rounded mx-auto d-block">
+            <img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
@@ -58,20 +58,24 @@
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
+                    <a href="{{ url('') }}">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="<?= $this->url->get('detailnomor') ?>">Upload Surat</a>
+                    <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
+                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <!-- <li>
-                            <a href="<?= $this->url->get('register') ?>">Register</a>
-                        </li> -->
                         <li>
-                            <a href="<?= $this->url->get('loginadmin') ?>">Login</a>
+                            <a href="{{ url('admin/register') }}">Daftar</a>
                         </li>
+                        <li>
+                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                        </li>
+                        
                     </ul>
                 </li>
             </ul>
@@ -91,7 +95,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Generate Nomor Surat</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Register Admin</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -100,39 +104,27 @@
 
                 </div>
             </nav>
-            <form action="<?= $this->url->get('storesurat') ?>" method="post" style="margin-left: 90px; margin-top: 70px; width: 30%; font-family:'GothamRounded-Medium';">
+
+
+            <div style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
+            <p><?php echo $this->flashSession->output() ?></p>
+            
+            </div>
+            <form action="{{ url("admin/register") }}" method = "post" style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
                 <div class="form-group">
-                    <label>Nama Anda</label>
-                    <input type="text" class="form-control" placeholder="Masukkan nama anda" name="nama" required>
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="Masukkan username" name="username" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Nama Surat</label>
-                    <input type="text" class="form-control" placeholder="Masukkan nama surat" name="namasurat" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Tanggal Surat</label>
-                    <input type="date" class="form-control" name="tanggal" required>
-                </div>
-
-                <div>
-                    <label>Jenis Surat</label>
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Masukkan password" name="password" required>
                 </div>
 
 
-                <select name="jenissurat" class="form-control form-control-sm" style="width: 100%; font-size: 15pt;" required>
-                  <option value="0"></option>
-                  <option value="1">Berita Acara Penjelasan</option>
-                  <option value="2">Berita Acara Siap Operasi (BASO)</option>
-                  <option value="3">Berita Acara Delete Order (BADO)</option>
-                  <option value="4">Surat Keluar</option>
-                  <option value="5">P0/P1</option>
-                  <option value="6">Surat Penawaran</option>
-                </select>
-                <input style="margin-top: 30px;" type="submit" class="btn btn-primary" value="Generate Nomor Surat">
-                <!-- <a style="margin-top: 30px;" type="submit" class="btn btn-primary" href="<?= $this->url->get('nomor') ?>">Generate Nomor Surat</a> -->
+                <button style="margin-top: 30px;" type="submit" class="btn btn-primary">Daftar</button>
             </form>
+
 
 </body>
 

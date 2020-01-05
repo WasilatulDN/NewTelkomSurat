@@ -12,66 +12,66 @@ class SuratRoutes extends RouterGroup
 
         $this->setPrefix('/surat');
         
-        $router->addGet(
+        $this->addGet(
             '/list',
             [
-                'controller' => 'index',
-                'action' => 'detailnomor'
+                'controller' => 'surat',
+                'action' => 'list'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/nomor',
             [
-                'controller' => 'index',
+                'controller' => 'surat',
                 'action' => 'nomor'
             ]
         );
 
-        $router->addPost(
+        $this->addPost(
             '/store',
             [
-                'controller' => 'index',
+                'controller' => 'surat',
                 'action' => 'storesurat'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/listsurat',
             [
-                'controller' => 'index',
+                'controller' => 'surat',
                 'action' => 'listsurat'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/upload/{id}',
             [
-                'controller' => 'index',
+                'controller' => 'surat',
                 'action' => 'upload'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/download/{id}',
             [
-                'controller' => 'index',
+                'controller' => 'surat',
                 'action' => 'download'
             ]
         );
 
-        $router->addPost(
+        $this->addPost(
             '/storeupload',
             [
-                'controller' => 'index',
+                'controller' => 'surat',
                 'action' => 'storeupload'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/nomorterpakai',
             [
-                'controller' => 'index',
+                'controller' => 'surat',
                 'action' => 'nomorterpakai'
             ]
         );

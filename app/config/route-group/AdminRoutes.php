@@ -12,67 +12,67 @@ class AdminRoutes extends RouterGroup
 
         $this->setPrefix('/admin');
 
-        $router->addGet(
+        $this->addGet(
             '/register',
             [
-                'controller' => 'index',
-                'action' => 'create'
+                'controller' => 'admin',
+                'action' => 'register'
             ]
         );
 
-        $router->addPost(
+        $this->addPost(
             '/register',
             [
-                'controller' => 'index',
-                'action' => 'store'
+                'controller' => 'admin',
+                'action' => 'storeregister'
             ]
         );
 
-        $router->addPost(
+        $this->addPost(
             '/login',
             [
-                'controller'=>'index',
+                'controller'=>'admin',
                 'action'=>'storelogin'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/login',
             [
-                'controller' => 'index',
-                'action' => 'loginadmin'
+                'controller' => 'admin',
+                'action' => 'login'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/logout',
             [
-                'controller' => 'index',
+                'controller' => 'admin',
                 'action' => 'logout'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/listsurat',
             [
-                'controller' => 'index',
-                'action' => 'listsuratadmin'
+                'controller' => 'admin',
+                'action' => 'listsurat'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/detail/{id}',
             [
-                'controller' => 'index',
-                'action' => 'lihatdetail'
+                'controller' => 'admin',
+                'action' => 'detail'
             ]
         );
 
-        $router->addGet(
+        $this->addGet(
             '/list',
             [
-                'controller' => 'index',
-                'action' => 'halamanadmin'
+                'controller' => 'admin',
+                'action' => 'list'
             ]
         );
         

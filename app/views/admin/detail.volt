@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Generate Nomor Surat</title>
-
-
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="favicon.png" type="png" sizes="16x16">
+    <link rel="icon" href="../../favicon.png" type="png" sizes="16x16">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +11,10 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="../../style5.css">
 
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
+     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
@@ -26,40 +22,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
     <script>
-        $(function() {
+         $(function(){
 
-            $(".dropdown-menu").on('click', 'a', function() {
-                $(".btn:first-child").text($(this).text());
-                $(".btn:first-child").val($(this).text());
-            });
+            $(".dropdown-menu").on('click', 'a', function(){
+              $(".btn:first-child").text($(this).text());
+              $(".btn:first-child").val($(this).text());
+           });
 
         });
 
-        $(document).ready(function() {
-            $('#sidebarCollapse').on('click', function() {
+         $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
             });
-        });
-
-        function copyToClipboard(element) {
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val($(element).text()).select();
-            document.execCommand("copy");
-            $temp.remove();
-            alert("Nomor surat berhasil disalin!");
-        }
-
-        $('#modal').on('click', function() {
-            $("#div_dbReadMany").modal('show');
-        });
-
-        $('.save').on('click', function() {
-            $('#div_dbReadMany').delay(1000).fadeOut('slow');
-            setTimeout(function() {
-                $("#div_dbReadMany").modal('hide');
-            }, 1500);
         });
     </script>
 
@@ -68,17 +44,15 @@
 
 
 <body>
-
-
-    <div class="wrapper">
+<div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="logo.png" class="rounded mx-auto d-block">
+            <img style="height: 100px; margin-top: 30px;" src="../../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
 
-           {% if (session.get('admin')['username']) %}
+            {% if (session.get('admin')['username']) %}
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
@@ -145,7 +119,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Cari Surat</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Generate Nomor Surat</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -154,25 +128,50 @@
 
                 </div>
             </nav>
+            
 
+    <h2 style="margin-top: 90px; margin-left: 90px;">Detail {{data.nama_surat}}</h2>
 
+            <ul style="margin-top: 40px;  margin-left: 90px; margin-right: 50%;" class="list-group">
+                <li class="list-group-item list-group-item-primary">Nama: {{data.name}}</li>
+                <li class="list-group-item list-group-item-primary">Nama Surat: {{data.nama_surat}}</li>
+                <li class="list-group-item list-group-item-primary">Jenis Surat:
+                {% if (data.jenis_surat == 1) %}
+                Berita acara penjelasan
+                {% elseif (data.jenis_surat == 2) %}
+                Berita acara siap operasi (BASO)
+                {% elseif (data.jenis_surat == 3) %}
+                Berita acara delete order (BADO)
+                {% elseif (data.jenis_surat == 4) %}
+                Surat keluar
+                {% elseif (data.jenis_surat == 5) %}
+                P0/P1
+                {% elseif (data.jenis_surat == 6) %}
+                Surat penawaran
+                {% endif %}
+                
+                </li>
+                <li class="list-group-item list-group-item-primary">No Surat: {{data.no_surat}}</li>
+                <li class="list-group-item list-group-item-primary">Tanggal: {{data.tanggal}}</li>
 
-	<div style="margin-left: 90px; margin-top: 100px; width: 100%; font-family:'GothamRounded-Medium';">
-	  <div class="form-group">
-	    <label style="font-size: 15pt;">Nomor Surat Anda</label>
-	    <h2  id="nomor" style="font-weight: bold;">{{ data.no_surat }}</h2>
-        <button type="button" class="btn btn-warning" onclick="copyToClipboard('#nomor')">Salin</button>
+                {% if (data.file) %}
+                <li class="list-group-item list-group-item-primary">Nama Pengunggah: {{data.nama_pengupload}}</li>
+                <li class="list-group-item list-group-item-primary"><a  href="../../surat/download/{{data.id}}" class="btn btn-primary">Download File Surat</a> </li>
+                {% else %}
+                <li class="list-group-item list-group-item-danger">File belum diunggah</li>
+                {% endif %}
+                
+            </ul>
 
+          
 
-
-
-
-                </div>
-
-                <a style="margin-top: 30px; float: none;" class="btn btn-danger" href="{{ url('') }}">Kembali</a>
-            </div>
+            <a href="{{ url('surat/list') }}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-danger">Kembali</a>
 
 
 </body>
+
+
+
+
 
 </html>

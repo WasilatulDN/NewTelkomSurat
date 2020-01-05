@@ -7,18 +7,17 @@ use App\Validation\FileValidation;
 
 class AdminController extends Controller
 {
-    public function createAction()
+    public function registerAction()
     {
-        $this->flashSession->clear();
         $id = $this->session->get('admin')['username'];
         if ($id == NULL) {
             // echo "berhasil login";
             // die();
-        (new Response())->redirect('loginadmin')->send();          
+        (new Response())->redirect('admin/login')->send();          
         }
     }
 
-    public function storeAction(){
+    public function storeregisterAction(){
 
         $admin = new admin();
         $admin->username = $this->request->getPost('username');
@@ -29,12 +28,12 @@ class AdminController extends Controller
         $user = admin::findFirst("username = '$admin->username'");
         if ($user) { 
             $this->flashSession->error("Gagal register. Username telah digunakan.");
-            return $this->response->redirect('register');
+            return $this->response->redirect('admin/register');
         }
         else
         {
             $admin->save();
-            $this->response->redirect('halamanadmin');
+            $this->response->redirect('admin/list');
 
         }
         
@@ -59,24 +58,23 @@ class AdminController extends Controller
                     ]
                 );
 
-                (new Response())->redirect('halamanadmin')->send();
+                (new Response())->redirect('admin/list')->send();
             }
             else{
-                $this->response->redirect('loginadmin');
+                $this->flashSession->error("Gagal masuk. Silakan cek kembali username dan password anda.");
+                $this->response->redirect('admin/login');
             }
         }
-        $this->flashSession->error("Gagal masuk. Silakan cek kembali username dan password anda.");
-        return $this->response->redirect('loginadmin');
+
     }
 
-    public function loginadminAction()
+    public function loginAction()
     {
-        $this->flashSession->clear();
         $id = $this->session->get('admin')['username'];
         if ($id != NULL) {
             // echo "berhasil login";
             // die();
-        (new Response())->redirect('halamanadmin')->send();          
+        (new Response())->redirect('admin/list')->send();          
         }
     }
 
@@ -86,7 +84,7 @@ class AdminController extends Controller
         $this->response->redirect();
     }
 
-    public function listsuratadminAction()
+    public function listsuratAction()
     {
         $surats = nomor_surat::find(['order' => 'nomor DESC']);
         $data = array();
@@ -140,24 +138,24 @@ class AdminController extends Controller
         return $this->response->setContent($content);
     }
 
-    public function lihatdetailAction($id)
+    public function detailAction($id)
     {       
         $user = $this->session->get('admin')['username'];
         if ($user == NULL) {
             // echo "berhasil login";
             // die();
-        (new Response())->redirect('loginadmin')->send();          
+        (new Response())->redirect('admin/login')->send();          
         }
         $this->view->data = nomor_surat::findFirst("id='$id'");
     }
 
-    public function halamanadminAction()
+    public function listAction()
     {       
         $id = $this->session->get('admin')['username'];
         if ($id == NULL) {
             // echo "berhasil login";
             // die();
-        (new Response())->redirect('loginadmin')->send();          
+        (new Response())->redirect('admin/login')->send();          
         }
     }
 
