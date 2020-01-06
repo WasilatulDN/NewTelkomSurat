@@ -155,7 +155,7 @@
 
 
     <div>
-        <h5 style="font-family:'GothamRounded-Medium'; margin-top: 30px; margin-left: 30px; float: none;">Keterangan</h5>
+        <h5 style="font-family:'GothamRounded-Medium'; margin-top: 30px; margin-left: 30px; font-weight: bold; float: none;">Keterangan:</h5>
     </div>
 
 
@@ -167,7 +167,13 @@
         <h5 style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;">Belum Upload: ...</h5>
     </div>
 
-    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;" href="export" class="btn btn-success">Download File Excel</a>
+    <div>
+        <h5 style="font-family:'GothamRounded-Medium'; margin-top: 30px; margin-left: 30px; float: none; font-weight: bold;">Download File Excel:</h5>
+    </div>
+
+    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;" href="export" class="btn btn-primary">Data Keseluruhan</a>
+    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 0px; float: none;" href="" class="btn btn-success">Data Sudah Upload</a>
+    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 0px; float: none;" href="" class="btn btn-danger">Data Belum Upload</a>
 </div>
 
 
