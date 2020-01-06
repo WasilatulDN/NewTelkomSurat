@@ -119,7 +119,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Generate Nomor Surat</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Detail Surat</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -130,7 +130,20 @@
             </nav>
             
 
-    <h2 style="margin-top: 90px; margin-left: 90px;">Detail {{data.nama_surat}}</h2>
+    <h2 style="margin-top: 30px; margin-left: 90px;">Detail {{data.nama_surat}}</h2>
+
+            <!-- Kalau sudah diverif -->
+            <div style="font-size: 10pt; margin-top: 30px; width: 35%; margin-left: 90px;" class="alert alert-success" role="alert">
+                Surat ini sudah diverifikasi oleh admin.
+                <a href="#" style="font-size: 10pt;margin-left: 20px;" class="btn btn-danger">Urungkan Verifikasi</a>
+            </div>
+
+            <!-- Kalau belum diverif -->
+            <div style="font-size: 10pt; margin-top: 30px; width: 41%; margin-left: 90px;" class="alert alert-danger" role="alert">
+                Surat ini belum diverifikasi oleh admin.
+                <a href="#" style="font-size: 10pt;margin-left: 20px;" class="btn btn-success">Verifikasi Sekarang</a>
+                <a href="#" style="font-size: 10pt;margin-left: 20px;" class="btn btn-dark">Tolak</a>
+            </div>
 
             <ul style="margin-top: 40px;  margin-left: 90px; margin-right: 50%;" class="list-group">
                 <li class="list-group-item list-group-item-primary">Nama: {{data.name}}</li>
@@ -153,6 +166,7 @@
                 </li>
                 <li class="list-group-item list-group-item-primary">No Surat: {{data.no_surat}}</li>
                 <li class="list-group-item list-group-item-primary">Tanggal: {{data.tanggal}}</li>
+                <li class="list-group-item list-group-item-primary">Status: .......</li>
 
                 {% if (data.file) %}
                 <li class="list-group-item list-group-item-primary">Nama Pengunggah: {{data.nama_pengupload}}</li>

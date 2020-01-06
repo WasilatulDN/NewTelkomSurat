@@ -3,8 +3,11 @@
 
 <head>
     <title>Generate Nomor Surat</title>
+
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="favicon.png" type="png" sizes="16x16">
+    <link rel="icon" href="../favicon.png" type="png" sizes="16x16">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +15,7 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="../style5.css">
 
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -38,6 +41,26 @@
                 $(this).toggleClass('active');
             });
         });
+
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+            alert("Nomor surat berhasil disalin!");
+        }
+
+        $('#modal').on('click', function() {
+            $("#div_dbReadMany").modal('show');
+        });
+
+        $('.save').on('click', function() {
+            $('#div_dbReadMany').delay(1000).fadeOut('slow');
+            setTimeout(function() {
+                $("#div_dbReadMany").modal('hide');
+            }, 1500);
+        });
     </script>
 
 </head>
@@ -50,62 +73,62 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="logo.png" class="rounded mx-auto d-block">
+            <img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
 
-            {% if (session.get('admin')['username']) %}
+           <?php if (($this->session->get('admin')['username'])) { ?>
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('surat/list') ?>">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
+                    <a href="<?= $this->url->get('admin/list') ?>">Beranda Admin</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai <?= $this->session->get('admin')['username'] ?></a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ url('admin/register') }}">Daftar</a>
+                            <a href="<?= $this->url->get('admin/register') ?>">Daftar</a>
                         </li>
                         <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                            <a href="<?= $this->url->get('admin/logout') ?>">Keluar</a>
                         </li>
                     </ul>
                 </li>
             </ul>
 
-            {% else %}
+            <?php } else { ?>
 
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('surat/list') ?>">Upload Surat</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         
                         <!-- <li>
-                            <a href="{{ url('register') }}">Register</a>
+                            <a href="<?= $this->url->get('register') ?>">Register</a>
                         </li> -->
                         
                         <li>
-                            <a href="{{ url('admin/login') }}">Masuk</a>
+                            <a href="<?= $this->url->get('admin/login') ?>">Masuk</a>
                         </li>
                         
                     </ul>
                 </li>
             </ul>
-            {% endif %}
+            <?php } ?>
 
 
         </nav>
@@ -122,7 +145,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Generate Nomor Surat</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Cari Surat</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -131,56 +154,24 @@
 
                 </div>
             </nav>
-            <form action="{{ url("surat/store") }}" method="post" style="margin-left: 90px; margin-top: 70px; width: 30%; font-family:'GothamRounded-Medium';">
-                <div class="form-group">
-                    <label>Nama Anda</label>
-                    <input type="text" class="form-control" placeholder="Masukkan nama anda" name="nama" required>
+
+
+
+	<div style="margin-left: 90px; margin-top: 100px; width: 100%; font-family:'GothamRounded-Medium';">
+	  <div class="form-group">
+	    <label style="font-size: 15pt;">Nomor Surat Anda</label>
+	    <h2  id="nomor" style="font-weight: bold;"><?= $data->no_surat ?></h2>
+        <button type="button" class="btn btn-warning" onclick="copyToClipboard('#nomor')">Salin</button>
+
+
+
+
+
                 </div>
 
-                <div>
-                    <label>Jenis Surat</label>
-                </div>
+                <a style="margin-top: 30px; float: none;" class="btn btn-danger" href="<?= $this->url->get('') ?>">Kembali</a>
+            </div>
 
-
-                <select name="jenissurat" class="form-control form-control-sm" style="width: 100%; font-size: 15pt;" required>
-                  <option value="0"></option>
-                  <option value="1">Berita Acara Penjelasan</option>
-                  <option value="2">Berita Acara Siap Operasi (BASO)</option>
-                  <option value="3">Berita Acara Delete Order (BADO)</option>
-                  <option value="4">Surat Keluar</option>
-                  <option value="5">P0/P1</option>
-                  <option value="6">Surat Penawaran/Quotation</option>
-                </select>
-
-                <div>
-                    <label style="margin-top: 20px;">Penandatangan Surat</label>
-                </div>
-
-                <div class="custom-control custom-radio">
-                  <input value="1" type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                  <label class="custom-control-label" for="defaultChecked">Mei Hendra Darma</label>
-                </div>
-
-                <div class="custom-control custom-radio">
-                  <input value="2" type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                  <label class="custom-control-label" for="defaultUnchecked">Ivone Andayani</label>
-                </div>
-
-
-                <div class="form-group">
-                    <label style="margin-top: 20px;">Nama Surat</label>
-                    <input type="text" class="form-control" placeholder="Masukkan nama surat" name="namasurat" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Tanggal Surat</label>
-                    <input type="date" class="form-control" name="tanggal" required>
-                </div>
-
-                
-                <input style="margin-top: 30px;" type="submit" class="btn btn-primary" value="Generate Nomor Surat">
-                <!-- <a style="margin-top: 30px;" type="submit" class="btn btn-primary" href="{{ url('nomor') }}">Generate Nomor Surat</a> -->
-            </form>
 
 </body>
 
