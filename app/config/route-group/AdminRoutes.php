@@ -75,6 +75,14 @@ class AdminRoutes extends RouterGroup
                 'action' => 'list'
             ]
         );
+
+        $this->addGet(
+            '/export',
+            [
+                'controller' => 'admin',
+                'action' => 'export'
+            ]
+        );
         
     }
 }
