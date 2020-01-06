@@ -7,6 +7,7 @@ class nomor_surat extends Model
     public $nama_surat;
     public $jenis_surat;
     public $nomor;
+    public $huruf;
     public $no_surat;
     public $tanggal;
     public $nama_pengupload;

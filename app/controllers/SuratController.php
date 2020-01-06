@@ -31,6 +31,9 @@ class SuratController extends Controller
     {
         $tanggal = $this->request->getPost('tanggal');
         $jenissurat = $this->request->getPost('jenissurat');
+        $ttd = $this->request->getPost('ttd');
+        // echo $ttd;
+        // die();
         $data = nomor_surat::findFirst(
             [
                 "tanggal='$tanggal'",
@@ -58,7 +61,7 @@ class SuratController extends Controller
                 $tanggal1 = strtotime($tanggal);
                 $tanggal2 = strtotime($data->tanggal);
                 $diff = abs($tanggal1 - $tanggal2)/60/60/24;             
-                $nomor=$data->nomor + (5*$diff);              
+                $nomor=$data->nomor + (5*$diff) + 1;              
             }
             else
             {
@@ -66,24 +69,98 @@ class SuratController extends Controller
             }          
         }
         $cek = nomor_surat::findFirst("nomor='$nomor'");
+        echo $nomor;
+        // die();
         if($cek)
         {
-            $this->response->redirect('surat/nomorterpakai');
-        }
-        else{
-            if($jenissurat == 5)
+            // $this->response->redirect('surat/nomorterpakai');
+            $cekhuruf = nomor_surat::findFirst(
+                [
+                    'conditions' => 'huruf IS NOT NULL AND tanggal = :tanggal:',
+                    'bind' => [
+                        'tanggal' => $tanggal,
+                    ],
+                    'order' => 'huruf DESC',
+                    'limit' => 1,
+                    
+                ]
+            );
+            $nomor--;
+            if($cekhuruf)
             {
-                $nomorsurat = "TEL.".($nomor)."/LG000/R5W-5M470000/2020";
-            }
-            elseif($jenissurat == 6)
-            {
-                $nomorsurat = "TEL.".($nomor)."/YN100/R5W-5M470000/2020";
+                
+                $huruf = ($cekhuruf->huruf) + 1;
+                $nomorterpakai = ($nomor).chr($huruf);
+
             }
             else
             {
-                $nomorsurat = "TEL.".($nomor)."/YN000/R5W-5M470000/2020";
+                $huruf = 97;
+                $nomorterpakai = $nomor.chr($huruf);
+
             }
-            echo($nomorsurat);
+
+            if($ttd == 1)
+            {
+                $ttd_oleh = "R5W-5M470000";
+
+            }
+            else
+            {
+                $ttd_oleh = "R5W-5N470000";
+            }
+
+            if($jenissurat == 5)
+            {
+                $nomorsurat = "TEL.".($nomorterpakai)."/LG000"."/".$ttd_oleh."/2020";
+            }
+            elseif($jenissurat == 6)
+            {
+                $nomorsurat = "TEL.".($nomorterpakai)."/YN100"."/".$ttd_oleh."/2020";
+            }
+            else
+            {
+                $nomorsurat = "TEL.".($nomorterpakai)."/YN000"."/".$ttd_oleh."/2020";
+            }
+            // echo($nomorsurat);
+            // die();
+            $surat = new nomor_surat();
+            $surat->name = $this->request->getPost('nama');
+            $surat->nama_surat = $this->request->getPost('namasurat');
+            $surat->jenis_surat = $jenissurat;
+            $surat->nomor = $nomor;
+            $surat->huruf = $huruf;
+            $surat->no_surat = $nomorsurat;
+            $surat->tanggal = $this->request->getPost('tanggal');
+            $surat->save();
+            $this->response->redirect('surat/nomor');
+            // echo($nomorterpakai);
+            // die();
+        }
+        else{
+            if($ttd == 1)
+            {
+                $ttd_oleh = "R5W-5M470000";
+
+            }
+            else
+            {
+                $ttd_oleh = "R5W-5N470000";
+            }
+
+            if($jenissurat == 5)
+            {
+                $nomorsurat = "TEL.".($nomor)."/LG000"."/".$ttd_oleh."/2020";
+            }
+            elseif($jenissurat == 6)
+            {
+                $nomorsurat = "TEL.".($nomor)."/YN100"."/".$ttd_oleh."/2020";
+            }
+            else
+            {
+                $nomorsurat = "TEL.".($nomor)."/YN000"."/".$ttd_oleh."/2020";
+            }
+            // echo($nomorsurat);
             // die();
             $surat = new nomor_surat();
             $surat->name = $this->request->getPost('nama');

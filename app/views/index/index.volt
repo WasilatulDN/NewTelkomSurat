@@ -157,12 +157,12 @@
                 </div>
 
                 <div class="custom-control custom-radio">
-                  <input value="1" type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                  <input value="1" type="radio" class="custom-control-input" id="defaultChecked" name="ttd" checked>
                   <label class="custom-control-label" for="defaultChecked">Mei Hendra Darma</label>
                 </div>
 
                 <div class="custom-control custom-radio">
-                  <input value="2" type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                  <input value="2" type="radio" class="custom-control-input" id="defaultUnchecked" name="ttd">
                   <label class="custom-control-label" for="defaultUnchecked">Ivone Andayani</label>
                 </div>
 

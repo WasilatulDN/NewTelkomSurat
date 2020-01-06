@@ -176,7 +176,7 @@ class AdminController extends Controller
         }
         $array[0] = $sudah;
         $array[1] = $belum;
-        var_dump($array);
+        // var_dump($array);
         // echo $sudah;
         // echo("\n");
         // echo $belum;
