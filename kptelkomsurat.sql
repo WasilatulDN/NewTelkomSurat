@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2020 at 05:33 PM
+-- Generation Time: Jan 07, 2020 at 12:26 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -53,6 +53,7 @@ CREATE TABLE `nomor_surat` (
   `nama_surat` varchar(200) DEFAULT NULL,
   `jenis_surat` varchar(15) DEFAULT NULL,
   `nomor` int(11) DEFAULT NULL,
+  `huruf` int(11) DEFAULT NULL,
   `no_surat` varchar(100) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `nama_pengupload` varchar(200) DEFAULT NULL,
@@ -84,7 +85,7 @@ ALTER TABLE `nomor_surat`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `nomor_surat`
