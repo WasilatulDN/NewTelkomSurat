@@ -130,21 +130,21 @@
             </nav>
             
 
-    <h2 style="margin-top: 30px; margin-left: 90px;">Detail {{data.nama_surat}}</h2>
-
+    <h2 style="margin-top: 30px; margin-left: 90px;">Detail {{data.no_surat}}</h2>
+            {% if (data.pengecekan == 1 OR data.pengecekan == -1) %}
             <!-- Kalau sudah diverif -->
             <div style="font-size: 10pt; margin-top: 30px; width: 35%; margin-left: 90px;" class="alert alert-success" role="alert">
                 Surat ini sudah diverifikasi oleh admin.
-                <a href="#" style="font-size: 10pt;margin-left: 20px;" class="btn btn-danger">Urungkan Verifikasi</a>
+                <a href="../urungkan/{{data.id}}" style="font-size: 10pt;margin-left: 20px;" class="btn btn-danger">Urungkan Verifikasi</a>
             </div>
-
+            {% else %}
             <!-- Kalau belum diverif -->
             <div style="font-size: 10pt; margin-top: 30px; width: 41%; margin-left: 90px;" class="alert alert-danger" role="alert">
                 Surat ini belum diverifikasi oleh admin.
-                <a href="#" style="font-size: 10pt;margin-left: 20px;" class="btn btn-success">Verifikasi Sekarang</a>
-                <a href="#" style="font-size: 10pt;margin-left: 20px;" class="btn btn-dark">Tolak</a>
+                <a href="../verifikasi/{{data.id}}" style="font-size: 10pt;margin-left: 20px;" class="btn btn-success">Verifikasi Sekarang</a>
+                <a href="../tolak/{{data.id}}" style="font-size: 10pt;margin-left: 20px;" class="btn btn-dark">Tolak</a>
             </div>
-
+            {% endif %}
             <ul style="margin-top: 40px;  margin-left: 90px; margin-right: 50%;" class="list-group">
                 <li class="list-group-item list-group-item-primary">Nama: {{data.name}}</li>
                 <li class="list-group-item list-group-item-primary">Nama Surat: {{data.nama_surat}}</li>
@@ -166,7 +166,15 @@
                 </li>
                 <li class="list-group-item list-group-item-primary">No Surat: {{data.no_surat}}</li>
                 <li class="list-group-item list-group-item-primary">Tanggal: {{data.tanggal}}</li>
-                <li class="list-group-item list-group-item-primary">Status: .......</li>
+                <li class="list-group-item list-group-item-primary">Status: 
+                 {% if (data.pengecekan == 1) %}
+                TERVERIFIKASI
+                {% elseif (data.pengecekan == -1) %}
+                DITOLAK
+                {% else %}
+                BELUM VERIFIKASI
+                {% endif %}
+                </li>
 
                 {% if (data.file) %}
                 <li class="list-group-item list-group-item-primary">Nama Pengunggah: {{data.nama_pengupload}}</li>

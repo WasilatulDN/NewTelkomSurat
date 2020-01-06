@@ -131,6 +131,7 @@ class SuratController extends Controller
             $surat->nomor = $nomor;
             $surat->huruf = $huruf;
             $surat->no_surat = $nomorsurat;
+            $surat->pengecekan = 0;
             $surat->tanggal = $this->request->getPost('tanggal');
             $surat->save();
             $this->response->redirect('surat/nomor');
@@ -168,6 +169,7 @@ class SuratController extends Controller
             $surat->jenis_surat = $jenissurat;
             $surat->nomor = $nomor;
             $surat->no_surat = $nomorsurat;
+            $surat->pengecekan = 0;
             $surat->tanggal = $this->request->getPost('tanggal');
             $surat->save();
             $this->response->redirect('surat/nomor');

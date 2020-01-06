@@ -69,6 +69,30 @@ class AdminRoutes extends RouterGroup
         );
 
         $this->addGet(
+            '/verifikasi/{id}',
+            [
+                'controller' => 'admin',
+                'action' => 'verifikasi'
+            ]
+        );
+
+        $this->addGet(
+            '/tolak/{id}',
+            [
+                'controller' => 'admin',
+                'action' => 'tolak'
+            ]
+        );
+
+        $this->addGet(
+            '/urungkan/{id}',
+            [
+                'controller' => 'admin',
+                'action' => 'urungkan'
+            ]
+        );
+
+        $this->addGet(
             '/list',
             [
                 'controller' => 'admin',

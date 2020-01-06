@@ -139,6 +139,7 @@
                 {title: "Nama Surat", field: "nama_surat"},
                 {title: "Jenis Surat", field: "jenis_surat"},
                 {title: "Status Unggah", field: "status"},
+                {title: "Verifikasi", field: "verifikasi"},
                 {
                     title: "Lihat Detail", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",
@@ -147,7 +148,7 @@
                         target: "_blank",
                     }
                 },
-                {title: "Verifikasi", field: "pengecekan"},
+                
             ],
         });
         table.setData("{{ url('admin/listsurat') }}");

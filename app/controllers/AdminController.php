@@ -127,6 +127,19 @@ class AdminController extends Controller
             else{
                 $status = "Belum";
             }
+
+            if($surat->pengecekan == 1)
+            {
+                $verifikasi = "Terverifikasi";
+            }
+            elseif($surat->pengecekan == -1)
+            {
+                $verifikasi = "Ditolak";
+            }
+            else
+            {
+                $verifikasi = "Belum Verifikasi";
+            }
             
             $data[] = array(
                 'no_surat' => $surat->no_surat,
@@ -134,6 +147,7 @@ class AdminController extends Controller
                 'nama_surat' => $surat->nama_surat,
                 'jenis_surat' => $jenissurat,
                 'status' => $status,
+                'verifikasi' => $verifikasi,
                 'link' => $surat->id,
             );
         }
@@ -151,6 +165,30 @@ class AdminController extends Controller
         (new Response())->redirect('admin/login')->send();          
         }
         $this->view->data = nomor_surat::findFirst("id='$id'");
+    }
+
+    public function verifikasiAction($id)
+    {
+        $surat = nomor_surat::findFirst("id='$id'");
+        $surat->pengecekan = 1;
+        $surat->save();
+        return $this->response->redirect('admin/detail' . '/' . $id);
+    }
+
+    public function tolakAction($id)
+    {
+        $surat = nomor_surat::findFirst("id='$id'");
+        $surat->pengecekan = -1;
+        $surat->save();
+        return $this->response->redirect('admin/detail' . '/' . $id);
+    }
+
+    public function urungkanAction($id)
+    {
+        $surat = nomor_surat::findFirst("id='$id'");
+        $surat->pengecekan = 0;
+        $surat->save();
+        return $this->response->redirect('admin/detail' . '/' . $id);
     }
 
     public function listAction()
