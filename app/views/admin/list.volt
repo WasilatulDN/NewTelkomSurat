@@ -167,6 +167,7 @@
         <h5 style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;">Belum Upload: ...</h5>
     </div>
 
+    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;" href="export" class="btn btn-success">Download File Excel</a>
 </div>
 
 

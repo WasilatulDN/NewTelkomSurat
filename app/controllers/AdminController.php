@@ -163,4 +163,74 @@ class AdminController extends Controller
         }
     }
 
+    public function exportAction()
+    {
+        //Declaring css
+        $header_css = "PUT Your CSS if needed";
+        $data_css = "PUT Your CSS if needed";
+        //If data comes from model then
+        $data = nomor_surat::find();
+        //As i'm using join query i feel good using createBuilder
+        // $data = $this->modelsManager->createBuilder()
+        //       ->columns("comment.comment, comment.username, comment.email, comment.postedat,item.name,item.photo,item.view,item.categoryid,item.id")
+        //       ->From('comment')
+        //       ->innerjoin('item', 'comment.productid = item.id')
+        //       ->where("comment.email = 'pass your value here' ")
+        //       ->getQuery()
+        //       ->execute(); 
+
+        $table = "<table>
+        <tr>
+        <td style='$header_css'>No</td>
+        <td style='$header_css'>Nama Pengupload</td>
+        <td style='$header_css'>Nama Surat</td>
+        <td style='$header_css'>Jenis Surat</td>
+        <td style='$header_css'>Nomor Surat</td>
+        <td style='$header_css'>Tanggal</td>
+        <td style='$header_css'>Nama Pengupload</td>
+        <td style='$header_css'>Setuju/Tidak</td>
+        </tr>";
+        foreach ($data as $row) {
+            if($row->jenis_surat == 1)
+            {
+                $jenissurat = "Berita Acara Penjelasan";
+            }
+            elseif($row->jenis_surat == 2)
+            {
+                $jenissurat = "BASO";
+            }
+            elseif($row->jenis_surat == 3)
+            {
+                $jenissurat = "BADO";
+            }
+            elseif($row->jenis_surat == 4)
+            {
+                $jenissurat = "Surat Keluar";
+            }
+            elseif($row->jenis_surat == 5)
+            {
+                $jenissurat = "P0/P1";
+            }
+            elseif($row->jenis_surat == 6)
+            {
+                $jenissurat = "Surat Penawaran";
+            }
+
+            $table.= "<tr>
+            <td style='$data_css'>$row->id</td>
+            <td style='$data_css'>$row->name</td>
+            <td style='$data_css'>$row->nama_surat</td>
+            <td style='$data_css'>$jenissurat</td>
+            <td style='$data_css'>$row->no_surat</td>
+            <td style='$data_css'>$row->tanggal</td>
+            <td style='$data_css'>$row->nama_pengupload</td>
+            <td style='$data_css'>$row->pengecekan</td>
+            </tr>";
+        }
+        $table.= '</table>';
+
+        header ("Content-type: application/xls;charset=UTF-8");
+        header ("Content-Disposition: attachment; filename=DataSurat.xls" );
+        return $table;
+    }
 }
