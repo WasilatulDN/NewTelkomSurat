@@ -126,7 +126,7 @@
 
     // tabelnya
         var table = new Tabulator("#example-table", {
-            height: "311px",
+            // height: "345px",
             layout: "fitColumns",
             pagination:"local",
             paginationSize:10,
