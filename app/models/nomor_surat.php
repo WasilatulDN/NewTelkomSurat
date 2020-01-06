@@ -10,5 +10,7 @@ class nomor_surat extends Model
     public $no_surat;
     public $tanggal;
     public $nama_pengupload;
+    public $pengecekan;
     public $file;
+
 }

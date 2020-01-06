@@ -65,6 +65,10 @@ class AdminController extends Controller
                 $this->response->redirect('admin/login');
             }
         }
+        else{
+            $this->flashSession->error("Gagal masuk. Silakan cek kembali username dan password anda.");
+                $this->response->redirect('admin/login');
+        }
 
     }
 

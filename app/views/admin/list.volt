@@ -147,7 +147,7 @@
                         target: "_blank",
                     }
                 },
-                {title: "Verifikasi", field: "verif"},
+                {title: "Verifikasi", field: "pengecekan"},
             ],
         });
         table.setData("{{ url('admin/listsurat') }}");
