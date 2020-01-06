@@ -52,57 +52,57 @@
                 <h3></h3>
             </div>
 
-            {% if (session.get('admin')['username']) %}
+            <?php if (($this->session->get('admin')['username'])) { ?>
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('surat/list') ?>">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
+                    <a href="<?= $this->url->get('admin/list') ?>">Beranda Admin</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai <?= $this->session->get('admin')['username'] ?></a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ url('admin/register') }}">Daftar</a>
+                            <a href="<?= $this->url->get('admin/register') ?>">Daftar</a>
                         </li>
                         <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                            <a href="<?= $this->url->get('admin/logout') ?>">Keluar</a>
                         </li>
                     </ul>
                 </li>
             </ul>
 
-            {% else %}
+            <?php } else { ?>
 
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('surat/list') ?>">Upload Surat</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         
                         <!-- <li>
-                            <a href="{{ url('register') }}">Register</a>
+                            <a href="<?= $this->url->get('register') ?>">Register</a>
                         </li> -->
                         
                         <li>
-                            <a href="{{ url('admin/login') }}">Masuk</a>
+                            <a href="<?= $this->url->get('admin/login') ?>">Masuk</a>
                         </li>
                         
                     </ul>
                 </li>
             </ul>
-            {% endif %}
+            <?php } ?>
 
 
         </nav>
@@ -119,7 +119,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Upload Surat</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Generate Nomor Surat</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -131,28 +131,24 @@
             
 
 
-
-<!-- ini buat nomor -->
-
-<h4 style="margin-top: 30px; margin-left: 90px;">Nomor surat anda: {{data.no_surat}}</h4>
-
-<!-- ini buat nomor -->
+<h2 style="margin-top: 90px; margin-left: 90px;">Upload Surat Anda</h2>
 
 
-	<form action="{{ url("surat/storeupload") }}" method = "post" enctype="multipart/form-data" style="margin-left: 90px; margin-top: 40px; width: 25%; font-family:'GothamRounded-Medium';">
+
+	<form action="<?= $this->url->get('surat/storeupload') ?>" method = "post" enctype="multipart/form-data" style="margin-left: 90px; margin-top: 40px; width: 25%; font-family:'GothamRounded-Medium';">
 	  
 
-      {%if data.file == NULL%}
-      {% else %}
+      <?php if ($data->file == null) { ?>
+      <?php } else { ?>
 
         <div class="alert alert-success" role="alert">
-          Surat ini telah <a class="alert-link">berhasil diunggah</a> oleh <a class="alert-link">{{data.nama_pengupload}}</a>.
+          Surat ini telah <a class="alert-link">berhasil diunggah</a> oleh <a class="alert-link"><?= $data->nama_pengupload ?></a>.
         </div>
 
         <div style="font-size: 10pt;" class="alert alert-danger" role="alert">
           Apabila ingin mengubah file yang telah diunggah, silahkan mengunggah kembali pada form di bawah.
         </div>
-      {% endif %}
+      <?php } ?>
 
         <p><?php echo $this->flashSession->output() ?></p>
             
@@ -162,7 +158,7 @@
           Ukuran file <a class="alert-link">maksimal 2 MB</a><br>Pastikan file yang diunggah berekstensi <a class="alert-link">.pdf atau .jpg</a>.
         </div>
 
-        <input type="hidden" name="id" class="form-control" value={{data.id}}>
+        <input type="hidden" name="id" class="form-control" value=<?= $data->id ?>>
         <label>Nama Anda</label>
         <input type="text" class="form-control" name="pengupload" placeholder="Masukkan nama anda" required>
       </div>
@@ -172,9 +168,9 @@
 
     		<input style="font-size: 10pt;" type="file" name="file" required>		
     <div>	
-        <!-- <p>{{messages['file']}}</p> -->
+        <!-- <p><?= $messages['file'] ?></p> -->
 	  <button style="margin-top: 50px; margin-bottom: 50px;" type="submit" class="btn btn-primary">Unggah Surat</button>
-	  <a href="{{ url('surat/list') }}" style="margin-top: 50px; margin-bottom: 50px;"" class="btn btn-danger">Kembali</a>
+	  <a href="<?= $this->url->get('surat/list') ?>" style="margin-top: 50px; margin-bottom: 50px;"" class="btn btn-danger">Kembali</a>
     </div>
 	</form>
 

@@ -3,7 +3,7 @@
 <head>
 	<title>Generate Nomor Surat</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="icon" href="../../favicon.png" type="png" sizes="16x16">
+	<link rel="icon" href="../favicon.png" type="png" sizes="16x16">
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,13 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../../style5.css">
+    <link rel="stylesheet" href="../style5.css">
+
+
+
+    <!-- tabulator -->
+    <link href="<?= $this->url->get('tabulator.min.css') ?>" rel="stylesheet">
+    <script src="<?= $this->url->get('tabulator.min.js') ?>"></script>
 
 	 <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -47,69 +53,68 @@
 <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="../../logo.png" class="rounded mx-auto d-block">
+        		<img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
 
-            {% if (session.get('admin')['username']) %}
+            <?php if (($this->session->get('admin')['username'])) { ?>
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('surat/list') ?>">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
+                    <a href="<?= $this->url->get('admin/list') ?>">Beranda Admin</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai <?= $this->session->get('admin')['username'] ?></a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ url('admin/register') }}">Daftar</a>
+                            <a href="<?= $this->url->get('admin/register') ?>">Daftar</a>
                         </li>
                         <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                            <a href="<?= $this->url->get('admin/logout') ?>">Keluar</a>
                         </li>
                     </ul>
                 </li>
             </ul>
 
-            {% else %}
+            <?php } else { ?>
 
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('surat/list') ?>">Upload Surat</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         
                         <!-- <li>
-                            <a href="{{ url('register') }}">Register</a>
+                            <a href="<?= $this->url->get('register') ?>">Register</a>
                         </li> -->
                         
                         <li>
-                            <a href="{{ url('admin/login') }}">Masuk</a>
+                            <a href="<?= $this->url->get('admin/login') ?>">Masuk</a>
                         </li>
                         
                     </ul>
                 </li>
             </ul>
-            {% endif %}
-
-
+            <?php } ?>
+           
         </nav>
 
 
 
-        <div id="content">
+ <div id="content">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="">
@@ -119,65 +124,58 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Upload Surat</h2>
-                    <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Cek Surat Anda</h2>
+                   <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
 
 
-
+                   
                 </div>
             </nav>
-            
 
 
 
-<!-- ini buat nomor -->
 
-<h4 style="margin-top: 30px; margin-left: 90px;">Nomor surat anda: {{data.no_surat}}</h4>
-
-<!-- ini buat nomor -->
-
-
-	<form action="{{ url("surat/storeupload") }}" method = "post" enctype="multipart/form-data" style="margin-left: 90px; margin-top: 40px; width: 25%; font-family:'GothamRounded-Medium';">
-	  
-
-      {%if data.file == NULL%}
-      {% else %}
-
-        <div class="alert alert-success" role="alert">
-          Surat ini telah <a class="alert-link">berhasil diunggah</a> oleh <a class="alert-link">{{data.nama_pengupload}}</a>.
-        </div>
-
-        <div style="font-size: 10pt;" class="alert alert-danger" role="alert">
-          Apabila ingin mengubah file yang telah diunggah, silahkan mengunggah kembali pada form di bawah.
-        </div>
-      {% endif %}
-
-        <p><?php echo $this->flashSession->output() ?></p>
-            
-            
-      <div  class="form-group">
-        <div style="font-size: 10pt;" class="alert alert-primary" role="alert">
-          Ukuran file <a class="alert-link">maksimal 2 MB</a><br>Pastikan file yang diunggah berekstensi <a class="alert-link">.pdf atau .jpg</a>.
-        </div>
-
-        <input type="hidden" name="id" class="form-control" value={{data.id}}>
-        <label>Nama Anda</label>
-        <input type="text" class="form-control" name="pengupload" placeholder="Masukkan nama anda" required>
-      </div>
-        <div style="margin-top: 15px;">
-	  	<label>Unggah Surat</label>
-	  </div>
-
-    		<input style="font-size: 10pt;" type="file" name="file" required>		
-    <div>	
-        <!-- <p>{{messages['file']}}</p> -->
-	  <button style="margin-top: 50px; margin-bottom: 50px;" type="submit" class="btn btn-primary">Unggah Surat</button>
-	  <a href="{{ url('surat/list') }}" style="margin-top: 50px; margin-bottom: 50px;"" class="btn btn-danger">Kembali</a>
+	<div class="home-content">
+        <h2 class="dashboard-title"></h2>
+        <div id="example-table"></div>
     </div>
-	</form>
 
+    <script>
+
+
+            
+
+
+    // tabelnya
+        var table = new Tabulator("#example-table", {
+            height: "350px",
+            pagination:"local",
+            paginationSize:10,
+            layout:"fitColumns",
+            placeholder: "Tidak Ada Data",
+            columns: [
+                {title: "No", field: "no", formatter: "rownum", width: 10},
+                {title: "Tanggal", field: "tanggal"},
+                {title: "No Surat", field: "no_surat"},
+                {title: "Nama", field: "nama"},
+                {title: "Nama Surat", field: "nama_surat"},
+                {title: "Jenis Surat", field: "jenis_surat"},
+                {title: "Status Unggah", field: "status"},
+                {
+                    title: "Upload Surat", field: "link", formatter: "link", formatterParams: {
+                        labelField: "name",
+                        label: "Upload disini",
+                        urlPrefix: "<?= $this->url->get('surat/upload/') ?>",
+                        target: "_blank",
+                    }
+                },
+            ],
+        });
+        table.setData("<?= $this->url->get('surat/listsurat') ?>");
+    </script>
+</div>
 	
 
 </body>
