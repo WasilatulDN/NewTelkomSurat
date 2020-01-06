@@ -16,7 +16,7 @@ $di->set(
         $volt->setOptions([
             "compiledPath" => APP_PATH . "/cache/",
             "compiledExtension" => ".compiled",
-            "compileAlways" => true,
+            "compileAlways" => false,
         ]);
 
         return $volt;
