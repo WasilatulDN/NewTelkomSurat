@@ -185,19 +185,42 @@ class AdminController extends Controller
         <td style='$header_css'>Nama Pengupload</td>
         <td style='$header_css'>Nama Surat</td>
         <td style='$header_css'>Jenis Surat</td>
-        <td style='$header_css'>Nomor</td>
         <td style='$header_css'>Nomor Surat</td>
         <td style='$header_css'>Tanggal</td>
         <td style='$header_css'>Nama Pengupload</td>
         <td style='$header_css'>Setuju/Tidak</td>
         </tr>";
         foreach ($data as $row) {
+            if($row->jenis_surat == 1)
+            {
+                $jenissurat = "Berita Acara Penjelasan";
+            }
+            elseif($row->jenis_surat == 2)
+            {
+                $jenissurat = "BASO";
+            }
+            elseif($row->jenis_surat == 3)
+            {
+                $jenissurat = "BADO";
+            }
+            elseif($row->jenis_surat == 4)
+            {
+                $jenissurat = "Surat Keluar";
+            }
+            elseif($row->jenis_surat == 5)
+            {
+                $jenissurat = "P0/P1";
+            }
+            elseif($row->jenis_surat == 6)
+            {
+                $jenissurat = "Surat Penawaran";
+            }
+
             $table.= "<tr>
             <td style='$data_css'>$row->id</td>
             <td style='$data_css'>$row->name</td>
             <td style='$data_css'>$row->nama_surat</td>
-            <td style='$data_css'>$row->jenis_surat</td>
-            <td style='$data_css'>$row->nomor</td>
+            <td style='$data_css'>$jenissurat</td>
             <td style='$data_css'>$row->no_surat</td>
             <td style='$data_css'>$row->tanggal</td>
             <td style='$data_css'>$row->nama_pengupload</td>
