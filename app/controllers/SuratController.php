@@ -49,7 +49,7 @@ class SuratController extends Controller
             $data = nomor_surat::findFirst(
                 [
                     "tanggal<'$tanggal'",
-                    'order' => 'tanggal DESC',
+                    'order' => 'nomor DESC',
                     'limit' => 1,
                 ]
             );
@@ -173,7 +173,8 @@ class SuratController extends Controller
         else
         {         
             $surat = nomor_surat::findFirst("id='$id'");
-
+            $penomoran = (explode('/',$surat->no_surat,4));
+            
             if (true == $this->request->hasFiles() && $this->request->isPost()) {
                 $upload_dir = __DIR__ . '/../../public/uploads/';
           
@@ -184,7 +185,7 @@ class SuratController extends Controller
                     $temp = explode(".", $_FILES["file"]["name"]);
                     $file->moveTo($upload_dir . $file->getName());
                     $lama = $upload_dir.$file->getName();
-                    $baru = $upload_dir. 'TEL' .$surat->nomor. '.' .end($temp);
+                    $baru = $upload_dir. 'TEL' .$surat->nomor.'-'.$penomoran[1].'-'.$penomoran[2].'-'.$penomoran[3].'.'.end($temp);
                     rename($lama, $baru); 
                 }
             }
