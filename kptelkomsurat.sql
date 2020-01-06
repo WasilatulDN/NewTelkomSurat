@@ -56,6 +56,7 @@ CREATE TABLE `nomor_surat` (
   `no_surat` varchar(100) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `nama_pengupload` varchar(200) DEFAULT NULL,
+  `pengecekan` int(11) DEFAULT NULL,
   `file` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
