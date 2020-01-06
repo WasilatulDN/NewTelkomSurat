@@ -161,6 +161,27 @@ class AdminController extends Controller
             // die();
         (new Response())->redirect('admin/login')->send();          
         }
+        $datas = nomor_surat::find();
+        $sudah = 0;
+        $belum = 0;
+        $array;
+        foreach ($datas as $data) {
+            if($data->file)
+            {
+                $sudah++;
+            }
+            else{
+                $belum++;
+            }
+        }
+        $array[0] = $sudah;
+        $array[1] = $belum;
+        var_dump($array);
+        // echo $sudah;
+        // echo("\n");
+        // echo $belum;
+        // die();
+        $this->view->data = $array;
     }
 
     public function exportAction()
