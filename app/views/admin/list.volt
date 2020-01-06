@@ -147,14 +147,31 @@
                         target: "_blank",
                     }
                 },
+                {title: "Verifikasi", field: "verif"},
             ],
         });
         table.setData("{{ url('admin/listsurat') }}");
     </script>
-    
+
+
+    <div>
+        <h5 style="font-family:'GothamRounded-Medium'; margin-top: 30px; margin-left: 30px; float: none;">Keterangan</h5>
+    </div>
+
+
+    <div>
+        <h5 style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 20px; margin-left: 30px; float: none;">Sudah Upload: ...</h5>
+    </div>
+
+    <div>
+        <h5 style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;">Belum Upload: ...</h5>
+    </div>
+
 </div>
-    
+
+
 
 </body>
+
 
 </html>

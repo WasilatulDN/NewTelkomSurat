@@ -119,7 +119,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Generate Nomor Surat</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Upload Surat</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -131,8 +131,12 @@
             
 
 
-<h2 style="margin-top: 90px; margin-left: 90px;">Upload Surat Anda</h2>
 
+<!-- ini buat nomor -->
+
+<h4 style="margin-top: 30px; margin-left: 90px;">Nomor surat anda: TELjabdhkwjekd</h4>
+
+<!-- ini buat nomor -->
 
 
 	<form action="{{ url("surat/storeupload") }}" method = "post" enctype="multipart/form-data" style="margin-left: 90px; margin-top: 40px; width: 25%; font-family:'GothamRounded-Medium';">

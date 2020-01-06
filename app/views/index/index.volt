@@ -137,16 +137,6 @@
                     <input type="text" class="form-control" placeholder="Masukkan nama anda" name="nama" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Nama Surat</label>
-                    <input type="text" class="form-control" placeholder="Masukkan nama surat" name="namasurat" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Tanggal Surat</label>
-                    <input type="date" class="form-control" name="tanggal" required>
-                </div>
-
                 <div>
                     <label>Jenis Surat</label>
                 </div>
@@ -159,8 +149,35 @@
                   <option value="3">Berita Acara Delete Order (BADO)</option>
                   <option value="4">Surat Keluar</option>
                   <option value="5">P0/P1</option>
-                  <option value="6">Surat Penawaran</option>
+                  <option value="6">Surat Penawaran/Quotation</option>
                 </select>
+
+                <div>
+                    <label style="margin-top: 20px;">Penandatangan Surat</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                  <input value="1" type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                  <label class="custom-control-label" for="defaultChecked">Mei Hendra Darma</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                  <input value="2" type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                  <label class="custom-control-label" for="defaultUnchecked">Ivone Andayani</label>
+                </div>
+
+
+                <div class="form-group">
+                    <label style="margin-top: 20px;">Nama Surat</label>
+                    <input type="text" class="form-control" placeholder="Masukkan nama surat" name="namasurat" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tanggal Surat</label>
+                    <input type="date" class="form-control" name="tanggal" required>
+                </div>
+
+                
                 <input style="margin-top: 30px;" type="submit" class="btn btn-primary" value="Generate Nomor Surat">
                 <!-- <a style="margin-top: 30px;" type="submit" class="btn btn-primary" href="{{ url('nomor') }}">Generate Nomor Surat</a> -->
             </form>

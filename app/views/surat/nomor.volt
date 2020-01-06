@@ -160,6 +160,7 @@
 	<div style="margin-left: 90px; margin-top: 100px; width: 100%; font-family:'GothamRounded-Medium';">
 	  <div class="form-group">
 	    <label style="font-size: 15pt;">Nomor Surat Anda</label>
+        <h3></h3>
 	    <h2  id="nomor" style="font-weight: bold;">{{ data.no_surat }}</h2>
         <button type="button" class="btn btn-warning" onclick="copyToClipboard('#nomor')">Salin</button>
 
