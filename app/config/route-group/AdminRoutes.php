@@ -117,7 +117,7 @@ class AdminRoutes extends RouterGroup
             ]
         );
         
-                $this->addGet(
+        $this->addGet(
             '/exportbelum',
             [
                 'controller' => 'admin',

@@ -173,8 +173,8 @@
     </div>
 
     <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;" href="export" class="btn btn-primary">Data Keseluruhan</a>
-    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 0px; float: none;" href="" class="btn btn-success">Data Sudah Upload</a>
-    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 0px; float: none;" href="" class="btn btn-danger">Data Belum Upload</a>
+    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 0px; float: none;" href="exportsudah" class="btn btn-success">Data Sudah Upload</a>
+    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 0px; float: none;" href="exportbelum" class="btn btn-danger">Data Belum Upload</a>
 </div>
 
 
