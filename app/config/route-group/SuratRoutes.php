@@ -32,7 +32,7 @@ class SuratRoutes extends RouterGroup
             '/store',
             [
                 'controller' => 'surat',
-                'action' => 'storesurat'
+                'action' => 'generatesurat'
             ]
         );
 
