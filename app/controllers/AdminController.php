@@ -246,7 +246,7 @@ class AdminController extends Controller
         <td style='$header_css'>Jenis Surat</td>
         <td style='$header_css'>Nomor Surat</td>
         <td style='$header_css'>Tanggal</td>
-        <td style='$header_css'>Nama Pengupload</td>
+        <td style='$header_css'>Status Verifikasi</td>
         <td style='$header_css'>Setuju/Tidak</td>
         </tr>";
         foreach ($data as $row) {
@@ -275,6 +275,20 @@ class AdminController extends Controller
                 $jenissurat = "Surat Penawaran";
             }
 
+
+            if($row->pengecekan == 1)
+            {
+                $verifikasi = "Terverifikasi";
+            }
+            elseif($row->pengecekan == -1)
+            {
+                $verifikasi = "Ditolak";
+            }
+            else
+            {
+                $verifikasi = "Belum Verifikasi";
+            }
+
             $table.= "<tr>
             <td style='$data_css'>$row->id</td>
             <td style='$data_css'>$row->name</td>
@@ -283,7 +297,7 @@ class AdminController extends Controller
             <td style='$data_css'>$row->no_surat</td>
             <td style='$data_css'>$row->tanggal</td>
             <td style='$data_css'>$row->nama_pengupload</td>
-            <td style='$data_css'>$row->pengecekan</td>
+            <td style='$data_css'>$verifikasi</td>
             </tr>";
         }
         $table.= '</table>';
@@ -318,7 +332,7 @@ class AdminController extends Controller
         <td style='$header_css'>Nomor Surat</td>
         <td style='$header_css'>Tanggal</td>
         <td style='$header_css'>Nama Pengupload</td>
-        <td style='$header_css'>Setuju/Tidak</td>
+        <td style='$header_css'>Status Verifikasi</td>
         </tr>";
         foreach ($data as $row) {
             if($row->jenis_surat == 1)
@@ -346,6 +360,20 @@ class AdminController extends Controller
                 $jenissurat = "Surat Penawaran";
             }
 
+            if($row->pengecekan == 1)
+            {
+                $verifikasi = "Terverifikasi";
+            }
+            elseif($row->pengecekan == -1)
+            {
+                $verifikasi = "Ditolak";
+            }
+            else
+            {
+                $verifikasi = "Belum Verifikasi";
+            }
+
+
             $table.= "<tr>
             <td style='$data_css'>$row->id</td>
             <td style='$data_css'>$row->name</td>
@@ -354,7 +382,7 @@ class AdminController extends Controller
             <td style='$data_css'>$row->no_surat</td>
             <td style='$data_css'>$row->tanggal</td>
             <td style='$data_css'>$row->nama_pengupload</td>
-            <td style='$data_css'>$row->pengecekan</td>
+            <td style='$data_css'>$verifikasi</td>
             </tr>";
         }
         $table.= '</table>';
@@ -389,7 +417,7 @@ class AdminController extends Controller
         <td style='$header_css'>Nomor Surat</td>
         <td style='$header_css'>Tanggal</td>
         <td style='$header_css'>Nama Pengupload</td>
-        <td style='$header_css'>Setuju/Tidak</td>
+        <td style='$header_css'>Status Verifikasi</td>
         </tr>";
         foreach ($data as $row) {
             if($row->jenis_surat == 1)
@@ -417,6 +445,20 @@ class AdminController extends Controller
                 $jenissurat = "Surat Penawaran";
             }
 
+            if($row->pengecekan == 1)
+            {
+                $verifikasi = "Terverifikasi";
+            }
+            elseif($row->pengecekan == -1)
+            {
+                $verifikasi = "Ditolak";
+            }
+            else
+            {
+                $verifikasi = "Belum Verifikasi";
+            }
+
+
             $table.= "<tr>
             <td style='$data_css'>$row->id</td>
             <td style='$data_css'>$row->name</td>
@@ -425,7 +467,7 @@ class AdminController extends Controller
             <td style='$data_css'>$row->no_surat</td>
             <td style='$data_css'>$row->tanggal</td>
             <td style='$data_css'>$row->nama_pengupload</td>
-            <td style='$data_css'>$row->pengecekan</td>
+            <td style='$data_css'>$verifikasi</td>
             </tr>";
         }
         $table.= '</table>';
