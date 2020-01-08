@@ -149,7 +149,9 @@
                   <option value="3">Berita Acara Delete Order (BADO)</option>
                   <option value="4">Surat Keluar</option>
                   <option value="5">P0/P1</option>
-                  <option value="6">Surat Penawaran/Quotation</option>
+                  <option value="6">Surat Penawaran Harga/Quotation</option>
+                  <option value="7">BAST</option>
+                  <option value="8">BAPP</option>
                 </select>
 
                 <div>
@@ -158,12 +160,12 @@
 
                 <div class="custom-control custom-radio">
                   <input value="1" type="radio" class="custom-control-input" id="defaultChecked" name="ttd" checked>
-                  <label class="custom-control-label" for="defaultChecked">Mei Hendra Darma</label>
+                  <label class="custom-control-label" for="defaultChecked">GES Surabaya Selatan</label>
                 </div>
 
                 <div class="custom-control custom-radio">
                   <input value="2" type="radio" class="custom-control-input" id="defaultUnchecked" name="ttd">
-                  <label class="custom-control-label" for="defaultUnchecked">Ivone Andayani</label>
+                  <label class="custom-control-label" for="defaultUnchecked">GES Surabaya Utara</label>
                 </div>
 
 
