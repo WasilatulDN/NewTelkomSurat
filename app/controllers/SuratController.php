@@ -320,10 +320,12 @@ class SuratController extends Controller
         $path = $upload_dir.$surat->file;
         $filetype = filetype($path);
         $filesize = filesize($path);
-        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-        header('Content-Description: File Download');
+        // header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+        // header('Content-Description: File Download');
         header('Content-type: '.$filetype);
         header('Content-length: ' . $filesize);
+        header('Content-Transfer-Encoding: binary');
+        header('Accept-Ranges: bytes');
         header('Content-Disposition: attachment; filename="'.$surat->file.'"');
         readfile($path);
      }
