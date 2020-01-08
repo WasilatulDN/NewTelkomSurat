@@ -3,9 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Waktu pembuatan: 08 Jan 2020 pada 10.00
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.11
+=======
+-- Generation Time: Jan 07, 2020 at 12:26 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
+>>>>>>> master
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -74,6 +80,7 @@ CREATE TABLE `nomor_surat` (
   `nama_surat` varchar(200) DEFAULT NULL,
   `jenis_surat` varchar(15) DEFAULT NULL,
   `nomor` int(11) DEFAULT NULL,
+  `huruf` int(11) DEFAULT NULL,
   `no_surat` varchar(100) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `nama_pengupload` varchar(200) DEFAULT NULL,
@@ -140,6 +147,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
@@ -147,6 +155,9 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `jenis_surat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+>>>>>>> master
 
 --
 -- AUTO_INCREMENT untuk tabel `nomor_surat`
