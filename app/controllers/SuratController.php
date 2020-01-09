@@ -214,35 +214,43 @@ class SuratController extends Controller
 
     public function listsuratAction()
     {
-        $surats = nomor_surat::find(['order' => 'nomor DESC']);
+        $id = $this->session->get('user')['id'];
+        $surats = nomor_surat::find([
+            "id_user='$id'",
+            'order' => 'nomor DESC'
+            ]);
         $data = array();
 
         foreach ($surats as $surat) {
 
-            if($surat->jenis_surat == 1)
-            {
-                $jenissurat = "Berita Acara Penjelasan";
-            }
-            elseif($surat->jenis_surat == 2)
-            {
-                $jenissurat = "BASO";
-            }
-            elseif($surat->jenis_surat == 3)
-            {
-                $jenissurat = "BADO";
-            }
-            elseif($surat->jenis_surat == 4)
-            {
-                $jenissurat = "Surat Keluar";
-            }
-            elseif($surat->jenis_surat == 5)
-            {
-                $jenissurat = "P0/P1";
-            }
-            elseif($surat->jenis_surat == 6)
-            {
-                $jenissurat = "Surat Penawaran";
-            }
+            $jenis = jenis_surat::findFirst([
+                "id='$surat->jenis_surat'"
+                ]);
+
+            // if($surat->jenis_surat == 1)
+            // {
+            //     $jenissurat = "Berita Acara Penjelasan";
+            // }
+            // elseif($surat->jenis_surat == 2)
+            // {
+            //     $jenissurat = "BASO";
+            // }
+            // elseif($surat->jenis_surat == 3)
+            // {
+            //     $jenissurat = "BADO";
+            // }
+            // elseif($surat->jenis_surat == 4)
+            // {
+            //     $jenissurat = "Surat Keluar";
+            // }
+            // elseif($surat->jenis_surat == 5)
+            // {
+            //     $jenissurat = "P0/P1";
+            // }
+            // elseif($surat->jenis_surat == 6)
+            // {
+            //     $jenissurat = "Surat Penawaran";
+            // }
 
             if($surat->file)
             {
@@ -257,7 +265,7 @@ class SuratController extends Controller
                 'tanggal' => $surat->tanggal,
                 'nama' => $surat->name,
                 'nama_surat' => $surat->nama_surat,
-                'jenis_surat' => $jenissurat,
+                'jenis_surat' => $jenis->namasurat,
                 'status' => $status,
                 'link' => $surat->id,
             );
