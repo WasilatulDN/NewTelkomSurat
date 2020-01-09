@@ -70,9 +70,9 @@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="{{ url('admin/register') }}">Daftar</a>
-                        </li>
+                        <!-- <li>
+                            <a href="{{ url('admin/register') }}">K</a>
+                        </li> -->
                         <li>
                             <a href="{{ url('admin/logout') }}">Keluar</a>
                         </li>
@@ -91,17 +91,14 @@
                     <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nama User</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        
-                        <!-- <li>
-                            <a href="{{ url('register') }}">Register</a>
-                        </li> -->
-                        
                         <li>
-                            <a href="{{ url('admin/login') }}">Masuk</a>
+                            <a href="">Keluar</a>
                         </li>
-                        
+                        <!-- <li>
+                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                        </li> -->
                     </ul>
                 </li>
             </ul>

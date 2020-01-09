@@ -4,7 +4,7 @@
 <head>
     <title>Generate Nomor Surat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="../favicon.png" type="png" sizes="16x16">
+    <link rel="icon" href="favicon.png" type="png" sizes="16x16">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../style5.css">
+    <link rel="stylesheet" href="style5.css">
 
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -52,59 +52,34 @@
         <nav id="sidebar">
             <img style="height: 100px; margin-top: 30px;" src="logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
-                <h3></h3>
+              
+                <h6 style="text-align: center; color: black; background-color: white; border-radius: 30px; width: 90%;">Website Nomor Surat</h6>
             </div>
 
-            {% if (session.get('admin')['username']) %}
+  
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="">Daftar</a>
+                </li>
+                <!-- <li>
+                    <a href="{{ url('detailnomor') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
-                </li>
-                <li>
-                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <!-- <li>
-                            <a href="{{ url('admin/register') }}">K</a>
-                        </li> -->
-                        <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
-            {% else %}
-
-            <ul style="margin-left: 10px;" class="list-unstyled">
-
-                <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
-                </li>
-                <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nama User</a>
+                    <a href="{{ url('halamanadmin') }}">Beranda Admin</a>
+                </li> -->
+                <!-- <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="">Keluar</a>
+                            <a href="">Daftar</a>
                         </li>
-                        <!-- <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
-                        </li> -->
+                        <li>
+                            <a href="">Masuk</a>
+                        </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
-            {% endif %}
-
-
         </nav>
 
 
@@ -119,7 +94,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Error</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Masuk</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -129,23 +104,44 @@
                 </div>
             </nav>
 
-            <div>
-                <h1 style="margin-top: 15%;text-align: center; font-weight: bold; font-family:'GothamRounded-Medium'; font-size: 100pt;">404</h1>
-                <h4 style="margin: 0 auto; text-align: center; font-weight: bold; font-family:'GothamRounded-Medium';">Maaf halaman yang anda cari tidak ditemukan.</h4>
-                
-            </div>
-
-
-            <div class="container">
-              <div class="row">
-                <div class="col text-center">
-                  <a style="margin-top: 30px;" href="{{ url('') }}" class="btn btn-danger">Kembali</a>
-                </div>
-              </div>
-            </div>
+            <div style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
             
-            </form>
+            
+            </div>
+        <div>
+            <form action="{{ url("storelogin") }}" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
+                <div class="form-group">
+                    <label>Username</label>
 
+                    <input type="text" class="form-control" placeholder="Masukkan username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+
+                    <input type="password" class="form-control" placeholder="Masukkan password" name="password" required>
+
+                </div>
+
+                <div>
+                    <label style="margin-top: 0px;">Masuk Sebagai</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                  <input value="1" type="radio" class="custom-control-input" id="defaultChecked" name="ttd" checked>
+                  <label class="custom-control-label" for="defaultChecked">User</label>
+                </div>
+
+                <div class="custom-control custom-radio" >
+                  <input value="2" type="radio" class="custom-control-input" id="defaultUnchecked" name="ttd">
+                  <label class="custom-control-label" for="defaultUnchecked">Admin</label>
+                </div>
+
+
+                <button value = "masuk" style="margin-top: 30px;" type="submit" class="btn btn-primary">Masuk</button>
+            </form>
+        </div>
+</div>
 
 </body>
 

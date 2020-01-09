@@ -46,7 +46,7 @@
 
 <div class="wrapper">
         <!-- Sidebar Holder -->
-        <nav id="sidebar">
+       <nav id="sidebar">
             <img style="height: 100px; margin-top: 30px;" src="../../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
@@ -67,9 +67,9 @@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="{{ url('admin/register') }}">Daftar</a>
-                        </li>
+                        <!-- <li>
+                            <a href="{{ url('admin/register') }}">K</a>
+                        </li> -->
                         <li>
                             <a href="{{ url('admin/logout') }}">Keluar</a>
                         </li>
@@ -88,17 +88,14 @@
                     <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nama User</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        
-                        <!-- <li>
-                            <a href="{{ url('register') }}">Register</a>
-                        </li> -->
-                        
                         <li>
-                            <a href="{{ url('admin/login') }}">Masuk</a>
+                            <a href="">Keluar</a>
                         </li>
-                        
+                        <!-- <li>
+                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                        </li> -->
                     </ul>
                 </li>
             </ul>
@@ -145,9 +142,13 @@
       {%if data.file == NULL%}
       {% else %}
 
+
         <div class="alert alert-success" role="alert">
           Surat ini telah <a class="alert-link">berhasil diunggah</a> oleh <a class="alert-link">{{data.nama_pengupload}}</a>.
+          <a style="font-size: 10pt;" href="../../surat/download/{{data.id}}" class="btn btn-primary">Download File Surat</a>
         </div>
+
+
 
         <div style="font-size: 10pt;" class="alert alert-danger" role="alert">
           Apabila ingin mengubah file yang telah diunggah, silahkan mengunggah kembali pada form di bawah.
@@ -159,7 +160,7 @@
             
       <div  class="form-group">
         <div style="font-size: 10pt;" class="alert alert-primary" role="alert">
-          Ukuran file <a class="alert-link">maksimal 2 MB</a><br>Pastikan file yang diunggah berekstensi <a class="alert-link">.pdf atau .jpg</a>.
+          Ukuran file <a class="alert-link">maksimal 5 MB</a><br>Pastikan file yang diunggah berekstensi <a class="alert-link">.pdf</a>
         </div>
 
         <input type="hidden" name="id" class="form-control" value={{data.id}}>

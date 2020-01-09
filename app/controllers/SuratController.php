@@ -280,7 +280,7 @@ class SuratController extends Controller
         $val2 = new FileValidation();
         $messages2 = $val2->validate($_FILES);
         if (count($messages2)) {
-			$this->flashSession->error("GAGAL UPLOAD. Pastikan format file .jpg atau .pdf dan ukuran tidak melebihi 2MB");
+			$this->flashSession->error("GAGAL UPLOAD. Pastikan format file .pdf dan ukuran tidak melebihi 5 MB");
             return $this->response->redirect('surat/upload' . '/' . $id);
         }
         else
