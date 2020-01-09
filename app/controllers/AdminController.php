@@ -66,6 +66,7 @@ class AdminController extends Controller
         $this->response->redirect();
     }
 
+
     public function listsuratAction()
     {
         $surats = nomor_surat::find(['order' => 'nomor DESC']);
@@ -454,4 +455,15 @@ class AdminController extends Controller
         header ("Content-Disposition: attachment; filename=SuratBelumUpload.xls" );
         return $table;
     }
+
+    
+    public function verifikasiuserAction($id)
+    {
+        $user = user::findFirst("id='$id'");
+        $user->status = 1;
+        $user->save();
+        return $this->response->redirect('admin/detail' . '/' . $id);
+    }
 }
+
+
