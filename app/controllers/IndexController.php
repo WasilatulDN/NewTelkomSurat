@@ -9,8 +9,15 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        $this->view->datas = jenis_surat::find();
-        
+        $_isAdmin = $this->session->get('admin')['tipe'];
+        $_isUser = $this->session->get('user')['tipe'];
+        if ($_isAdmin == 1) {
+            $this->response->redirect('admin/list');
+        }
+        if(!$_isUser && !$_isAdmin)
+        {
+            $this->response->redirect('user/login');
+        }
     }
 
     public function show404Action()
