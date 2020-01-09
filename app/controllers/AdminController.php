@@ -40,6 +40,26 @@ class AdminController extends Controller
         
     }
 
+    public function jenissuratAction()
+    {
+
+    }
+
+    public function formjenissuratAction()
+    {
+
+    }
+
+    public function verifAction()
+    {
+
+    }
+
+    public function verifdetailAction()
+    {
+
+    }
+
     public function logoutAction()
     {
         $this->session->destroy();

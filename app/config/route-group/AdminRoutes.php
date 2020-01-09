@@ -124,5 +124,37 @@ class AdminRoutes extends RouterGroup
                 'action' => 'exportBelum'
             ]
         );
+
+        $this->addGet(
+            '/jenissurat',
+            [
+                'controller' => 'admin',
+                'action' => 'jenissurat'
+            ]
+        );
+
+        $this->addGet(
+            '/formjenissurat',
+            [
+                'controller' => 'admin',
+                'action' => 'formjenissurat'
+            ]
+        );
+
+        $this->addGet(
+            '/verif',
+            [
+                'controller' => 'admin',
+                'action' => 'verif'
+            ]
+        );
+
+        $this->addGet(
+            '/verifdetail',
+            [
+                'controller' => 'admin',
+                'action' => 'verifdetail'
+            ]
+        );
     }
 }
