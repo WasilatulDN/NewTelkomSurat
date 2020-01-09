@@ -31,6 +31,11 @@ class SuratController extends Controller
     {
         $tanggal = $this->request->getPost('tanggal');
         $jenissurat = $this->request->getPost('jenissurat');
+        $kodesurat = jenis_surat::findFirst(
+            [
+                "id='$jenissurat'"
+            ]
+        );
         $ttd = $this->request->getPost('ttd');
         $data = nomor_surat::findFirst(
             [
@@ -166,37 +171,16 @@ class SuratController extends Controller
 
         if($pakaihuruf)
         {
-            if($jenissurat == 5)
-            {
-                $nomorsurat = "TEL.".($nomorterpakai)."/LG000"."/".$ttd_oleh."/2020";
-            }
-            elseif($jenissurat == 6)
-            {
-                $nomorsurat = "TEL.".($nomorterpakai)."/YN100"."/".$ttd_oleh."/2020";
-            }
-            else
-            {
-                $nomorsurat = "TEL.".($nomorterpakai)."/YN000"."/".$ttd_oleh."/2020";
-            }
+            $nomorsurat = "TEL.".($nomorterpakai)."/".$kodesurat->kode_surat."/".$ttd_oleh."/2020";
 
         }
         else{
-            if($jenissurat == 5)
-            {
-                $nomorsurat = "TEL.".($nomor)."/LG000"."/".$ttd_oleh."/2020";
-            }
-            elseif($jenissurat == 6)
-            {
-                $nomorsurat = "TEL.".($nomor)."/YN100"."/".$ttd_oleh."/2020";
-            }
-            else
-            {
-                $nomorsurat = "TEL.".($nomor)."/YN000"."/".$ttd_oleh."/2020";
-            }
+            $nomorsurat = "TEL.".($nomor)."/".$kodesurat->kode_surat."/".$ttd_oleh."/2020";
         }
 
         $surat = new nomor_surat();
         $surat->name = $this->request->getPost('nama');
+        // $surat->id_user = "";
         $surat->nama_surat = $this->request->getPost('namasurat');
         $surat->jenis_surat = $jenissurat;
         $surat->nomor = $nomor;
@@ -207,6 +191,7 @@ class SuratController extends Controller
         {
             $surat->huruf=$huruf;
         }
+        // var_dump($surat); die();
         $surat->save();
         $this->response->redirect('surat/nomor');
 
@@ -265,7 +250,7 @@ class SuratController extends Controller
                 'tanggal' => $surat->tanggal,
                 'nama' => $surat->name,
                 'nama_surat' => $surat->nama_surat,
-                'jenis_surat' => $jenis->namasurat,
+                'jenis_surat' => $jenis->nama_surat,
                 'status' => $status,
                 'link' => $surat->id,
             );
