@@ -14,7 +14,7 @@ class UserController extends Controller{
 	    $password = $this->request->getPost('password');
 	    $user->password = $this->security->hash($password);
 	    $user->status = 0;
-	    $usernames = admin::findFirst("username = '$user->username'");
+	    $usernames = user::findFirst("username = '$user->username'");
 	    if($usernames){
 	        $this->flashSession->error("Gagal register. Username telah digunakan.");
 	        return $this->response->redirect('user/login');
