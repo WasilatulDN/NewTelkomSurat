@@ -233,9 +233,18 @@ class AdminController extends Controller
         foreach ($listusers as $listuser)
         {
 
-            
+            if($listuser->status == 1)
+            {
+                $status_sekarang = "Sudah";
+            }
+            else
+            {
+                $status_sekarang = "Belum";
+            }
+
             $data[] = array(
                 'username' => $listuser->username,
+                'status' => $status_sekarang,
                 // 'status' => $status,
                 'link' => $listuser->id,
                 // 'verifikasi' => $verifikasi,

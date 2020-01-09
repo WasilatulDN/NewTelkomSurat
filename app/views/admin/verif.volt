@@ -168,7 +168,7 @@
             columns: [
                 {title: "No", field: "no", formatter: "rownum", width: 10},
                 {title: "Username", field: "username"},
-                {title: "Status", field: "status"},
+                {title: "Status Verifikasi", field: "status"},
                 {
                     title: "Edit", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",
