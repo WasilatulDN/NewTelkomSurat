@@ -44,17 +44,6 @@ CREATE TABLE `admin` (
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(18, 'lutfi', '$2y$12$VVJxTVd6L2lLU3pXSy9RVOpmgLHz.7md.M9V05mNLDBSvzckb8c3S'),
-(19, 'kp', '$2y$12$bFdFNHB0UW5FM1NHTE10e.UiyTtR21sp7ICrQWOIT6Y.StRILPW5W'),
-(20, 'mami', '$2y$12$ZElyNzBsa1ZFQUZKOXZGQuOYmvf31m3dL01Dcbep.HQsFmaD0GqKi'),
-(21, 'lutfi', '$2y$12$STFOeHRON2VkazNPcGhNe.ku4kUrQsDXtGA7Rrp/f/VfmeS2a5lyS'),
-(22, 'dia', '$2y$12$QTRZc3pYUnVHbG9NWVhGZeflUTJcvcl1fUXRKbWzlywNtJzt7ULKW'),
-(23, 'dia', '$2y$12$TmQwUFhodXI5UGxROU5iUupo21G4iWdlSdIv5JzLakorKlH2Vh0V6'),
-(24, 'akan', '$2y$12$YzBVdEhkT0pYZGM0VDV3R.BeAwT89JrxZhypw329xY8ROUncWp2nu'),
-(25, 'apa ', '$2y$12$K1QyamsrTGpDcGNxdVlMTO0H1VyO04kgb/ByWzZ02VxL5FuqywNr6'),
-(26, 'putri', '$2y$12$YmViU2NWdkhUODlmbVBDWedrOc2D8LpRV.8cH2AaNO91Peuq2Pg3e');
-
 -- --------------------------------------------------------
 
 --
