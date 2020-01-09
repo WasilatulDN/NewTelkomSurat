@@ -9,6 +9,7 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
+        $this->view->datas = jenis_surat::find();
         
     }
 

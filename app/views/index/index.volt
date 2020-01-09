@@ -141,14 +141,9 @@
 
                 <select name="jenissurat" class="form-control form-control-sm" style="width: 100%; font-size: 15pt;" required>
                   <option value="0"></option>
-                  <option value="1">Berita Acara Penjelasan</option>
-                  <option value="2">Berita Acara Siap Operasi (BASO)</option>
-                  <option value="3">Berita Acara Delete Order (BADO)</option>
-                  <option value="4">Surat Keluar</option>
-                  <option value="5">P0/P1</option>
-                  <option value="6">Surat Penawaran Harga/Quotation</option>
-                  <option value="7">BAST</option>
-                  <option value="8">BAPP</option>
+                  {% for data in datas %}
+                  <option value={{ data.nama_surat }}>{{ data.nama_surat }}</option>
+                  {% endfor %}
                 </select>
 
                 <div>
