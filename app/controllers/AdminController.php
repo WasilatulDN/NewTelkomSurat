@@ -7,6 +7,7 @@ use App\Validation\FileValidation;
 
 class AdminController extends Controller
 {
+
     public function registerAction()
     {
         $id = $this->session->get('admin')['username'];
@@ -37,49 +38,6 @@ class AdminController extends Controller
 
         }
         
-    }
-
-    public function storeloginAction()
-    {
-        $username = $this->request->getPost('username');
-        $pass = $this->request->getPost('password');
-        // echo $pass;
-        // die();
-        $user = admin::findFirst("username = '$username'");
-        // echo $user->password;
-        // die();
-        if ($user){
-            if($this->security->checkHash($pass, $user->password)){
-                $this->session->set(
-                    'admin',
-                    [
-                        'id' => $user->id,
-                        'username' => $user->username,
-                    ]
-                );
-
-                (new Response())->redirect('admin/list')->send();
-            }
-            else{
-                $this->flashSession->error("Gagal masuk. Silakan cek kembali username dan password anda.");
-                $this->response->redirect('admin/login');
-            }
-        }
-        else{
-            $this->flashSession->error("Gagal masuk. Silakan cek kembali username dan password anda.");
-                $this->response->redirect('admin/login');
-        }
-
-    }
-
-    public function loginAction()
-    {
-        $id = $this->session->get('admin')['username'];
-        if ($id != NULL) {
-            // echo "berhasil login";
-            // die();
-        (new Response())->redirect('admin/list')->send();          
-        }
     }
 
     public function logoutAction()

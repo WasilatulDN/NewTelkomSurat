@@ -13,6 +13,10 @@ $di->set(
             new SuratRoutes()
         );
 
+        $router->mount(
+            new UserRoutes()
+        );
+
         $router->addGet(
             '/',
             [
