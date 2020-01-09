@@ -55,10 +55,7 @@ class AdminController extends Controller
 
     }
 
-    public function verifdetailAction($id)
-    {
-        $this->view->data = user::findFirst("id='$id'");
-    }
+
 
     public function logoutAction()
     {
@@ -511,13 +508,20 @@ class AdminController extends Controller
         return $table;
     }
 
+
+    public function verifdetailAction($id)
+    {
+        $this->view->data = user::findFirst("id='$id'");
+    }
     
     public function verifikasiuserAction($id)
     {
+        // echo $id;
+        // die();
         $user = user::findFirst("id='$id'");
         $user->status = 1;
         $user->save();
-        return $this->response->redirect('admin/detail' . '/' . $id);
+        return $this->response->redirect('admin/verifdetail' . '/' . $id);
     }
 }
 

@@ -149,13 +149,7 @@ class AdminRoutes extends RouterGroup
             ]
         );
 
-        $this->addGet(
-            '/verifdetail/{id}',
-            [
-                'controller' => 'admin',
-                'action' => 'verifdetail'
-            ]
-        );
+
 
         $this->addGet(
             '/listjenissurat',
@@ -189,5 +183,19 @@ class AdminRoutes extends RouterGroup
             ]
         );
 
+        $this->addGet(
+            '/verifdetail/{id}',
+            [
+                'controller' => 'admin',
+                'action' => 'verifdetail'
+            ]
+        );
+        $this->addGet(
+            '/verifikasiuser/{id}',
+            [
+                'controller' => 'admin',
+                'action' => 'verifikasiuser'
+            ]
+        );
     }
 }
