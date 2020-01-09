@@ -18,7 +18,7 @@ class UserController extends Controller{
 	    if($usernames){
 	        $this->flashSession->error("Gagal register. Username telah digunakan.");
 
-	        return $this->response->redirect('user/login');
+	        return $this->response->redirect('user/register');
 
 	        return $this->response->redirect('register');
 
