@@ -133,8 +133,9 @@
 
 
           
-
-            <a href="{{ url('admin/verif') }}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-danger">Kembali</a>
+            <a href="{{ url('admin/verif') }}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-success">Verifikasi</a>
+            <a href="{{ url('admin/verif') }}" style="margin-top: 50px; margin-left: 0px;" class="btn btn-primary">Reset Password</a>
+            <a href="{{ url('admin/verif') }}" style="margin-top: 50px; margin-left: 0px;" class="btn btn-danger">Kembali</a>
 
 
 </body>
