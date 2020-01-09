@@ -66,7 +66,7 @@
                     <a href="{{ url('admin/list') }}">Beranda Admin</a>
                 </li>
                 <li>
-                    <a href="">Verifikasi Akun User</a>
+                    <a href="admin/verifikasiuser">Verifikasi Akun User</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>

@@ -156,5 +156,14 @@ class AdminRoutes extends RouterGroup
                 'action' => 'verifdetail'
             ]
         );
+
+        $this->addPost(
+            '/verifikasiuser',
+            [
+                'controller' => 'admin',
+                'action' => 'verifikasiuser'
+            ]
+        );
+
     }
 }
