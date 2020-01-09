@@ -12,6 +12,11 @@ class IndexController extends Controller
         
     }
 
+    public function awalAction()
+    {
+        
+    }
+
     public function show404Action()
     {
         
