@@ -42,6 +42,14 @@ class UserRoutes extends RouterGroup{
                 'action' => 'register'
             ]
         );
+        $this->addGet(
+            '/logout',
+            [
+                'controller' => 'user',
+                'action' => 'logout'
+            ]
+        );
+
 
     }
     
