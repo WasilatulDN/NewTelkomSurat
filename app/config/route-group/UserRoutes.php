@@ -3,19 +3,46 @@
 use Phalcon\Mvc\Router\Group as RouterGroup;
 
 class UserRoutes extends RouterGroup{
-    $this->addPost(
-        '/login',
-        [
-            'controller'=>'admin',
-            'action'=>'storelogin'
-        ]
-    );
+    public function initialize()
+    {
+        $this->setPaths([
+            'controller' => 'user',
+        ]);
 
-    $this->addGet(
-        '/login',
-        [
-            'controller' => 'admin',
-            'action' => 'login'
-        ]
-    );
+        $this->setPrefix('/user');
+
+        $this->addPost(
+            '/login',
+            [
+                'controller'=>'user',
+                'action'=>'storelogin'
+            ]
+        );
+    
+        $this->addGet(
+            '/login',
+            [
+                'controller' => 'user',
+                'action' => 'login'
+            ]
+        );
+
+        $this->addPost(
+            '/register',
+            [
+                'controller'=>'user',
+                'action'=>'storeregister'
+            ]
+        );
+    
+        $this->addGet(
+            '/register',
+            [
+                'controller' => 'user',
+                'action' => 'register'
+            ]
+        );
+
+    }
+    
 }

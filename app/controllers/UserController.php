@@ -5,9 +5,9 @@ use Phalcon\Http\Response;
 use Phalcon\Mvc\Dispatcher;
 use App\Validation\FileValidation;
 
-class AdminController extends Controller{
+class UserController extends Controller{
 
-    public function storeregisteruserAction(){
+    public function storeregisterAction(){
 
 	    $user = new user();
 	    $user->username = $this->request->getPost('username');
@@ -92,6 +92,11 @@ class AdminController extends Controller{
     }
 
     public function loginAction()
+    {
+
+	}
+	
+	public function registerAction()
     {
 
     }
