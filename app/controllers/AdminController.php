@@ -267,12 +267,15 @@ class AdminController extends Controller
         $cek = nomor_surat::findFirst("jenis_surat='$id'");
         // $jenis->delete();
         if ($cek) {
-            echo("tidak dapat menghapus jenis surat");
+            $this->flashSession->error("Tidak dapat menghapus jenis surat.");
+            // echo("tidak dapat menghapus jenis surat");
         } else {
             $jenis->delete();
-            $this->response->redirect('admin/jenissurat');
+            $this->flashSession->success("Surat berhasil dihapus.");
+            // return $this->response->redirect('admin/resetpass' . '/' . $id);
+            
         }
-        
+        return $this->response->redirect('admin/jenissurat');
 
     }
 
