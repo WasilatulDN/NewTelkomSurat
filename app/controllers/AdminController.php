@@ -55,11 +55,6 @@ class AdminController extends Controller
 
     }
 
-    public function resetpassAction()
-    {
-
-    }
-
 
 
     public function logoutAction()
@@ -526,5 +521,23 @@ class AdminController extends Controller
         $user->status = 1;
         $user->save();
         return $this->response->redirect('admin/verifdetail' . '/' . $id);
+    }
+
+    public function resetpassAction($id)
+    {
+        $this->view->data = user::findFirst("id='$id'");
+    }
+
+    public function storeresetpassAction()
+    {
+        $id = $this->request->getPost('id');
+        $user = user::findFirst("id='$id'");
+
+        $password = $this->request->getPost('password');
+        $user->password = $this->security->hash($password);
+        $user->save();
+        echo "Berhasil Ubah bandngkan di database";
+        echo $user->password;
+        die();
     }
 }

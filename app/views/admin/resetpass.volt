@@ -134,16 +134,16 @@
             
             </div>
         <div>
-            <form action="" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
+            <form action="{{ url('admin/resetpass') }}" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
                 <div class="form-group">
+                    <input type="hidden" name="id" class="form-control" value={{data.id}}>
                     <label>Password Baru</label>
-
-                    <input type="text" class="form-control" placeholder="Masukkan Password Baru" name="" required>
+                    <input type="text" class="form-control" placeholder="Masukkan Password Baru" name="password" required>
                 </div>
 
                 
 
-                <button value= "" style="margin-top: 30px;" type="submit" class="btn btn-primary">Reset</button>
+                <button value= "submit" style="margin-top: 30px;" type="submit" class="btn btn-primary">Reset</button>
             </form>
         </div>
 </div>

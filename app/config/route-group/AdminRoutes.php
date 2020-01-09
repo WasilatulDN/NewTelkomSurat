@@ -199,10 +199,18 @@ class AdminRoutes extends RouterGroup
         );
 
         $this->addGet(
-            '/resetpass',
+            '/resetpass/{id}',
             [
                 'controller' => 'admin',
                 'action' => 'resetpass'
+            ]
+        );
+
+        $this->addPost(
+            '/resetpass',
+            [
+                'controller' => 'admin',
+                'action' => 'storeresetpass'
             ]
         );
     }
