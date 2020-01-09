@@ -104,7 +104,7 @@
                             <a href="{{ url('user/logout') }}">Keluar</a>
                         </li>
                         <!-- <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                            <a href="{{ url('user/logout') }}">Keluar</a>
                         </li> -->
                     </ul>
                 </li>
