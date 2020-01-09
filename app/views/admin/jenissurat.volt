@@ -144,7 +144,10 @@
             </nav>
 
 
-
+            <div style="margin-left: 0px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
+            <p><?php echo $this->flashSession->output() ?></p>
+            
+            </div>
 
     <div class="home-content">
         <h2 class="dashboard-title"></h2>
@@ -185,7 +188,7 @@
 
     
 
-    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;" href="{{ url('admin/formjenissurat') }}" class="btn btn-primary">Tambahkan Jenis Surat</a>
+    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 30px; margin-left: 0px; float: none;" href="{{ url('admin/formjenissurat') }}" class="btn btn-primary">Tambahkan Jenis Surat</a>
     
    
 </div>

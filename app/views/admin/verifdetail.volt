@@ -133,17 +133,27 @@
 
                 </div>
             </nav>
-            
+            {% if (data.status == 1) %}
+
+            <div style=" margin-top: 30px; margin-left: 90px;margin-right: 50%;" class="alert alert-success" role="alert">
+                    Akun telah diverifikasi
+                </div>
+                {% endif %}
 
             <div>
                 <ul style="margin-top: 40px;  margin-left: 90px; margin-right: 50%;" class="list-group">
                         <li class="list-group-item list-group-item-primary">Username: {{data.username}}</li>
             </div>
 
-          
+          {% if (data.status == 0) %}
             <a href="../verifikasiuser/{{ data.id}}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-success">Verifikasi</a>
-            <a href="../resetpass/{{data.id}}" style="margin-top: 50px; margin-left: 0px;" class="btn btn-primary">Reset Password</a>
+            <a href="../resetpass/{{data.id}}" style="margin-top: 50px; margin-left:0px;" class="btn btn-primary">Reset Password</a>
             <a href="{{ url('admin/verif') }}" style="margin-top: 50px; margin-left: 0px;" class="btn btn-danger">Kembali</a>
+            {% else %}
+            
+            <a href="../resetpass/{{data.id}}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-primary">Reset Password</a>
+            <a href="{{ url('admin/verif') }}" style="margin-top: 50px; margin-left: 0px;" class="btn btn-danger">Kembali</a>
+            {% endif %}
 
 
 </body>

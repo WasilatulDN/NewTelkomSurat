@@ -18,7 +18,7 @@ class UserController extends Controller{
 	    if($usernames){
 	        $this->flashSession->error("Gagal register. Username telah digunakan.");
 
-	        return $this->response->redirect('user/login');
+	        return $this->response->redirect('user/register');
 
 	        return $this->response->redirect('register');
 
@@ -102,7 +102,7 @@ class UserController extends Controller{
 		        else {
 		        	// echo"belum verifikasi";
 		        	// die();
-		        	$this->flashSession->error("Gagal masuk sebagai user. Belum diverifikasi.");
+		        	$this->flashSession->error("Gagal masuk sebagai user. Belum diverifikasi, silakan hubungi admin.");
 		            
 		            $this->response->redirect('user/login');
 		        }
