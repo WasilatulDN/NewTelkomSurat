@@ -13,6 +13,7 @@ class UserController extends Controller{
 	    $user->username = $this->request->getPost('username');
 	    $password = $this->request->getPost('password');
 	    $user->password = $this->security->hash($password);
+	    $user->status = 0;
 	    $usernames = admin::findFirst("username = '$user->username'");
 	    if($usernames){
 	        $this->flashSession->error("Gagal register. Username telah digunakan.");
@@ -62,30 +63,49 @@ class UserController extends Controller{
 
         elseif($this->request->getPost('tipe')=="user")
         {
-	        $user = user::findFirst("username = '$username'");
-	        // echo $user->password;
-	        // die();
-	        if ($user){
-	            if($this->security->checkHash($pass, $user->password)){
-	                $this->session->set(
-	                    'user',
-	                    [
-	                        'id' => $user->id,
-	                        'username' => $user->username,
-	                        'tipe' => '2',
-	                    ]
-	                );
+	        // $user = user::findFirst(
+	        // 	[	
+	        // 		'columns' =>'*',
+	        // 		'conditions' =>'username = ?1 AND status = ?2',
+	        // 	]
 
-	                (new Response())->redirect('admin/list')->send();
-	            }
-	            else{
-	                $this->flashSession->error("Gagal masuk sebagai user. Silakan cek kembali username dan password anda.");
-	                $this->response->redirect('user/login');
-	            }
-	        }
+	        // 	'bind' => [
+	        // 		1 => $username,
+	        // 		2 => '1',
+	        // 	]
+
+	        // );
+	        $user = user::findFirst("username = '$username'");
+	        if ($user){
+	        	if($user->status == 1 ){
+		            if($this->security->checkHash($pass, $user->password)){
+		                $this->session->set(
+		                    'user',
+		                    [
+		                        'id' => $user->id,
+		                        'username' => $user->username,
+		                        'tipe' => '2',
+		                    ]
+		                );
+
+		                (new Response())->redirect('')->send();
+		            }
+		            else{
+		                $this->flashSession->error("Gagal masuk sebagai user. Silakan cek kembali username dan password anda.");
+		                $this->response->redirect('user/login');
+		            }
+		        }
+		        else {
+		        	// echo"belum verifikasi";
+		        	// die();
+		        	$this->flashSession->error("Gagal masuk sebagai user. Belum diverifikasi.");
+		            
+		            $this->response->redirect('user/login');
+		        }
+	    	}
 	        else{
 	            $this->flashSession->error("Gagal masuk sebagai user. Silakan cek kembali username dan password anda.");
-	                $this->response->redirect('user/login');
+	            $this->response->redirect('user/login');
 	        }
         }
 
@@ -99,5 +119,12 @@ class UserController extends Controller{
 	public function registerAction()
     {
 
+    }
+
+    
+    public function logoutAction()
+    {
+        $this->session->destroy();
+        $this->response->redirect();
     }
 }

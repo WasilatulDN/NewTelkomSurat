@@ -60,13 +60,13 @@
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('user/register') }}">Daftar</a>
+                    <a href="<?= $this->url->get('user/register') ?>">Daftar</a>
                 </li>
                 <!-- <li>
-                    <a href="{{ url('detailnomor') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('detailnomor') ?>">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('halamanadmin') }}">Beranda Admin</a>
+                    <a href="<?= $this->url->get('halamanadmin') ?>">Beranda Admin</a>
                 </li> -->
                 <!-- <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk </a>
@@ -109,7 +109,7 @@
             
             </div>
         <div>
-            <form action="{{ url("user/login") }}" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
+            <form action="<?= $this->url->get('user/login') ?>" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
                 <div class="form-group">
                     <label>Username</label>
 
