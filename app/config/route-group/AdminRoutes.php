@@ -213,5 +213,13 @@ class AdminRoutes extends RouterGroup
                 'action' => 'storeresetpass'
             ]
         );
+
+        $this->addPost(
+            '/jenissurat',
+            [
+                'controller' => 'admin',
+                'action' => 'storejenissurat'
+            ]
+        );
     }
 }

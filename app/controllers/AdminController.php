@@ -549,4 +549,22 @@ class AdminController extends Controller
         echo $user->password;
         die();
     }
+
+    public function storejenissuratAction(){
+        $jenis_surat = new jenis_surat();
+        $jenis_surat->kode_surat = $this->request->getPost('kode');
+        $jenis_surat->nama_surat = $this->request->getPost('nama_surat');
+        $nama_surat = jenis_surat::findFirst("nama_surat = '$jenis_surat->nama_surat'");
+        if($nama_surat){
+            $this->flashSession->error("Gagal masukan naam surat. Nama surat sudah ada.");
+
+            return $this->response->redirect('admin/formjenissurat');
+        }
+        else{
+
+            $jenis_surat->save();
+            $this->response->redirect('admin/jenissurat');
+        }
+
+    }
 }

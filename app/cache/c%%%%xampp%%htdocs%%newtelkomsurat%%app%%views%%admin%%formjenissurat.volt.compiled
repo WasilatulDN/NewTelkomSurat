@@ -55,55 +55,55 @@
                 <h3></h3>
             </div>
 
-            {% if (session.get('admin')['username']) %}
+            <?php if (($this->session->get('admin')['username'])) { ?>
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
+                    <a href="<?= $this->url->get('admin/list') ?>">Beranda Admin</a>
                 </li>
                 <li>
-                    <a href="{{ url('admin/verif') }}">Verifikasi Akun User</a>
+                    <a href="<?= $this->url->get('admin/verif') ?>">Verifikasi Akun User</a>
                 </li>
                 <li>
-                    <a href="{{ url('admin/jenissurat') }}">Tambah Jenis Surat</a>
+                    <a href="<?= $this->url->get('admin/jenissurat') ?>">Tambah Jenis Surat</a>
                 </li>
                
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ session.get('admin')['username'] }}</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><?= $this->session->get('admin')['username'] ?></a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ url('admin/register') }}">Daftar</a>
+                            <a href="<?= $this->url->get('admin/register') ?>">Daftar</a>
                         </li>
                         <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                            <a href="<?= $this->url->get('admin/logout') ?>">Keluar</a>
                         </li>
                     </ul>
                 </li>
             </ul>
 
-            {% else %}
+            <?php } else { ?>
 
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="<?= $this->url->get('') ?>">Generate Nomor Surat</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="<?= $this->url->get('surat/list') ?>">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ session.get('user')['username'] }}</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><?= $this->session->get('user')['username'] ?></a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ url('user/logout') }}">Keluar</a>
+                            <a href="<?= $this->url->get('user/logout') ?>">Keluar</a>
                         </li>
                         <!-- <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                            <a href="<?= $this->url->get('admin/logout') ?>">Keluar</a>
                         </li> -->
                     </ul>
                 </li>
             </ul>
-            {% endif %}
+            <?php } ?>
 
 
         </nav>
@@ -135,22 +135,22 @@
             
             </div>
         <div>
-            <form action="{{ url('admin/jenissurat') }}" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
+            <form action="" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
                 <div class="form-group">
                     <label>Kode Jenis Surat</label>
 
-                    <input type="text" class="form-control" placeholder="Masukkan Kode" name="kode" required>
+                    <input type="text" class="form-control" placeholder="Masukkan Kode" name="" required>
                 </div>
 
                 <div class="form-group">
                     <label>Jenis Surat</label>
 
-                    <input type="text" class="form-control" placeholder="Masukkan Jenis Surat" name="nama_surat" required>
+                    <input type="text" class="form-control" placeholder="Masukkan Jenis Surat" name="" required>
 
                 </div>
 
                 <button value= "" style="margin-top: 30px;" type="submit" class="btn btn-primary">Tambahkan</button>
-                <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 30px; margin-left: 10px; float: none;" href="{{ url('admin/jenissurat') }}" class="btn btn-danger">Kembali</a>
+                <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 30px; margin-left: 10px; float: none;" href="<?= $this->url->get('admin/jenissurat') ?>" class="btn btn-danger">Kembali</a>
             </form>
 
         </div>
