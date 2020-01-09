@@ -3,7 +3,7 @@
 <head>
     <title>Generate Nomor Surat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="../../favicon.png" type="png" sizes="16x16">
+    <link rel="icon" href="../favicon.png" type="png" sizes="16x16">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../../style5.css">
+    <link rel="stylesheet" href="../style5.css">
 
 
      <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -47,7 +47,7 @@
 <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="../../logo.png" class="rounded mx-auto d-block">
+            <img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
@@ -130,64 +130,11 @@
             </nav>
             
 
-    <h2 style="margin-top: 30px; margin-left: 90px;">Detail {{data.no_surat}}</h2>
-            {% if (data.pengecekan == 1 OR data.pengecekan == -1) %}
-            <!-- Kalau sudah diverif -->
-            <div style="font-size: 10pt; margin-top: 30px; width: 35%; margin-left: 90px;" class="alert alert-success" role="alert">
-                Surat ini sudah diverifikasi oleh admin.
-                <a href="../urungkan/{{data.id}}" style="font-size: 10pt;margin-left: 20px;" class="btn btn-danger">Urungkan Verifikasi</a>
-            </div>
-            {% else %}
-            <!-- Kalau belum diverif -->
-            <div style="font-size: 10pt; margin-top: 30px; width: 41%; margin-left: 90px;" class="alert alert-danger" role="alert">
-                Surat ini belum diverifikasi oleh admin.
-                <a href="../verifikasi/{{data.id}}" style="font-size: 10pt;margin-left: 20px;" class="btn btn-success">Verifikasi Sekarang</a>
-                <a href="../tolak/{{data.id}}" style="font-size: 10pt;margin-left: 20px;" class="btn btn-dark">Tolak</a>
-            </div>
-            {% endif %}
-            <ul style="margin-top: 40px;  margin-left: 90px; margin-right: 50%;" class="list-group">
-                <li class="list-group-item list-group-item-primary">Nama: {{data.name}}</li>
-                <li class="list-group-item list-group-item-primary">Nama Surat: {{data.nama_surat}}</li>
-                <li class="list-group-item list-group-item-primary">Jenis Surat:
-                {% if (data.jenis_surat == 1) %}
-                Berita acara penjelasan
-                {% elseif (data.jenis_surat == 2) %}
-                Berita acara siap operasi (BASO)
-                {% elseif (data.jenis_surat == 3) %}
-                Berita acara delete order (BADO)
-                {% elseif (data.jenis_surat == 4) %}
-                Surat keluar
-                {% elseif (data.jenis_surat == 5) %}
-                P0/P1
-                {% elseif (data.jenis_surat == 6) %}
-                Surat penawaran
-                {% endif %}
-                
-                </li>
-                <li class="list-group-item list-group-item-primary">No Surat: {{data.no_surat}}</li>
-                <li class="list-group-item list-group-item-primary">Tanggal: {{data.tanggal}}</li>
-                <li class="list-group-item list-group-item-primary">Status: 
-                 {% if (data.pengecekan == 1) %}
-                TERVERIFIKASI
-                {% elseif (data.pengecekan == -1) %}
-                DITOLAK
-                {% else %}
-                BELUM VERIFIKASI
-                {% endif %}
-                </li>
 
-                {% if (data.file) %}
-                <li class="list-group-item list-group-item-primary">Nama Pengunggah: {{data.nama_pengupload}}</li>
-                <li class="list-group-item list-group-item-primary"><a  href="../../surat/download/{{data.id}}" class="btn btn-primary">Download File Surat</a> </li>
-                {% else %}
-                <li class="list-group-item list-group-item-danger">File belum diunggah</li>
-                {% endif %}
-                
-            </ul>
 
           
 
-            <a href="{{ url('surat/list') }}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-danger">Kembali</a>
+            <a href="{{ url('admin/verif') }}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-danger">Kembali</a>
 
 
 </body>

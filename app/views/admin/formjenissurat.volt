@@ -91,10 +91,10 @@
                     <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nama User</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ session.get('user')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="">Keluar</a>
+                            <a href="{{ url('user/logout') }}">Keluar</a>
                         </li>
                         <!-- <li>
                             <a href="{{ url('admin/logout') }}">Keluar</a>
@@ -119,7 +119,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Masuk</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Tambahkan Jenis Surat</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -148,7 +148,7 @@
 
                 </div>
 
-                <button value = "" style="margin-top: 30px;" type="submit" class="btn btn-primary">Tambahkan</button>
+                <button value= "" style="margin-top: 30px;" type="submit" class="btn btn-primary">Tambahkan</button>
             </form>
         </div>
 </div>

@@ -98,11 +98,11 @@
                 <li>
                     <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nama User</a>
+               <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ session.get('user')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="">Keluar</a>
+                            <a href="{{ url('user/logout') }}">Keluar</a>
                         </li>
                         <!-- <li>
                             <a href="{{ url('admin/logout') }}">Keluar</a>
