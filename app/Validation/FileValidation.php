@@ -26,8 +26,6 @@ class FileValidation extends Validation
                 "maxSize"              => "5M",
                 "messageSize"          => ":field exceeds the max filesize (:max)",
                 "allowedTypes"         => [
-                    "image/jpeg",
-                    "image/jpg",
                     "application/pdf"
                 ],
                 "messageType"          => "Tipe file yang bisa diupload adalah :types",
