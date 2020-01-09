@@ -169,6 +169,14 @@
                 {title: "No", field: "no", formatter: "rownum", width: 10},
                 {title: "Nama Jenis Surat", field: "nama_surat"},
                 {title: "Kode", field: "kode_surat"},
+                {
+                    title: "Hapus", field: "link", formatter: "link", formatterParams: {
+                        labelField: "name",
+                        label: "Hapus",
+                        urlPrefix: "",
+                        target: "_blank",
+                    }
+                },
             ],
         });
         table.setData("{{ url('admin/listjenissurat') }}");
