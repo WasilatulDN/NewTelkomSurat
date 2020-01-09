@@ -128,6 +128,10 @@
 
                 </div>
             </nav>
+            <div style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
+            <p><?php echo $this->flashSession->output() ?></p>
+            
+            </div>
 
            
         <div>
@@ -141,6 +145,8 @@
                 
 
                 <button value= "submit" style="margin-top: 30px;" type="submit" class="btn btn-primary">Reset</button>
+                <a href="../verifdetail/{{data.id}}" style="margin-top: 30px; margin-left: 0px;" class="btn btn-danger">Kembali</a>
+
             </form>
         </div>
 </div>

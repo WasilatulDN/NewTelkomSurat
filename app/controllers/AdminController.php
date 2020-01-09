@@ -561,10 +561,11 @@ class AdminController extends Controller
         $password = $this->request->getPost('password');
         $user->password = $this->security->hash($password);
         $user->save();
-        echo "Berhasil Ubah bandngkan di database";
-        echo $user->password;
-        die();
-        // return $this->response->redirect('admin/resetpass' . '/' . $id);
+        // echo "Berhasil Ubah bandngkan di database";
+        // echo $user->password;
+        // die();
+        $this->flashSession->success("Password berhasil diganti.");
+        return $this->response->redirect('admin/resetpass' . '/' . $id);
         
     }
 
