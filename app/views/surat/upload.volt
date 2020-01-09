@@ -142,48 +142,54 @@
 
 	<form action="{{ url("surat/storeupload") }}" method = "post" enctype="multipart/form-data" style="margin-left: 90px; margin-top: 40px; width: 25%; font-family:'GothamRounded-Medium';">
 	  
+        {% if data.pengecekan == 1 %}
+            <div class="alert alert-success" role="alert">
+                Surat ini telah <a class="alert-link">berhasil diunggah</a> oleh <a class="alert-link">{{data.nama_pengupload}}</a>.
+                <a style="font-size: 10pt;" href="../../surat/download/{{data.id}}" class="btn btn-primary">Download File Surat</a>
+            </div>
+            <div style="font-size: 10pt;" class="alert alert-primary" role="alert">
+                Surat telah diverifikasi oleh admin.
+            </div>
+        {% elseif data.pengecekan == -1 %}
+            <div class="alert alert-success" role="alert">
+                Surat ini telah <a class="alert-link">berhasil diunggah</a> oleh <a class="alert-link">{{data.nama_pengupload}}</a>.
+                <a style="font-size: 10pt;" href="../../surat/download/{{data.id}}" class="btn btn-primary">Download File Surat</a>
+            </div>
+            <div style="font-size: 10pt;" class="alert alert-danger" role="alert">
+                Verifikasi ditolak oleh admin.
+            </div>
+        {% elseif data.pengecekan == 0 %}
+            {% if data.file != NULL %}
+                <div class="alert alert-success" role="alert">
+                    Surat ini telah <a class="alert-link">berhasil diunggah</a> oleh <a class="alert-link">{{data.nama_pengupload}}</a>.
+                    <a style="font-size: 10pt;" href="../../surat/download/{{data.id}}" class="btn btn-primary">Download File Surat</a>
+                </div>
+                <div style="font-size: 10pt;" class="alert alert-danger" role="alert">
+                    Apabila ingin mengubah file yang telah diunggah, silahkan mengunggah kembali pada form di bawah.
+                </div>
+            {% endif %}
+            <p><?php echo $this->flashSession->output() ?></p>
+    
+                <div  class="form-group">
+                    <div style="font-size: 10pt;" class="alert alert-primary" role="alert">
+                    Ukuran file <a class="alert-link">maksimal 5 MB</a><br>Pastikan file yang diunggah berekstensi <a class="alert-link">.pdf</a>
+                    </div>
 
-      {%if data.file == NULL%}
-      {% else %}
+                    <input type="hidden" name="id" class="form-control" value={{data.id}}>
+                    <label>Nama Anda</label>
+                    <input type="text" class="form-control" name="pengupload" placeholder="Masukkan nama anda" required>
+                </div>
+                    <div style="margin-top: 15px;">
+                    <label>Unggah Surat</label>
+                </div>
 
-
-        <div class="alert alert-success" role="alert">
-          Surat ini telah <a class="alert-link">berhasil diunggah</a> oleh <a class="alert-link">{{data.nama_pengupload}}</a>.
-          <a style="font-size: 10pt;" href="../../surat/download/{{data.id}}" class="btn btn-primary">Download File Surat</a>
-        </div>
-
-
-
-        <div style="font-size: 10pt;" class="alert alert-danger" role="alert">
-          Apabila ingin mengubah file yang telah diunggah, silahkan mengunggah kembali pada form di bawah.
-        </div>
-      {% endif %}
-
-        <p><?php echo $this->flashSession->output() ?></p>
-            
-            
-      <div  class="form-group">
-        <div style="font-size: 10pt;" class="alert alert-primary" role="alert">
-          Ukuran file <a class="alert-link">maksimal 5 MB</a><br>Pastikan file yang diunggah berekstensi <a class="alert-link">.pdf</a>
-        </div>
-
-        <input type="hidden" name="id" class="form-control" value={{data.id}}>
-        <label>Nama Anda</label>
-        <input type="text" class="form-control" name="pengupload" placeholder="Masukkan nama anda" required>
-      </div>
-        <div style="margin-top: 15px;">
-	  	<label>Unggah Surat</label>
-	  </div>
-
-    		<input style="font-size: 10pt;" type="file" name="file" required>		
-    <div>	
-        <!-- <p>{{messages['file']}}</p> -->
-	  <button style="margin-top: 50px; margin-bottom: 50px;" type="submit" class="btn btn-primary">Unggah Surat</button>
-	  <a href="{{ url('surat/list') }}" style="margin-top: 50px; margin-bottom: 50px;"" class="btn btn-danger">Kembali</a>
-    </div>
-	</form>
-
-	
+                        <input style="font-size: 10pt;" type="file" name="file" required>		
+                <div>	
+                <button style="margin-top: 50px; margin-bottom: 50px;" type="submit" class="btn btn-primary">Unggah Surat</button>
+                <a href="{{ url('surat/list') }}" style="margin-top: 50px; margin-bottom: 50px;"" class="btn btn-danger">Kembali</a>
+                </div>
+                </form>
+        {% endif %}
 
 </body>
 
