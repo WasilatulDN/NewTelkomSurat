@@ -547,6 +547,7 @@ class AdminController extends Controller
         return $this->response->redirect('admin/verifdetail' . '/' . $id);
     }
 
+
     public function resetpassAction($id)
     {
         $this->view->data = user::findFirst("id='$id'");
@@ -563,6 +564,8 @@ class AdminController extends Controller
         echo "Berhasil Ubah bandngkan di database";
         echo $user->password;
         die();
+        // return $this->response->redirect('admin/resetpass' . '/' . $id);
+        
     }
 
     public function storejenissuratAction(){
@@ -571,7 +574,7 @@ class AdminController extends Controller
         $jenis_surat->nama_surat = $this->request->getPost('nama_surat');
         $nama_surat = jenis_surat::findFirst("nama_surat = '$jenis_surat->nama_surat'");
         if($nama_surat){
-            $this->flashSession->error("Gagal masukan naam surat. Nama surat sudah ada.");
+            $this->flashSession->error("Gagal masukan jenis surat. Jenis surat sudah ada.");
 
             return $this->response->redirect('admin/formjenissurat');
         }

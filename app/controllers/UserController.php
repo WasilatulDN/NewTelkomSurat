@@ -102,7 +102,7 @@ class UserController extends Controller{
 		        else {
 		        	// echo"belum verifikasi";
 		        	// die();
-		        	$this->flashSession->error("Gagal masuk sebagai user. Belum diverifikasi.");
+		        	$this->flashSession->error("Gagal masuk sebagai user. Belum diverifikasi, silakan hubungi admin.");
 		            
 		            $this->response->redirect('user/login');
 		        }

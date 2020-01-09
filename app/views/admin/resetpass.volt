@@ -129,10 +129,7 @@
                 </div>
             </nav>
 
-            <div style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
-            
-            
-            </div>
+           
         <div>
             <form action="{{ url('admin/resetpass') }}" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
                 <div class="form-group">
