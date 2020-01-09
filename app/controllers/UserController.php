@@ -17,7 +17,11 @@ class UserController extends Controller{
 	    $usernames = user::findFirst("username = '$user->username'");
 	    if($usernames){
 	        $this->flashSession->error("Gagal register. Username telah digunakan.");
+
 	        return $this->response->redirect('user/login');
+
+	        return $this->response->redirect('register');
+
 	    }
 	    else{
 

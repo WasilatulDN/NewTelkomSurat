@@ -176,7 +176,7 @@
                 },
             ],
         });
-        table.setData("{{ url('') }}");
+        table.setData("{{ url('admin/listuser') }}");
     </script>
 
 

@@ -55,9 +55,9 @@ class AdminController extends Controller
 
     }
 
-    public function verifdetailAction()
+    public function verifdetailAction($id)
     {
-
+        $this->view->data = user::findFirst("id='$id'");
     }
 
     public function logoutAction()
@@ -198,6 +198,61 @@ class AdminController extends Controller
         // echo $belum;
         // die();
         $this->view->data = $array;
+    }
+
+    public function listjenissuratAction()
+    {
+        $listjenissurats = jenis_surat::find();
+        $data = array();
+
+        foreach ($listjenissurats as $listjenissurat)
+        {
+
+            
+            $data[] = array(
+                'nama_surat' => $listjenissurat->nama_surat,
+                'kode_surat' => $listjenissurat->kode_surat,
+                // 'jenis_surat' => $jenissurat,
+                // 'status' => $status,
+                // 'verifikasi' => $verifikasi,
+            );
+        }
+
+        $content = json_encode($data);
+        return $this->response->setContent($content);
+
+    }
+
+    public function listjenisAction()
+    {
+
+    }
+
+    public function listuserAction()
+    {
+        $listusers = user::find();
+        $data = array();
+
+        foreach ($listusers as $listuser)
+        {
+
+            
+            $data[] = array(
+                'username' => $listuser->username,
+                // 'status' => $status,
+                'link' => $listuser->id,
+                // 'verifikasi' => $verifikasi,
+            );
+        }
+
+        $content = json_encode($data);
+        return $this->response->setContent($content);
+
+    }
+
+    public function listuserviewAction($id)
+    {
+
     }
 
     public function exportAction()

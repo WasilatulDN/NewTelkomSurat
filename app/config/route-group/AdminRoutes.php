@@ -150,11 +150,44 @@ class AdminRoutes extends RouterGroup
         );
 
         $this->addGet(
-            '/verifdetail',
+            '/verifdetail/{id}',
             [
                 'controller' => 'admin',
                 'action' => 'verifdetail'
             ]
         );
+
+        $this->addGet(
+            '/listjenissurat',
+            [
+                'controller' => 'admin',
+                'action' => 'listjenissurat'
+            ]
+        );
+
+        $this->addGet(
+            '/listjenis',
+            [
+                'controller' => 'admin',
+                'action' => 'listjenis'
+            ]
+        );
+
+        $this->addGet(
+            '/listuser',
+            [
+                'controller' => 'admin',
+                'action' => 'listuser'
+            ]
+        );
+
+        $this->addGet(
+            '/listuserview/{id}',
+            [
+                'controller' => 'admin',
+                'action' => 'listuserview'
+            ]
+        );
+
     }
 }

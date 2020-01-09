@@ -25,14 +25,6 @@ $di->set(
             ]
         );
 
-        $router->addGet(
-            '/awal',
-            [
-                'controller' => 'index',
-                'action' => 'awal'
-            ]
-        );
-
         $router->notFound([
             'controller' => 'index',
             'action' => 'show404'

@@ -3,7 +3,7 @@
 <head>
     <title>Generate Nomor Surat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="../favicon.png" type="png" sizes="16x16">
+    <link rel="icon" href="../../favicon.png" type="png" sizes="16x16">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../style5.css">
+    <link rel="stylesheet" href="../../style5.css">
 
 
      <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -47,7 +47,7 @@
 <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
+            <img style="height: 100px; margin-top: 30px;" src="../../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
@@ -119,7 +119,9 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Detail Surat</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Ubah Status dan Reset Password User</h2>
+
+                    
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -130,7 +132,10 @@
             </nav>
             
 
-
+            <div>
+                <ul style="margin-top: 40px;  margin-left: 90px; margin-right: 50%;" class="list-group">
+                        <li class="list-group-item list-group-item-primary">Username: {{data.username}}</li>
+            </div>
 
           
             <a href="{{ url('admin/verif') }}" style="margin-top: 50px; margin-left: 90px;" class="btn btn-success">Verifikasi</a>

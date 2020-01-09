@@ -168,13 +168,13 @@
                 {title: "Kode", field: "kode_surat"},
             ],
         });
-        table.setData("{{ url('') }}");
+        table.setData("{{ url('admin/listjenissurat') }}");
     </script>
 
 
     
 
-    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;" href="" class="btn btn-primary">Tambahkan Jenis Surat</a>
+    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;" href="{{ url('formjenissurat') }}" class="btn btn-primary">Tambahkan Jenis Surat</a>
    
 </div>
 
