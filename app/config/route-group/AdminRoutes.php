@@ -197,5 +197,13 @@ class AdminRoutes extends RouterGroup
                 'action' => 'verifikasiuser'
             ]
         );
+
+        $this->addGet(
+            '/resetpass',
+            [
+                'controller' => 'admin',
+                'action' => 'resetpass'
+            ]
+        );
     }
 }

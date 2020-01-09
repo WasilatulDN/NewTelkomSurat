@@ -55,6 +55,11 @@ class AdminController extends Controller
 
     }
 
+    public function resetpassAction()
+    {
+
+    }
+
 
 
     public function logoutAction()
