@@ -9,12 +9,12 @@ class AdminController extends Controller
 {
 
     public function registerAction()
-    {
-        $id = $this->session->get('admin')['username'];
+    {   
+        $id = $this->session->get('admin')['tipe'];
         if ($id == NULL) {
             // echo "berhasil login";
             // die();
-        (new Response())->redirect('admin/login')->send();          
+        (new Response())->redirect('user/login')->send();          
         }
     }
 
@@ -42,20 +42,33 @@ class AdminController extends Controller
 
     public function jenissuratAction()
     {
-
+        $id = $this->session->get('admin')['tipe'];
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+        (new Response())->redirect('user/login')->send();          
+        }
     }
 
     public function formjenissuratAction()
     {
-
+        $id = $this->session->get('admin')['tipe'];
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+        (new Response())->redirect('user/login')->send();          
+        }
     }
 
     public function verifAction()
     {
-
+        $id = $this->session->get('admin')['tipe'];
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+        (new Response())->redirect('user/login')->send();          
+        }
     }
-
-
 
     public function logoutAction()
     {
@@ -137,7 +150,7 @@ class AdminController extends Controller
         if ($user == NULL) {
             // echo "berhasil login";
             // die();
-        (new Response())->redirect('admin/login')->send();          
+        (new Response())->redirect('user/login')->send();          
         }
         $this->view->data = nomor_surat::findFirst("id='$id'");
     }
@@ -168,11 +181,11 @@ class AdminController extends Controller
 
     public function listAction()
     {       
-        $id = $this->session->get('admin')['username'];
+        $id = $this->session->get('admin')['tipe'];
         if ($id == NULL) {
             // echo "berhasil login";
             // die();
-        (new Response())->redirect('admin/login')->send();          
+        (new Response())->redirect('user/login')->send();          
         }
         $datas = nomor_surat::find();
         $sudah = 0;
@@ -536,7 +549,13 @@ class AdminController extends Controller
 
 
     public function verifdetailAction($id)
-    {
+    {   
+        $id = $this->session->get('admin')['tipe'];
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+        (new Response())->redirect('user/login')->send();          
+        }
         $this->view->data = user::findFirst("id='$id'");
     }
     
@@ -553,6 +572,12 @@ class AdminController extends Controller
 
     public function resetpassAction($id)
     {
+        $id = $this->session->get('admin')['tipe'];
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+        (new Response())->redirect('user/login')->send();          
+        }
         $this->view->data = user::findFirst("id='$id'");
     }
 
