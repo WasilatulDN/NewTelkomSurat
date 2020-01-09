@@ -221,5 +221,13 @@ class AdminRoutes extends RouterGroup
                 'action' => 'storejenissurat'
             ]
         );
+
+        $this->addGet(
+            '/delete/{id}',
+            [
+                'controller' => 'admin',
+                'action' => 'delete'
+            ]
+        );
     }
 }

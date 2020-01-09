@@ -173,8 +173,8 @@
                     title: "Hapus", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",
                         label: "Hapus",
-                        urlPrefix: "",
-                        target: "_blank",
+                        urlPrefix: "delete/",
+                        // target: "_blank",
                     }
                 },
             ],

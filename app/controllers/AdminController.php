@@ -209,7 +209,7 @@ class AdminController extends Controller
             $data[] = array(
                 'nama_surat' => $listjenissurat->nama_surat,
                 'kode_surat' => $listjenissurat->kode_surat,
-                // 'jenis_surat' => $jenissurat,
+                'link' => $listjenissurat->id,
                 // 'status' => $status,
                 // 'verifikasi' => $verifikasi,
             );
@@ -258,6 +258,21 @@ class AdminController extends Controller
 
     public function listuserviewAction($id)
     {
+
+    }
+
+    public function deleteAction($id)
+    {
+        $jenis = jenis_surat::findFirst("id='$id'");
+        $cek = nomor_surat::findFirst("jenis_surat='$id'");
+        // $jenis->delete();
+        if ($cek) {
+            echo("tidak dapat menghapus jenis surat");
+        } else {
+            $jenis->delete();
+            $this->response->redirect('admin/jenissurat');
+        }
+        
 
     }
 
