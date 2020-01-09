@@ -180,7 +180,7 @@ class SuratController extends Controller
 
         $surat = new nomor_surat();
         $surat->name = $this->request->getPost('nama');
-        // $surat->id_user = "";
+        $surat->id_user = $this->session->get('user')['id'];;
         $surat->nama_surat = $this->request->getPost('namasurat');
         $surat->jenis_surat = $jenissurat;
         $surat->nomor = $nomor;

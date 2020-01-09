@@ -59,10 +59,10 @@
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('') }}">Generate Nomor Surat</a>
+                    <a href="{{ url('admin/list') }}">Beranda Admin</a>
                 </li>
                 <li>
-                    <a href="{{ url('surat/list') }}">Upload Surat</a>
+                    <a href="">Verifikasi Akun User</a>
                 </li>
                 <li>
                     <a href="{{ url('admin/list') }}">Beranda Admin</a>

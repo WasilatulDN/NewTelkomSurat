@@ -81,14 +81,18 @@
             {% if (session.get('admin')['username']) %}
             <ul style="margin-left: 10px;" class="list-unstyled">
 
-                <li>
+               <!-- <li>
                     <a href="{{ url('') }}">Generate Nomor Surat</a>
                 </li>
                 <li>
                     <a href="{{ url('surat/list') }}">Upload Surat</a>
-                </li>
+                </li> -->
+                
                 <li>
                     <a href="{{ url('admin/list') }}">Beranda Admin</a>
+                </li>
+                <li>
+                    <a href="">Verifikasi Akun User</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>

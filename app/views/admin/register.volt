@@ -4,7 +4,7 @@
 <head>
     <title>Generate Nomor Surat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="favicon.png" type="png" sizes="16x16">
+    <link rel="icon" href="../favicon.png" type="png" sizes="16x16">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="../style5.css">
 
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -58,14 +58,18 @@
             {% if (session.get('admin')['username']) %}
             <ul style="margin-left: 10px;" class="list-unstyled">
 
-                <li>
+                <!-- <li>
                     <a href="{{ url('') }}">Generate Nomor Surat</a>
                 </li>
                 <li>
                     <a href="{{ url('surat/list') }}">Upload Surat</a>
-                </li>
+                </li> -->
+                
                 <li>
                     <a href="{{ url('admin/list') }}">Beranda Admin</a>
+                </li>
+                <li>
+                    <a href="">Verifikasi Akun User</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
