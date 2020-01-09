@@ -17,12 +17,12 @@ class UserController extends Controller{
 	    $usernames = admin::findFirst("username = '$user->username'");
 	    if($usernames){
 	        $this->flashSession->error("Gagal register. Username telah digunakan.");
-	        return $this->response->redirect('awal');
+	        return $this->response->redirect('user/login');
 	    }
 	    else{
 
 	        $user->save();
-            $this->response->redirect('awal');
+            $this->response->redirect('user/login');
 	    }
 	}
 
