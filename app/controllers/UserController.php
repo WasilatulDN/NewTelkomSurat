@@ -117,11 +117,29 @@ class UserController extends Controller{
 
     public function loginAction()
     {
+    	$_isAdmin = $this->session->get('admin')['tipe'];
+        $_isUser = $this->session->get('user')['tipe'];
+        if ($_isAdmin == 1) {
+            $this->response->redirect('admin/list');
+        }
+        if($_isUser)
+        {
+            $this->response->redirect('');
+        }
 
 	}
 	
 	public function registerAction()
     {
+    	$_isAdmin = $this->session->get('admin')['tipe'];
+        $_isUser = $this->session->get('user')['tipe'];
+        if ($_isAdmin == 1) {
+            $this->response->redirect('admin/list');
+        }
+        if($_isUser)
+        {
+            $this->response->redirect('');
+        }
 
     }
 

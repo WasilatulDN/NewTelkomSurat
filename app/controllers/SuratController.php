@@ -9,11 +9,28 @@ class SuratController extends Controller
 {
     public function listAction()
     {
-        
+        // $_isAdmin = $this->session->get('admin');
+        $_isUser = $this->session->get('user');
+
+        // if ($_isAdmin) 
+        // {
+        //     $this->response->redirect('admin/list');
+        // }
+        if (!$_isUser)
+        {
+            $this->response->redirect('user/login');
+        }
     }
 
     public function nomorAction()
     {
+        $_isUser = $this->session->get('user');
+        
+        if (!$_isUser)
+        {
+            $this->response->redirect('user/login');
+        }
+
         // $data = nomor_surat::findFirst("idKMS='$idp'");
         $max = nomor_surat::maximum(
             [
@@ -262,6 +279,13 @@ class SuratController extends Controller
 
     public function uploadAction($id)
     {
+        $_isUser = $this->session->get('user');
+        
+        if (!$_isUser)
+        {
+            $this->response->redirect('user/login');
+        }
+
         $this->view->data = nomor_surat::findFirst("id='$id'");
 
     }
