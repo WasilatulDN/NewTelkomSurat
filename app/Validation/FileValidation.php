@@ -23,7 +23,7 @@ class FileValidation extends Validation
         'file',
         new FileValidator(
             [
-                "maxSize"              => "2M",
+                "maxSize"              => "5M",
                 "messageSize"          => ":field exceeds the max filesize (:max)",
                 "allowedTypes"         => [
                     "image/jpeg",

@@ -142,7 +142,7 @@
                 <select name="jenissurat" class="form-control form-control-sm" style="width: 100%; font-size: 15pt;" required>
                   <option value="0"></option>
                   {% for data in datas %}
-                  <option value={{ data.nama_surat }}>{{ data.nama_surat }}</option>
+                  <option value={{ data.id }}>{{ data.nama_surat }}</option>
                   {% endfor %}
                 </select>
 
