@@ -176,8 +176,6 @@
                     </div>
 
                     <input type="hidden" name="id" class="form-control" value={{data.id}}>
-                    <label>Nama Anda</label>
-                    <input type="text" class="form-control" name="pengupload" placeholder="Masukkan nama anda" required>
                 </div>
                     <div style="margin-top: 15px;">
                     <label>Unggah Surat</label>

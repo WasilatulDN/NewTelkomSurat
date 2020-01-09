@@ -180,7 +180,7 @@ class SuratController extends Controller
 
         $surat = new nomor_surat();
         $surat->name = $this->request->getPost('nama');
-        $surat->id_user = $this->session->get('user')['id'];;
+        $surat->id_user = $this->session->get('user')['id'];
         $surat->nama_surat = $this->request->getPost('namasurat');
         $surat->jenis_surat = $jenissurat;
         $surat->nomor = $nomor;
@@ -248,7 +248,6 @@ class SuratController extends Controller
             $data[] = array(
                 'no_surat' => $surat->no_surat,
                 'tanggal' => $surat->tanggal,
-                'nama' => $surat->name,
                 'nama_surat' => $surat->nama_surat,
                 'jenis_surat' => $jenis->nama_surat,
                 'status' => $status,
@@ -296,7 +295,7 @@ class SuratController extends Controller
                 }
             }
 
-            $surat->nama_pengupload = $this->request->getPost('pengupload');
+            $surat->nama_pengupload = $this->session->get('user')['username'];
             $surat->file = $nomorsaja[0].$nomorsaja[1].'-'.$penomoran[1].'-'.$penomoran[2].'-'.$penomoran[3].'.'.end($temp);
     
             $surat->save();
