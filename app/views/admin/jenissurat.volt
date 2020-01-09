@@ -72,11 +72,14 @@
                     <a href="{{ url('admin/list') }}">Beranda Admin</a>
                 </li>
                 <li>
-                    <a href="">Verifikasi Akun User</a>
+                    <a href="{{ url('admin/verif') }}">Verifikasi Akun User</a>
+                </li>
+                <li>
+                    <a href="{{ url('admin/jenissurat') }}">Tambah Jenis Surat</a>
                 </li>
               
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a href="{{ url('admin/register') }}">Daftar</a>
@@ -174,7 +177,8 @@
 
     
 
-    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;" href="{{ url('formjenissurat') }}" class="btn btn-primary">Tambahkan Jenis Surat</a>
+    <a style="font-family:'GothamRounded-Medium'; font-size: 13pt; margin-top: 10px; margin-left: 30px; float: none;" href="{{ url('admin/formjenissurat') }}" class="btn btn-primary">Tambahkan Jenis Surat</a>
+    
    
 </div>
 

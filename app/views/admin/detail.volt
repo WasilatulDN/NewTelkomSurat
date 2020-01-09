@@ -66,10 +66,13 @@
                     <a href="{{ url('admin/list') }}">Beranda Admin</a>
                 </li>
                 <li>
-                    <a href="admin/verifikasiuser">Verifikasi Akun User</a>
+                    <a href="{{ url('admin/verif') }}">Verifikasi Akun User</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
+                    <a href="{{ url('admin/jenissurat') }}">Tambah Jenis Surat</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a href="{{ url('admin/register') }}">Daftar</a>
