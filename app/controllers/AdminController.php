@@ -63,7 +63,6 @@ class AdminController extends Controller
         $this->response->redirect();
     }
 
-
     public function listsuratAction()
     {
         $surats = nomor_surat::find(['order' => 'nomor DESC']);
@@ -524,5 +523,3 @@ class AdminController extends Controller
         return $this->response->redirect('admin/verifdetail' . '/' . $id);
     }
 }
-
-

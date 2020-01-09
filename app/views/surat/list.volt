@@ -161,7 +161,6 @@
                 {title: "No", field: "no", formatter: "rownum", width: 10},
                 {title: "Tanggal", field: "tanggal"},
                 {title: "No Surat", field: "no_surat"},
-                {title: "Nama", field: "nama"},
                 {title: "Nama Surat", field: "nama_surat"},
                 {title: "Jenis Surat", field: "jenis_surat"},
                 {title: "Status Unggah", field: "status"},
