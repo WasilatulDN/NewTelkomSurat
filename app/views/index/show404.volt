@@ -50,7 +50,7 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="logo.png" class="rounded mx-auto d-block">
+            <img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
             <div class="sidebar-header">
                 <h3></h3>
             </div>
@@ -70,9 +70,9 @@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <!-- <li>
-                            <a href="{{ url('admin/register') }}">K</a>
-                        </li> -->
+                        <li>
+                            <a href="{{ url('admin/register') }}">Daftar</a>
+                        </li>
                         <li>
                             <a href="{{ url('admin/logout') }}">Keluar</a>
                         </li>

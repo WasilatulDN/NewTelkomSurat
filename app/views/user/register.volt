@@ -60,8 +60,9 @@
             <ul style="margin-left: 10px;" class="list-unstyled">
 
                 <li>
-                    <a href="{{ url('user/register') }}">Daftar</a>
+                    <a href="{{ url('user/login') }}">Masuk</a>
                 </li>
+
                 <!-- <li>
                     <a href="{{ url('detailnomor') }}">Upload Surat</a>
                 </li>
@@ -83,7 +84,6 @@
         </nav>
 
 
-
         <div id="content">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -94,7 +94,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Masuk</h2>
+                    <h2 style="font-family:'GothamRounded-Medium'; float: right;">Daftar sebagai User</h2>
                     <!--  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
@@ -104,44 +104,26 @@
                 </div>
             </nav>
 
+
             <div style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
-            
+            <p><?php echo $this->flashSession->output() ?></p>
             
             </div>
-        <div>
-            <form action="{{ url("login") }}" method = "post" style="margin-left: 90px; margin-top: 50px; width: 30%; font-family:'GothamRounded-Medium';">
+            <form action="{{ url("user/register") }}" method = "post" style="margin-left: 90px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
                 <div class="form-group">
                     <label>Username</label>
-
                     <input type="text" class="form-control" placeholder="Masukkan username" name="username" required>
                 </div>
 
                 <div class="form-group">
                     <label>Password</label>
-
                     <input type="password" class="form-control" placeholder="Masukkan password" name="password" required>
-
-                </div>
-
-                <div>
-                    <label style="margin-top: 0px;">Masuk Sebagai</label>
-                </div>
-
-                <div class="custom-control custom-radio">
-                  <input value="1" type="radio" class="custom-control-input" id="defaultChecked" name="ttd" checked>
-                  <label class="custom-control-label" for="defaultChecked">User</label>
-                </div>
-
-                <div class="custom-control custom-radio" >
-                  <input value="2" type="radio" class="custom-control-input" id="defaultUnchecked" name="ttd">
-                  <label class="custom-control-label" for="defaultUnchecked">Admin</label>
                 </div>
 
 
-                <button value = "masuk" style="margin-top: 30px;" type="submit" class="btn btn-primary">Masuk</button>
+                <button style="margin-top: 30px;" type="submit" class="btn btn-primary">Daftar</button>
             </form>
-        </div>
-</div>
+
 
 </body>
 

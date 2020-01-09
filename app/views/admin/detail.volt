@@ -67,9 +67,9 @@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Masuk sebagai {{ session.get('admin')['username'] }}</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <!-- <li>
-                            <a href="{{ url('admin/register') }}">K</a>
-                        </li> -->
+                        <li>
+                            <a href="{{ url('admin/register') }}">Daftar</a>
+                        </li>
                         <li>
                             <a href="{{ url('admin/logout') }}">Keluar</a>
                         </li>
