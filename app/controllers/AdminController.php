@@ -82,31 +82,30 @@ class AdminController extends Controller
         $data = array();
 
         foreach ($surats as $surat) {
-
-            if($surat->jenis_surat == 1)
-            {
-                $jenissurat = "Berita Acara Penjelasan";
-            }
-            elseif($surat->jenis_surat == 2)
-            {
-                $jenissurat = "BASO";
-            }
-            elseif($surat->jenis_surat == 3)
-            {
-                $jenissurat = "BADO";
-            }
-            elseif($surat->jenis_surat == 4)
-            {
-                $jenissurat = "Surat Keluar";
-            }
-            elseif($surat->jenis_surat == 5)
-            {
-                $jenissurat = "P0/P1";
-            }
-            elseif($surat->jenis_surat == 6)
-            {
-                $jenissurat = "Surat Penawaran";
-            }
+            $jenissurat = jenis_surat::findFirst("id='$surat->jenis_surat'");
+            // {
+            //     $jenissurat = "Berita Acara Penjelasan";
+            // }
+            // elseif($surat->jenis_surat == 2)
+            // {
+            //     $jenissurat = "BASO";
+            // }
+            // elseif($surat->jenis_surat == 3)
+            // {
+            //     $jenissurat = "BADO";
+            // }
+            // elseif($surat->jenis_surat == 4)
+            // {
+            //     $jenissurat = "Surat Keluar";
+            // }
+            // elseif($surat->jenis_surat == 5)
+            // {
+            //     $jenissurat = "P0/P1";
+            // }
+            // elseif($surat->jenis_surat == 6)
+            // {
+            //     $jenissurat = "Surat Penawaran";
+            // }
 
             if($surat->file)
             {
@@ -133,7 +132,7 @@ class AdminController extends Controller
                 'no_surat' => $surat->no_surat,
                 'tanggal' => $surat->tanggal,
                 'nama_surat' => $surat->nama_surat,
-                'jenis_surat' => $jenissurat,
+                'jenis_surat' => $jenissurat->nama_surat,
                 'status' => $status,
                 'verifikasi' => $verifikasi,
                 'link' => $surat->id,
@@ -550,8 +549,8 @@ class AdminController extends Controller
 
     public function verifdetailAction($id)
     {   
-        $id = $this->session->get('admin')['tipe'];
-        if ($id == NULL) {
+        $ids = $this->session->get('admin')['tipe'];
+        if ($ids == NULL) {
             // echo "berhasil login";
             // die();
         (new Response())->redirect('user/login')->send();          
@@ -572,8 +571,8 @@ class AdminController extends Controller
 
     public function resetpassAction($id)
     {
-        $id = $this->session->get('admin')['tipe'];
-        if ($id == NULL) {
+        $ids = $this->session->get('admin')['tipe'];
+        if ($ids == NULL) {
             // echo "berhasil login";
             // die();
         (new Response())->redirect('user/login')->send();          
