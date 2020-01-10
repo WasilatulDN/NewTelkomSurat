@@ -28,29 +28,6 @@ class AdminRoutes extends RouterGroup
             ]
         );
 
-        $this->addPost(
-            '/login',
-            [
-                'controller'=>'admin',
-                'action'=>'storelogin'
-            ]
-        );
-
-        $this->addGet(
-            '/login',
-            [
-                'controller' => 'admin',
-                'action' => 'login'
-            ]
-        );
-
-        $this->addGet(
-            '/logout',
-            [
-                'controller' => 'admin',
-                'action' => 'logout'
-            ]
-        );
 
         $this->addGet(
             '/listsurat',

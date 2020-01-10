@@ -67,14 +67,6 @@ class SuratRoutes extends RouterGroup
                 'action' => 'storeupload'
             ]
         );
-
-        $this->addGet(
-            '/nomorterpakai',
-            [
-                'controller' => 'surat',
-                'action' => 'nomorterpakai'
-            ]
-        );
         
     }
 }

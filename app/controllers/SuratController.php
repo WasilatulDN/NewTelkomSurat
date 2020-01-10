@@ -280,13 +280,23 @@ class SuratController extends Controller
     public function uploadAction($id)
     {
         $_isUser = $this->session->get('user');
-        
+        $iduser = $this->session->get('user')['id'];
         if (!$_isUser)
         {
             $this->response->redirect('user/login');
         }
+        $data = nomor_surat::findFirst("id='$id'");
 
-        $this->view->data = nomor_surat::findFirst("id='$id'");
+        if($iduser != $data->id_user)
+        {
+            return $this->response->redirect('surat/list');
+            
+        }
+        else{
+            $this->view->data = $data;
+        }
+
+        
 
     }
 
@@ -345,10 +355,5 @@ class SuratController extends Controller
         header('Content-Disposition: attachment; filename="'.$surat->file.'"');
         readfile($path);
      }
-
-    public function nomorterpakaiAction()
-    {
-        
-    }
     
 }
