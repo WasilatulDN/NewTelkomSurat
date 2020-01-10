@@ -297,7 +297,13 @@ class AdminController extends Controller
         $header_css = "PUT Your CSS if needed";
         $data_css = "PUT Your CSS if needed";
         //If data comes from model then
-        $data = nomor_surat::find();
+        $data = $this->modelsManager->createBuilder()
+        ->columns("nomor_surat.id, nomor_surat.name, nomor_surat.nama_surat, nomor_surat.no_surat, nomor_surat.tanggal, nomor_surat.nama_pengupload, nomor_surat.pengecekan, jenis_surat.nama_surat as namajenis, nomor_surat.file")
+        ->From('nomor_surat')
+        ->innerjoin('jenis_surat', 'nomor_surat.jenis_surat = jenis_surat.id')
+        // ->where(" file is not NULL ")
+        ->getQuery()
+        ->execute(); 
         //As i'm using join query i feel good using createBuilder
         // $data = $this->modelsManager->createBuilder()
         //       ->columns("comment.comment, comment.username, comment.email, comment.postedat,item.name,item.photo,item.view,item.categoryid,item.id")
@@ -315,35 +321,13 @@ class AdminController extends Controller
         <td style='$header_css'>Jenis Surat</td>
         <td style='$header_css'>Nomor Surat</td>
         <td style='$header_css'>Tanggal</td>
+        <td style='$header_css'>Nama Pengupload</td>
+        <td style='$header_css'>File</td>
         <td style='$header_css'>Status Verifikasi</td>
-        <td style='$header_css'>Setuju/Tidak</td>
         </tr>";
-        foreach ($data as $row) {
-            if($row->jenis_surat == 1)
-            {
-                $jenissurat = "Berita Acara Penjelasan";
-            }
-            elseif($row->jenis_surat == 2)
-            {
-                $jenissurat = "BASO";
-            }
-            elseif($row->jenis_surat == 3)
-            {
-                $jenissurat = "BADO";
-            }
-            elseif($row->jenis_surat == 4)
-            {
-                $jenissurat = "Surat Keluar";
-            }
-            elseif($row->jenis_surat == 5)
-            {
-                $jenissurat = "P0/P1";
-            }
-            elseif($row->jenis_surat == 6)
-            {
-                $jenissurat = "Surat Penawaran";
-            }
 
+        $no = 1;
+        foreach ($data as $row) {
 
             if($row->pengecekan == 1)
             {
@@ -358,16 +342,25 @@ class AdminController extends Controller
                 $verifikasi = "Belum Verifikasi";
             }
 
+            if($row->file == NULL){
+                $file = "Belum Upload";
+            }
+            elseif($row->file != NULL){
+                $file = "Sudah Upload";
+            }
+
             $table.= "<tr>
-            <td style='$data_css'>$row->id</td>
+            <td style='$data_css'>$no</td>
             <td style='$data_css'>$row->name</td>
             <td style='$data_css'>$row->nama_surat</td>
-            <td style='$data_css'>$jenissurat</td>
+            <td style='$data_css'>$row->namajenis</td>
             <td style='$data_css'>$row->no_surat</td>
             <td style='$data_css'>$row->tanggal</td>
             <td style='$data_css'>$row->nama_pengupload</td>
+            <td style='$data_css'>$file</td>
             <td style='$data_css'>$verifikasi</td>
             </tr>";
+            $no ++;
         }
         $table.= '</table>';
 
@@ -381,8 +374,13 @@ class AdminController extends Controller
         //Declaring css
         $header_css = "PUT Your CSS if needed";
         $data_css = "PUT Your CSS if needed";
-        //If data comes from model then
-        $data = nomor_surat::find(["file is not NULL"]);
+        $data = $this->modelsManager->createBuilder()
+        ->columns("nomor_surat.id, nomor_surat.name, nomor_surat.nama_surat, nomor_surat.no_surat, nomor_surat.tanggal, nomor_surat.nama_pengupload, nomor_surat.pengecekan, jenis_surat.nama_surat as namajenis, nomor_surat.file")
+        ->From('nomor_surat')
+        ->innerjoin('jenis_surat', 'nomor_surat.jenis_surat = jenis_surat.id')
+        ->where(" file is not NULL ")
+        ->getQuery()
+        ->execute(); 
         //As i'm using join query i feel good using createBuilder
         // $data = $this->modelsManager->createBuilder()
         //       ->columns("comment.comment, comment.username, comment.email, comment.postedat,item.name,item.photo,item.view,item.categoryid,item.id")
@@ -401,33 +399,12 @@ class AdminController extends Controller
         <td style='$header_css'>Nomor Surat</td>
         <td style='$header_css'>Tanggal</td>
         <td style='$header_css'>Nama Pengupload</td>
+        <td style='$header_css'>File</td>
         <td style='$header_css'>Status Verifikasi</td>
         </tr>";
+
+        $no = 1;
         foreach ($data as $row) {
-            if($row->jenis_surat == 1)
-            {
-                $jenissurat = "Berita Acara Penjelasan";
-            }
-            elseif($row->jenis_surat == 2)
-            {
-                $jenissurat = "BASO";
-            }
-            elseif($row->jenis_surat == 3)
-            {
-                $jenissurat = "BADO";
-            }
-            elseif($row->jenis_surat == 4)
-            {
-                $jenissurat = "Surat Keluar";
-            }
-            elseif($row->jenis_surat == 5)
-            {
-                $jenissurat = "P0/P1";
-            }
-            elseif($row->jenis_surat == 6)
-            {
-                $jenissurat = "Surat Penawaran";
-            }
 
             if($row->pengecekan == 1)
             {
@@ -443,16 +420,26 @@ class AdminController extends Controller
             }
 
 
+            if($row->file == NULL){
+                $file = "Belum Upload";
+            }
+            elseif($row->file != NULL){
+                $file = "Sudah Upload";
+            }
+
             $table.= "<tr>
-            <td style='$data_css'>$row->id</td>
+            <td style='$data_css'>$no</td>
             <td style='$data_css'>$row->name</td>
             <td style='$data_css'>$row->nama_surat</td>
-            <td style='$data_css'>$jenissurat</td>
+            <td style='$data_css'>$row->namajenis</td>
             <td style='$data_css'>$row->no_surat</td>
             <td style='$data_css'>$row->tanggal</td>
             <td style='$data_css'>$row->nama_pengupload</td>
+            <td style='$data_css'>$file</td>
             <td style='$data_css'>$verifikasi</td>
             </tr>";
+
+            $no++;
         }
         $table.= '</table>';
 
@@ -467,7 +454,13 @@ class AdminController extends Controller
         $header_css = "PUT Your CSS if needed";
         $data_css = "PUT Your CSS if needed";
         //If data comes from model then
-        $data = nomor_surat::find(["file is NULL"]);
+        $data = $this->modelsManager->createBuilder()
+        ->columns("nomor_surat.id, nomor_surat.name, nomor_surat.nama_surat, nomor_surat.no_surat, nomor_surat.tanggal, nomor_surat.nama_pengupload, nomor_surat.pengecekan, jenis_surat.nama_surat as namajenis, nomor_surat.file")
+        ->From('nomor_surat')
+        ->innerjoin('jenis_surat', 'nomor_surat.jenis_surat = jenis_surat.id')
+        ->where(" file is NULL ")
+        ->getQuery()
+        ->execute(); 
         //As i'm using join query i feel good using createBuilder
         // $data = $this->modelsManager->createBuilder()
         //       ->columns("comment.comment, comment.username, comment.email, comment.postedat,item.name,item.photo,item.view,item.categoryid,item.id")
@@ -486,33 +479,12 @@ class AdminController extends Controller
         <td style='$header_css'>Nomor Surat</td>
         <td style='$header_css'>Tanggal</td>
         <td style='$header_css'>Nama Pengupload</td>
+        <td style='$header_css'>File</td>
         <td style='$header_css'>Status Verifikasi</td>
         </tr>";
+
+        $no=1;
         foreach ($data as $row) {
-            if($row->jenis_surat == 1)
-            {
-                $jenissurat = "Berita Acara Penjelasan";
-            }
-            elseif($row->jenis_surat == 2)
-            {
-                $jenissurat = "BASO";
-            }
-            elseif($row->jenis_surat == 3)
-            {
-                $jenissurat = "BADO";
-            }
-            elseif($row->jenis_surat == 4)
-            {
-                $jenissurat = "Surat Keluar";
-            }
-            elseif($row->jenis_surat == 5)
-            {
-                $jenissurat = "P0/P1";
-            }
-            elseif($row->jenis_surat == 6)
-            {
-                $jenissurat = "Surat Penawaran";
-            }
 
             if($row->pengecekan == 1)
             {
@@ -526,18 +498,26 @@ class AdminController extends Controller
             {
                 $verifikasi = "Belum Verifikasi";
             }
-
+            if($row->file == NULL){
+                $file = "Belum Upload";
+            }
+            elseif($row->file != NULL){
+                $file = "Sudah Upload";
+            }
 
             $table.= "<tr>
-            <td style='$data_css'>$row->id</td>
+            <td style='$data_css'>$no</td>
             <td style='$data_css'>$row->name</td>
             <td style='$data_css'>$row->nama_surat</td>
-            <td style='$data_css'>$jenissurat</td>
+            <td style='$data_css'>$row->namajenis</td>
             <td style='$data_css'>$row->no_surat</td>
             <td style='$data_css'>$row->tanggal</td>
             <td style='$data_css'>$row->nama_pengupload</td>
+            <td style='$data_css'>$file</td>
             <td style='$data_css'>$verifikasi</td>
             </tr>";
+
+            $no++;
         }
         $table.= '</table>';
 
