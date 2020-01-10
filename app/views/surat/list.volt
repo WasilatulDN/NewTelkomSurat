@@ -84,7 +84,7 @@
                             <a href="{{ url('admin/register') }}">Daftar</a>
                         </li>
                         <li>
-                            <a href="{{ url('admin/logout') }}">Keluar</a>
+                            <a href="{{ url('user/logout') }}">Keluar</a>
                         </li>
                     </ul>
                 </li>
