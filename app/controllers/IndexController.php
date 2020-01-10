@@ -18,6 +18,7 @@ class IndexController extends Controller
         {
             $this->response->redirect('user/login');
         }
+        $this->view->datas = jenis_surat::find();
     }
 
     public function show404Action()
