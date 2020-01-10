@@ -1,17 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Waktu pembuatan: 08 Jan 2020 pada 10.00
--- Versi server: 10.1.36-MariaDB
--- Versi PHP: 7.2.11
-=======
--- Generation Time: Jan 07, 2020 at 12:26 AM
+-- Generation Time: Jan 10, 2020 at 11:43 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
->>>>>>> master
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -41,24 +35,16 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(18, 'lutfi', '$2y$12$VVJxTVd6L2lLU3pXSy9RVOpmgLHz.7md.M9V05mNLDBSvzckb8c3S'),
-(19, 'kp', '$2y$12$bFdFNHB0UW5FM1NHTE10e.UiyTtR21sp7ICrQWOIT6Y.StRILPW5W'),
-(20, 'mami', '$2y$12$ZElyNzBsa1ZFQUZKOXZGQuOYmvf31m3dL01Dcbep.HQsFmaD0GqKi'),
-(21, 'lutfi', '$2y$12$STFOeHRON2VkazNPcGhNe.ku4kUrQsDXtGA7Rrp/f/VfmeS2a5lyS'),
-(22, 'dia', '$2y$12$QTRZc3pYUnVHbG9NWVhGZeflUTJcvcl1fUXRKbWzlywNtJzt7ULKW'),
-(23, 'dia', '$2y$12$TmQwUFhodXI5UGxROU5iUupo21G4iWdlSdIv5JzLakorKlH2Vh0V6'),
-(24, 'akan', '$2y$12$YzBVdEhkT0pYZGM0VDV3R.BeAwT89JrxZhypw329xY8ROUncWp2nu'),
-(25, 'apa ', '$2y$12$K1QyamsrTGpDcGNxdVlMTO0H1VyO04kgb/ByWzZ02VxL5FuqywNr6'),
-(26, 'putri', '$2y$12$YmViU2NWdkhUODlmbVBDWedrOc2D8LpRV.8cH2AaNO91Peuq2Pg3e');
+(19, 'admin', '$2y$12$c2dFbUh3V0wraDBqdTUzWObmMHn/v/WGioRaZ7uZfaXN8mHnksmc6');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_surat`
+-- Table structure for table `jenis_surat`
 --
 
 CREATE TABLE `jenis_surat` (
@@ -67,20 +53,31 @@ CREATE TABLE `jenis_surat` (
   `kode_surat` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `jenis_surat`
+--
+
+INSERT INTO `jenis_surat` (`id`, `nama_surat`, `kode_surat`) VALUES
+(1, 'Berita Acara Penjelasan', 'YN000'),
+(2, 'Berita Acara Siap Operasi (BASO)', 'YN000'),
+(3, 'Berita Acara Delete Order (BADO)', 'YN000'),
+(4, 'Surat Keluar ', 'YN000'),
+(5, 'P0/P1', 'LG000'),
+(6, 'Surat Penawaran', 'YN100');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nomor_surat`
+-- Table structure for table `nomor_surat`
 --
 
 CREATE TABLE `nomor_surat` (
   `id` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `nama_surat` varchar(200) DEFAULT NULL,
-  `jenis_surat` varchar(15) DEFAULT NULL,
+  `jenis_surat` int(11) DEFAULT NULL,
   `nomor` int(11) DEFAULT NULL,
-  `huruf` int(11) DEFAULT NULL,
   `no_surat` varchar(100) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `nama_pengupload` varchar(200) DEFAULT NULL,
@@ -88,20 +85,10 @@ CREATE TABLE `nomor_surat` (
   `file` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `nomor_surat`
---
-
-INSERT INTO `nomor_surat` (`id`, `id_user`, `name`, `nama_surat`, `jenis_surat`, `nomor`, `no_surat`, `tanggal`, `nama_pengupload`, `pengecekan`, `file`) VALUES
-(8, 0, 'Dika', 'Surat Permohonan Pengadaan', '4', 1, 'TEL.1/YN000/R5W-5M470000/2020', '2020-01-03', 'sisa', NULL, 'TEL1.jpg'),
-(9, 0, 'Fiya', 'Surat untuk ITS', '2', 16, 'TEL.16/YN000/R5W-5M470000/2020', '2020-01-06', 'aku', 1, 'TEL16.jpg'),
-(10, 0, 'Dani', 'Surat Rekap', '4', 2, 'TEL.2/YN000/R5W-5M470000/2020', '2020-01-03', 'aku', NULL, 'TEL2.jpg'),
-(11, 0, 'lutfiy', 'suratt dinas', '2', 6, 'TEL.6/YN000/R5W-5M470000/2020', '2020-01-04', NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -116,60 +103,69 @@ CREATE TABLE `user` (
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `jenis_surat`
+-- Indexes for table `jenis_surat`
 --
 ALTER TABLE `jenis_surat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `nomor_surat`
+-- Indexes for table `nomor_surat`
 --
 ALTER TABLE `nomor_surat`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jenis_surat` (`jenis_surat`),
+  ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `jenis_surat`
+-- AUTO_INCREMENT for table `jenis_surat`
 --
 ALTER TABLE `jenis_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
->>>>>>> master
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `nomor_surat`
+-- AUTO_INCREMENT for table `nomor_surat`
 --
 ALTER TABLE `nomor_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `nomor_surat`
+--
+ALTER TABLE `nomor_surat`
+  ADD CONSTRAINT `nomor_surat_ibfk_1` FOREIGN KEY (`jenis_surat`) REFERENCES `jenis_surat` (`id`),
+  ADD CONSTRAINT `nomor_surat_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
