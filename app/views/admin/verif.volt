@@ -167,8 +167,8 @@
             placeholder: "Tidak Ada Data",
             columns: [
                 {title: "No", field: "no", formatter: "rownum", width: 10},
-                {title: "Username", field: "username"},
-                {title: "Status Verifikasi", field: "status"},
+                {title: "Username", field: "username", headerFilter:"input"},
+                {title: "Status Verifikasi", field: "status", headerFilter:"input"},
                 {
                     title: "Edit", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",

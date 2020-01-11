@@ -170,8 +170,8 @@
             placeholder: "Tidak Ada Data",
             columns: [
                 {title: "No", field: "no", formatter: "rownum", width: 10},
-                {title: "Nama Jenis Surat", field: "nama_surat"},
-                {title: "Kode", field: "kode_surat"},
+                {title: "Nama Jenis Surat", field: "nama_surat", headerFilter:"input"},
+                {title: "Kode", field: "kode_surat", headerFilter:"input"},
                 {
                     title: "Hapus", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",

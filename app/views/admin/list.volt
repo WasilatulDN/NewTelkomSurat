@@ -167,12 +167,12 @@
             placeholder: "Tidak Ada Data",
             columns: [
                 {title: "No", field: "no", formatter: "rownum", width: 10},
-                {title: "Tanggal", field: "tanggal"},
-                {title: "No Surat", field: "no_surat"},
-                {title: "Nama Surat", field: "nama_surat"},
-                {title: "Jenis Surat", field: "jenis_surat"},
-                {title: "Status Unggah", field: "status"},
-                {title: "Verifikasi", field: "verifikasi"},
+                {title: "Tanggal", field: "tanggal", headerFilter:"input"},
+                {title: "No Surat", field: "no_surat", headerFilter:"input"},
+                {title: "Nama Surat", field: "nama_surat", headerFilter:"input"},
+                {title: "Jenis Surat", field: "jenis_surat", headerFilter:"input"},
+                {title: "Status Unggah", field: "status", headerFilter:"input"},
+                {title: "Verifikasi", field: "verifikasi", headerFilter:"input"},
                 {
                     title: "Lihat Detail", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",
