@@ -22,9 +22,9 @@ class SuratController extends Controller
         }
     }
 
-    public function nomorterpakaiAction()
+    public function weekendAction()
     {
-        
+
     }
 
     public function nomorAction()
@@ -57,7 +57,7 @@ class SuratController extends Controller
         echo $hari;
         if($hari == "Saturday" || $hari == "Sunday")
         {
-            return $this->response->redirect('surat/nomorterpakai');
+            return $this->response->redirect('surat/weekend');
         }
         else
         {

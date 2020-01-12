@@ -29,10 +29,10 @@ class SuratRoutes extends RouterGroup
         );
 
         $this->addGet(
-            '/nomorterpakai',
+            '/weekend',
             [
                 'controller' => 'surat',
-                'action' => 'nomorterpakai'
+                'action' => 'weekend'
             ]
         );
 
