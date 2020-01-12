@@ -137,8 +137,8 @@
             </nav>
 
             <div>
-                <h1 style="margin-top: 15%; text-align: center; font-weight: bold; font-family:'GothamRounded-Medium'; font-size: 40pt;">Nomor surat telah terpakai.</h1>
-                <h4 style="margin: 0 auto; text-align: center; font-family:'GothamRounded-Medium';">Pada tanggal tersebut, nomor surat yang tersedia telah digunakan seluruhnya. Silahkan generate kembali menggunakan tanggal yang berbeda.</h4>
+                <h1 style="margin-top: 15%; text-align: center; font-weight: bold; font-family:'GothamRounded-Medium'; font-size: 40pt;">Tidak bisa generate nomor surat.</h1>
+                <h4 style="margin: 0 auto; text-align: center; font-family:'GothamRounded-Medium';">Pada hari Sabtu dan Minggu tidak dapat dilakukan generate nomor surat.</h4>
                 
             </div>
 
