@@ -28,6 +28,14 @@ class SuratRoutes extends RouterGroup
             ]
         );
 
+        $this->addGet(
+            '/nomorterpakai',
+            [
+                'controller' => 'surat',
+                'action' => 'nomorterpakai'
+            ]
+        );
+
         $this->addPost(
             '/store',
             [

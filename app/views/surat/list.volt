@@ -179,8 +179,8 @@
                     title: "Download Surat", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",
                         label: "Download disini",
-                        urlPrefix: "{{ url('') }}",
-                        target: "_blank",
+                        urlPrefix: "{{ url('surat/download/') }}",
+                        // target: "_blank",
                     }
                 },
             ],

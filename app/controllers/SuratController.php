@@ -22,6 +22,11 @@ class SuratController extends Controller
         }
     }
 
+    public function nomorterpakaiAction()
+    {
+        
+    }
+
     public function nomorAction()
     {
         $_isUser = $this->session->get('user');
@@ -47,65 +52,80 @@ class SuratController extends Controller
     public function generatesuratAction()
     {
         $tanggal = $this->request->getPost('tanggal');
-        $jenissurat = $this->request->getPost('jenissurat');
-        $kodesurat = jenis_surat::findFirst(
-            [
-                "id='$jenissurat'"
-            ]
-        );
-        $ttd = $this->request->getPost('ttd');
-        $data = nomor_surat::findFirst(
-            [
-                "tanggal='$tanggal'",
-                'order' => 'id DESC',
-                'limit' => 1,
-            ]
-        );
-        if($data)
+        $cektanggal = strtotime($tanggal);
+        $hari = date('l', $cektanggal);
+        echo $hari;
+        if($hari == "Saturday" || $hari == "Sunday")
         {
-            $ceksetelah = nomor_surat::findFirst(
+            return $this->response->redirect('surat/nomorterpakai');
+        }
+        else
+        {
+            $jenissurat = $this->request->getPost('jenissurat');
+            $kodesurat = jenis_surat::findFirst(
                 [
-                    "tanggal>'$tanggal'",
-                    'order' => 'id ASC',
+                    "id='$jenissurat'"
+                ]
+            );
+            $ttd = $this->request->getPost('ttd');
+            $data = nomor_surat::findFirst(
+                [
+                    "tanggal='$tanggal'",
+                    'order' => 'id DESC',
                     'limit' => 1,
                 ]
             );
-            if($ceksetelah)
+            if($data)
             {
-                $tanggal1 = strtotime($tanggal);
-                $tanggal2 = strtotime($ceksetelah->tanggal);
-                $diff = abs($tanggal2 - $tanggal1)/60/60/24;  
-                $diff--;           
-                $nomorbaru = $ceksetelah->nomor - $data->nomor -(10*$diff);
-                if($nomorbaru == 1)
+                $ceksetelah = nomor_surat::findFirst(
+                    [
+                        "tanggal>'$tanggal'",
+                        'order' => 'id ASC',
+                        'limit' => 1,
+                    ]
+                );
+                if($ceksetelah)
                 {
-                    $cekhuruf = nomor_surat::findFirst(
-                        [
-                            'conditions' => 'huruf IS NOT NULL AND tanggal = :tanggal:',
-                            'bind' => [
-                                'tanggal' => $tanggal,
-                            ],
-                            'order' => 'huruf DESC',
-                            'limit' => 1,
-                            
-                        ]
-                    );
-                    if($cekhuruf)
+                    $tanggal1 = strtotime($tanggal);
+                    $tanggal2 = strtotime($ceksetelah->tanggal);
+                    $diff = abs($tanggal2 - $tanggal1)/60/60/24;  
+                    $diff--;           
+                    $nomorbaru = $ceksetelah->nomor - $data->nomor -(10*$diff);
+                    if($nomorbaru == 1)
                     {
-                        
-                        $huruf = ($cekhuruf->huruf) + 1;
-                        $nomorterpakai = ($data->nomor).chr($huruf);
+                        $cekhuruf = nomor_surat::findFirst(
+                            [
+                                'conditions' => 'huruf IS NOT NULL AND tanggal = :tanggal:',
+                                'bind' => [
+                                    'tanggal' => $tanggal,
+                                ],
+                                'order' => 'huruf DESC',
+                                'limit' => 1,
+                                
+                            ]
+                        );
+                        if($cekhuruf)
+                        {
+                            
+                            $huruf = ($cekhuruf->huruf) + 1;
+                            $nomorterpakai = ($data->nomor).chr($huruf);
 
+                        }
+                        else
+                        {
+                            $huruf = 97;
+                            $nomorterpakai = $data->nomor.chr($huruf);
+
+                        }
+
+                        $pakaihuruf = true;
+                        $nomor = $data->nomor;
                     }
                     else
                     {
-                        $huruf = 97;
-                        $nomorterpakai = $data->nomor.chr($huruf);
-
+                        $nomor = $data->nomor + 1;
                     }
 
-                    $pakaihuruf = true;
-                    $nomor = $data->nomor;
                 }
                 else
                 {
@@ -115,102 +135,98 @@ class SuratController extends Controller
             }
             else
             {
-                $nomor = $data->nomor + 1;
-            }
+                $ceksetelah = nomor_surat::findFirst(
+                    [
+                        "tanggal>'$tanggal'",
+                        'order' => 'id ASC',
+                        'limit' => 1,
+                    ]
+                );
+                if($ceksetelah)
+                {
+                    // echo("ada tanggal setelah"); die();
+                    $tanggal1 = strtotime($tanggal);
+                    $tanggal2 = strtotime($ceksetelah->tanggal);
+                    $diff = abs($tanggal2 - $tanggal1)/60/60/24;
+                    $nomor = $ceksetelah->nomor - (10*$diff);
 
-        }
-        else
-        {
-            $ceksetelah = nomor_surat::findFirst(
-                [
-                    "tanggal>'$tanggal'",
-                    'order' => 'id ASC',
-                    'limit' => 1,
-                ]
-            );
-            if($ceksetelah)
+                }
+                else
+                {
+                    
+                    $ceksebelum = nomor_surat::findFirst(
+                        [
+                            "tanggal<'$tanggal'",
+                            'order' => 'id DESC',
+                            'limit' => 1,
+                        ]
+                    );
+                    if($ceksebelum)
+                    {
+                        $tanggal1 = strtotime($tanggal);
+                        $tanggal2 = strtotime($ceksebelum->tanggal);
+                        $tanggalcek = $ceksebelum->tanggal;
+                        $diff = abs($tanggal1 - $tanggal2)/60/60/24;
+                        $counter = 0;
+                        for ($x = 0; $x < $diff; $x++) {
+                            $tanggalcek = date('Y-m-d', strtotime($tanggalcek .' +1 day'));
+                            echo $tanggalcek;
+                            $cekhari = strtotime($tanggalcek);
+                            $day = date('l', $cekhari);
+                            echo $day;
+                            if($day != "Saturday" && $day != "Sunday")
+                            {
+                                $counter++;
+                            }
+                        } 
+                        echo $counter;
+                        // die();
+                        $nomor = $ceksebelum->nomor + (10*$counter) + 1;
+                    }
+                    else{
+                        $nomor=1;
+                    }
+
+                }
+
+            }
+            if($ttd == 1)
             {
-                // echo("ada tanggal setelah"); die();
-                $tanggal1 = strtotime($tanggal);
-                $tanggal2 = strtotime($ceksetelah->tanggal);
-                $diff = abs($tanggal2 - $tanggal1)/60/60/24;
-                $nomor = $ceksetelah->nomor - (10*$diff);
+                $ttd_oleh = "R5W-5M470000";
 
             }
             else
             {
-                
-                $ceksebelum = nomor_surat::findFirst(
-                    [
-                        "tanggal<'$tanggal'",
-                        'order' => 'id DESC',
-                        'limit' => 1,
-                    ]
-                );
-                if($ceksebelum)
-                {
-                    $tanggal1 = strtotime($tanggal);
-                    $tanggal2 = strtotime($ceksebelum->tanggal);
-                    $tanggalcek = $ceksebelum->tanggal;
-                    $diff = abs($tanggal1 - $tanggal2)/60/60/24;
-                    $counter = 0;
-                    for ($x = 0; $x < $diff; $x++) {
-                        $tanggalcek = date('Y-m-d', strtotime($tanggalcek .' +1 day'));
-                        echo $tanggalcek;
-                        $cekhari = strtotime($tanggalcek);
-                        $day = date('l', $cekhari);
-                        echo $day;
-                        if($day != "Saturday" && $day != "Sunday")
-                        {
-                            $counter++;
-                        }
-                    } 
-                    echo $counter;
-                    // die();
-                    $nomor = $ceksebelum->nomor + (10*$counter) + 1;
-                }
-                else{
-                    $nomor=1;
-                }
-
+                $ttd_oleh = "R5W-5N470000";
             }
 
-        }
-        if($ttd == 1)
-        {
-            $ttd_oleh = "R5W-5M470000";
+            if($pakaihuruf)
+            {
+                $nomorsurat = "TEL.".($nomorterpakai)."/".$kodesurat->kode_surat."/".$ttd_oleh."/2020";
+
+            }
+            else{
+                $nomorsurat = "TEL.".($nomor)."/".$kodesurat->kode_surat."/".$ttd_oleh."/2020";
+            }
+
+            $surat = new nomor_surat();
+            $surat->name = $this->request->getPost('nama');
+            $surat->id_user = $this->session->get('user')['id'];
+            $surat->nama_surat = $this->request->getPost('namasurat');
+            $surat->jenis_surat = $jenissurat;
+            $surat->nomor = $nomor;
+            $surat->no_surat = $nomorsurat;
+            $surat->pengecekan = 0;
+            $surat->tanggal = $this->request->getPost('tanggal');
+            if($pakaihuruf)
+            {
+                $surat->huruf=$huruf;
+            }
+            // var_dump($surat); die();
+            $surat->save();
+            $this->response->redirect('surat/nomor');
 
         }
-        else
-        {
-            $ttd_oleh = "R5W-5N470000";
-        }
-
-        if($pakaihuruf)
-        {
-            $nomorsurat = "TEL.".($nomorterpakai)."/".$kodesurat->kode_surat."/".$ttd_oleh."/2020";
-
-        }
-        else{
-            $nomorsurat = "TEL.".($nomor)."/".$kodesurat->kode_surat."/".$ttd_oleh."/2020";
-        }
-
-        $surat = new nomor_surat();
-        $surat->name = $this->request->getPost('nama');
-        $surat->id_user = $this->session->get('user')['id'];
-        $surat->nama_surat = $this->request->getPost('namasurat');
-        $surat->jenis_surat = $jenissurat;
-        $surat->nomor = $nomor;
-        $surat->no_surat = $nomorsurat;
-        $surat->pengecekan = 0;
-        $surat->tanggal = $this->request->getPost('tanggal');
-        if($pakaihuruf)
-        {
-            $surat->huruf=$huruf;
-        }
-        // var_dump($surat); die();
-        $surat->save();
-        $this->response->redirect('surat/nomor');
 
     }
 
@@ -341,19 +357,36 @@ class SuratController extends Controller
 
     public function downloadAction($id)
     { 
+        $iduser = $this->session->get('user')['id'];
         $surat = nomor_surat::findFirst("id='$id'");
-        $upload_dir = __DIR__ . '/../../public/uploads/';
-        $path = $upload_dir.$surat->file;
-        $filetype = filetype($path);
-        $filesize = filesize($path);
-        // header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-        // header('Content-Description: File Download');
-        header('Content-type: '.$filetype);
-        header('Content-length: ' . $filesize);
-        header('Content-Transfer-Encoding: binary');
-        header('Accept-Ranges: bytes');
-        header('Content-Disposition: attachment; filename="'.$surat->file.'"');
-        readfile($path);
+        if($iduser != $surat->id_user)
+        {
+            return $this->response->redirect('surat/list');
+            
+        }
+        else{
+            if($surat->file)
+            {
+                $upload_dir = __DIR__ . '/../../public/uploads/';
+                $path = $upload_dir.$surat->file;
+                $filetype = filetype($path);
+                $filesize = filesize($path);
+                // header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+                // header('Content-Description: File Download');
+                header('Content-type: '.$filetype);
+                header('Content-length: ' . $filesize);
+                header('Content-Transfer-Encoding: binary');
+                header('Accept-Ranges: bytes');
+                header('Content-Disposition: attachment; filename="'.$surat->file.'"');
+                readfile($path);
+
+            }
+            else
+            {
+                return $this->response->redirect('surat/list');
+            }
+        }
+        
      }
     
 }

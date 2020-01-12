@@ -133,6 +133,7 @@ class AdminController extends Controller
                 'tanggal' => $surat->tanggal,
                 'nama_surat' => $surat->nama_surat,
                 'jenis_surat' => $jenissurat->nama_surat,
+                'nama_pengupload' => $surat->nama_pengupload,
                 'status' => $status,
                 'verifikasi' => $verifikasi,
                 'link' => $surat->id,
@@ -222,7 +223,7 @@ class AdminController extends Controller
                 'nama_surat' => $listjenissurat->nama_surat,
                 'kode_surat' => $listjenissurat->kode_surat,
                 'link' => $listjenissurat->id,
-                // 'status' => $status,
+                
                 // 'verifikasi' => $verifikasi,
             );
         }
