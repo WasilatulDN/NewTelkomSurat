@@ -157,7 +157,7 @@
         var table = new Tabulator("#example-table", {
             // height: "350px",
             pagination:"local",
-            paginationSize:10,
+            paginationSize:50,
             layout:"fitColumns",
             placeholder: "Tidak Ada Data",
             columns: [
@@ -172,6 +172,14 @@
                         labelField: "name",
                         label: "Upload disini",
                         urlPrefix: "{{ url('surat/upload/') }}",
+                        target: "_blank",
+                    }
+                },
+                {
+                    title: "Download Surat", field: "link", formatter: "link", formatterParams: {
+                        labelField: "name",
+                        label: "Download disini",
+                        urlPrefix: "{{ url('') }}",
                         target: "_blank",
                     }
                 },

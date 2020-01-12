@@ -162,7 +162,7 @@
             // height: "345px",
             layout: "fitColumns",
             pagination:"local",
-            paginationSize:10,
+            paginationSize:50,
             layout:"fitColumns",
             placeholder: "Tidak Ada Data",
             columns: [
@@ -171,6 +171,7 @@
                 {title: "No Surat", field: "no_surat", headerFilter:"input"},
                 {title: "Nama Surat", field: "nama_surat", headerFilter:"input"},
                 {title: "Jenis Surat", field: "jenis_surat", headerFilter:"input"},
+                {title: "Nama Pengunggah", field: "nama_pengupload", headerFilter:"input"},
                 {title: "Status Unggah", field: "status", headerFilter:"input"},
                 {title: "Verifikasi", field: "verifikasi", headerFilter:"input"},
                 {
