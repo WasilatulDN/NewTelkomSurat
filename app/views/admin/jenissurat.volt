@@ -172,6 +172,7 @@
                 {title: "No", field: "no", formatter: "rownum", width: 10},
                 {title: "Nama Jenis Surat", field: "nama_surat", headerFilter:"input"},
                 {title: "Kode", field: "kode_surat", headerFilter:"input"},
+                {title: "Status", field: "status", headerFilter:"input"},
                 {
                     title: "Hapus", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",

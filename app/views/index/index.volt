@@ -149,7 +149,9 @@
                 <select name="jenissurat" class="form-control form-control-sm" style="width: 100%; font-size: 15pt;" required>
                   <option value="0"></option>
                   {% for data in datas %}
-                  <option value={{ data.id }}>{{ data.nama_surat }}</option>
+                    {% if (data.deleted == 0) %}
+                        <option value={{ data.id }}>{{ data.nama_surat }}</option>
+                    {% endif %}
                   {% endfor %}
                 </select>
 

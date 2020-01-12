@@ -218,10 +218,17 @@ class AdminController extends Controller
         foreach ($listjenissurats as $listjenissurat)
         {
 
-            
+            if($listjenissurat->deleted == 0)
+            {
+                $status = "Aktif";
+            }
+            else{
+                $status = "Tidak Aktif";
+            }
             $data[] = array(
                 'nama_surat' => $listjenissurat->nama_surat,
                 'kode_surat' => $listjenissurat->kode_surat,
+                'status' => $status,
                 'link' => $listjenissurat->id,
                 
                 // 'verifikasi' => $verifikasi,
@@ -277,17 +284,19 @@ class AdminController extends Controller
     public function deleteAction($id)
     {
         $jenis = jenis_surat::findFirst("id='$id'");
-        $cek = nomor_surat::findFirst("jenis_surat='$id'");
-        // $jenis->delete();
-        if ($cek) {
-            $this->flashSession->error("Tidak dapat menghapus jenis surat.");
-            // echo("tidak dapat menghapus jenis surat");
-        } else {
-            $jenis->delete();
-            $this->flashSession->success("Surat berhasil dihapus.");
-            // return $this->response->redirect('admin/resetpass' . '/' . $id);
+        $jenis->deleted = 1;
+        // $cek = nomor_surat::findFirst("jenis_surat='$id'");
+        $jenis->update();
+        // if ($cek) {
+        //     $this->flashSession->error("Tidak dapat menghapus jenis surat.");
+        //     // echo("tidak dapat menghapus jenis surat");
+        // } else {
+        //     $jenis->delete();
+        //     $this->flashSession->success("Surat berhasil dihapus.");
+        //     // return $this->response->redirect('admin/resetpass' . '/' . $id);
             
-        }
+        // }
+        $this->flashSession->success("Surat berhasil dihapus.");
         return $this->response->redirect('admin/jenissurat');
 
     }
@@ -601,6 +610,7 @@ class AdminController extends Controller
         $jenis_surat = new jenis_surat();
         $jenis_surat->kode_surat = $this->request->getPost('kode');
         $jenis_surat->nama_surat = $this->request->getPost('nama_surat');
+        $jenis_surat->deleted = 0;
         $nama_surat = jenis_surat::findFirst("nama_surat = '$jenis_surat->nama_surat'");
         if($nama_surat){
             $this->flashSession->error("Gagal masukan jenis surat. Jenis surat sudah ada.");
