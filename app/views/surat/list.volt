@@ -157,7 +157,7 @@
         var table = new Tabulator("#example-table", {
             // height: "350px",
             pagination:"local",
-            paginationSize:50,
+            paginationSize:15,
             layout:"fitColumns",
             placeholder: "Tidak Ada Data",
             columns: [

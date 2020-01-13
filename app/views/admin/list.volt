@@ -162,7 +162,7 @@
             // height: "345px",
             layout: "fitColumns",
             pagination:"local",
-            paginationSize:50,
+            paginationSize:15,
             layout:"fitColumns",
             placeholder: "Tidak Ada Data",
             columns: [
