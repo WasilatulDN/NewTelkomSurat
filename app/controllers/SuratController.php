@@ -29,9 +29,12 @@ class SuratController extends Controller
 
     public function nomorAction()
     {
-        $_isUser = $this->session->get('user');
-        
-        if (!$_isUser)
+        $_isAdmin = $this->session->get('admin')['tipe'];
+        $_isUser = $this->session->get('user')['tipe'];
+        // if ($_isAdmin == 1) {
+        //     $this->response->redirect('admin/list');
+        // }
+        if(!$_isUser && !$_isAdmin)
         {
             $this->response->redirect('user/login');
         }

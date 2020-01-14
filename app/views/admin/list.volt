@@ -72,6 +72,12 @@
                     <a href="{{ url('admin/list') }}">Beranda Admin</a>
                 </li>
                 <li>
+                    <a href="{{ url() }}">Generate Nomor Surat</a>
+                </li>
+                <li>
+                    <a href="{{ url('admin/listupload') }}">Upload Surat</a>
+                </li>
+                <li>
                     <a href="{{ url('admin/verif') }}">Verifikasi Akun User</a>
                 </li>
                 <li>
@@ -179,7 +185,7 @@
                         labelField: "name",
                         label: "Lihat Detail",
                         urlPrefix: "{{ url('admin/detail/') }}",
-                        target: "_blank",
+                        // target: "_blank",
                     }
                 },
                 

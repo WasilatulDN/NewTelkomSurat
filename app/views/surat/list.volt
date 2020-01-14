@@ -172,7 +172,7 @@
                         labelField: "name",
                         label: "Upload disini",
                         urlPrefix: "{{ url('surat/upload/') }}",
-                        target: "_blank",
+                        // target: "_blank",
                     }
                 },
                 {
