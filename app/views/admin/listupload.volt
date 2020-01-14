@@ -104,6 +104,9 @@
                     <a href="{{ url('') }}">Generate Nomor Surat</a>
                 </li>
                 <li>
+                    <a href="{{ url('surat/daftarsurat') }}">List Surat</a>
+                </li>
+                <li>
                     <a href="{{ url('surat/list') }}">Upload Surat</a>
                 </li>
                 <li>
