@@ -162,10 +162,10 @@
             <ul style="margin-top: 40px;  margin-left: 90px; margin-right: 50%;" class="list-group">
                 <li class="list-group-item list-group-item-primary">Nama: {{data.name}}</li>
                 <li class="list-group-item list-group-item-primary">Nama Surat: {{data.nama_surat}}</li>
+                <li class="list-group-item list-group-item-primary">Nama Customer: {{data.customer}}</li>
                 <li class="list-group-item list-group-item-primary">Jenis Surat: {{jenis.nama_surat}}             
                 </li>
                 <li class="list-group-item list-group-item-primary">No Surat: {{data.no_surat}}</li>
-                <li class="list-group-item list-group-item-primary">Nama Customer: {{data.customer}}</li>
                 <li class="list-group-item list-group-item-primary">Tanggal: {{data.tanggal}}</li>
                 <li class="list-group-item list-group-item-primary">Status: 
                  {% if (data.pengecekan == 1) %}
