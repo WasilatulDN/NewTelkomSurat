@@ -382,5 +382,39 @@ class SuratController extends Controller
         
         
      }
+     public function datadaftarsuratAction()
+     {
+        $surats = nomor_surat::find(['order' => 'nomor DESC']);
+        $data = array();
+
+        foreach ($surats as $surat) {
+            $jenissurat = jenis_surat::findFirst("id='$surat->jenis_surat'");
+
+            if($surat->file)
+            {
+                $status = "Sudah";
+            }
+            else{
+                $status = "Belum";
+            }
+            
+            $data[] = array(
+                'no_surat' => $surat->no_surat,
+                'tanggal' => $surat->tanggal,
+                'nama_surat' => $surat->nama_surat,
+                'jenis_surat' => $jenissurat->nama_surat,
+                'pembuat' => $surat->name,
+                'status' => $status,
+            );
+        }
+        
+        $content = json_encode($data);
+        return $this->response->setContent($content);
+     }
+
+     public function daftarsuratAction()
+     {
+
+     }
     
 }

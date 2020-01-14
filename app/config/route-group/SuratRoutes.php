@@ -75,6 +75,20 @@ class SuratRoutes extends RouterGroup
                 'action' => 'storeupload'
             ]
         );
+        $this->addGet(
+            '/daftarsurat',
+            [
+                'controller' => 'surat',
+                'action' => 'daftarsurat'
+            ]
+        );
+        $this->addGet(
+            '/datadaftarsurat',
+            [
+                'controller' => 'surat',
+                'action' => 'datadaftarsurat'
+            ]
+        );
         
     }
 }
