@@ -185,6 +185,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label style="margin-top: 0px;">Nama Customer</label>
+                    <input type="text" class="form-control" placeholder="Masukkan nama customer" name="customer" required>
+                </div>
+
+                <div class="form-group">
                     <label>Tanggal Surat</label>
                     <input type="date" class="form-control" name="tanggal" required>
                 </div>

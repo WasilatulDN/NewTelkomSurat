@@ -179,6 +179,7 @@
                 
                 </li>
                 <li class="list-group-item list-group-item-primary">No Surat: {{data.no_surat}}</li>
+                <li class="list-group-item list-group-item-primary">Nama Customer: {{data.customer}}</li>
                 <li class="list-group-item list-group-item-primary">Tanggal: {{data.tanggal}}</li>
                 <li class="list-group-item list-group-item-primary">Status: 
                  {% if (data.pengecekan == 1) %}
