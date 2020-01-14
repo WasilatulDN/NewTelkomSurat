@@ -360,14 +360,6 @@ class SuratController extends Controller
 
     public function downloadAction($id)
     { 
-        $iduser = $this->session->get('user')['id'];
-        $surat = nomor_surat::findFirst("id='$id'");
-        if($iduser != $surat->id_user)
-        {
-            return $this->response->redirect('surat/list');
-            
-        }
-        else{
             if($surat->file)
             {
                 $upload_dir = __DIR__ . '/../../public/uploads/';
@@ -387,9 +379,7 @@ class SuratController extends Controller
             else
             {
                 return $this->response->redirect('surat/list');
-            }
-        }
-        
+            }       
      }
     
 }
