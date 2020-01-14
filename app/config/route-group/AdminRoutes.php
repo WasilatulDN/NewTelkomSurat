@@ -207,5 +207,19 @@ class AdminRoutes extends RouterGroup
                 'action' => 'delete'
             ]
         );
+        $this->addGet(
+            '/listupload',
+            [
+                'controller' => 'admin',
+                'action' => 'listupload'
+            ]
+        );
+        $this->addGet(
+            '/listuploadadmin',
+            [
+                'controller' => 'admin',
+                'action' => 'listuploadadmin'
+            ]
+        );
     }
 }

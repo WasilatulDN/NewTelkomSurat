@@ -83,29 +83,6 @@ class AdminController extends Controller
 
         foreach ($surats as $surat) {
             $jenissurat = jenis_surat::findFirst("id='$surat->jenis_surat'");
-            // {
-            //     $jenissurat = "Berita Acara Penjelasan";
-            // }
-            // elseif($surat->jenis_surat == 2)
-            // {
-            //     $jenissurat = "BASO";
-            // }
-            // elseif($surat->jenis_surat == 3)
-            // {
-            //     $jenissurat = "BADO";
-            // }
-            // elseif($surat->jenis_surat == 4)
-            // {
-            //     $jenissurat = "Surat Keluar";
-            // }
-            // elseif($surat->jenis_surat == 5)
-            // {
-            //     $jenissurat = "P0/P1";
-            // }
-            // elseif($surat->jenis_surat == 6)
-            // {
-            //     $jenissurat = "Surat Penawaran";
-            // }
 
             if($surat->file)
             {
@@ -133,7 +110,7 @@ class AdminController extends Controller
                 'tanggal' => $surat->tanggal,
                 'nama_surat' => $surat->nama_surat,
                 'jenis_surat' => $jenissurat->nama_surat,
-                'nama_pengupload' => $surat->nama_pengupload,
+                'pembuat' => $surat->name,
                 'status' => $status,
                 'verifikasi' => $verifikasi,
                 'link' => $surat->id,
@@ -247,7 +224,7 @@ class AdminController extends Controller
 
     public function listuserAction()
     {
-        $listusers = user::find();
+        $listusers = user::find(['order' => 'id DESC']);
         $data = array();
 
         foreach ($listusers as $listuser)
@@ -298,6 +275,50 @@ class AdminController extends Controller
         // }
         $this->flashSession->success("Surat berhasil dihapus.");
         return $this->response->redirect('admin/jenissurat');
+
+    }
+
+    public function listuploadAction()
+    {
+
+    }
+
+    public function listuploadadminAction()
+    {
+        
+        $surats = nomor_surat::find([
+            'order' => 'nomor DESC'
+            ]);
+        $data = array();
+
+        foreach ($surats as $surat) {
+
+            $jenis = jenis_surat::findFirst([
+                "id='$surat->jenis_surat'"
+                ]);
+
+            if($surat->file)
+            {
+                $status = "Sudah";
+            }
+            else{
+                $status = "Belum";
+            }
+                
+            $data[] = array(
+                'no_surat' => $surat->no_surat,
+                'tanggal' => $surat->tanggal,
+                'nama_surat' => $surat->nama_surat,
+                'pembuat' => $surat->name,
+                'jenis_surat' => $jenis->nama_surat,
+                'status' => $status,
+                'link' => $surat->id,
+            );
+
+        }
+        
+        $content = json_encode($data);
+        return $this->response->setContent($content);
 
     }
 
