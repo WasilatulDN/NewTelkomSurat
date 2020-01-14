@@ -360,6 +360,8 @@ class SuratController extends Controller
 
     public function downloadAction($id)
     { 
+        $surat = nomor_surat::findFirst("id='$id'");
+        
             if($surat->file)
             {
                 $upload_dir = __DIR__ . '/../../public/uploads/';
@@ -379,7 +381,9 @@ class SuratController extends Controller
             else
             {
                 return $this->response->redirect('surat/list');
-            }       
+            }
+        
+        
      }
     
 }
