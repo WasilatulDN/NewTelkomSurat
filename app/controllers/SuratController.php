@@ -414,6 +414,16 @@ class SuratController extends Controller
 
      public function daftarsuratAction()
      {
+        $_isUser = $this->session->get('user');
+
+        // if ($_isAdmin) 
+        // {
+        //     $this->response->redirect('admin/list');
+        // }
+        if (!$_isUser)
+        {
+            $this->response->redirect('user/login');
+        }
 
      }
     
