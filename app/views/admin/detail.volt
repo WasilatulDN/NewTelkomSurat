@@ -162,21 +162,7 @@
             <ul style="margin-top: 40px;  margin-left: 90px; margin-right: 50%;" class="list-group">
                 <li class="list-group-item list-group-item-primary">Nama: {{data.name}}</li>
                 <li class="list-group-item list-group-item-primary">Nama Surat: {{data.nama_surat}}</li>
-                <li class="list-group-item list-group-item-primary">Jenis Surat:
-                {% if (data.jenis_surat == 1) %}
-                Berita acara penjelasan
-                {% elseif (data.jenis_surat == 2) %}
-                Berita acara siap operasi (BASO)
-                {% elseif (data.jenis_surat == 3) %}
-                Berita acara delete order (BADO)
-                {% elseif (data.jenis_surat == 4) %}
-                Surat keluar
-                {% elseif (data.jenis_surat == 5) %}
-                P0/P1
-                {% elseif (data.jenis_surat == 6) %}
-                Surat penawaran
-                {% endif %}
-                
+                <li class="list-group-item list-group-item-primary">Jenis Surat: {{jenis.nama_surat}}             
                 </li>
                 <li class="list-group-item list-group-item-primary">No Surat: {{data.no_surat}}</li>
                 <li class="list-group-item list-group-item-primary">Nama Customer: {{data.customer}}</li>

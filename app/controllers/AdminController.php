@@ -129,7 +129,9 @@ class AdminController extends Controller
             // die();
         (new Response())->redirect('user/login')->send();          
         }
-        $this->view->data = nomor_surat::findFirst("id='$id'");
+        $surat = nomor_surat::findFirst("id='$id'");
+        $this->view->data = $surat;
+        $this->view->jenis = jenis_surat::findFirst("id='$surat->jenis_surat'");
     }
 
     public function verifikasiAction($id)
