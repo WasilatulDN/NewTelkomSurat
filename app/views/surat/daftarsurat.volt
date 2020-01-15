@@ -168,6 +168,7 @@
                 {title: "Tanggal", field: "tanggal", headerFilter:"input"},
                 {title: "No Surat", field: "no_surat", headerFilter:"input"},
                 {title: "Nama Surat", field: "nama_surat", headerFilter:"input"},
+                {title: "Nama Customer", field: "customer", headerFilter:"input"},
                 {title: "Jenis Surat", field: "jenis_surat", headerFilter:"input"},
                 {title: "Pembuat", field: "pembuat", headerFilter:"input"},
                 {title: "Status Unggah", field: "status", headerFilter:"input"},

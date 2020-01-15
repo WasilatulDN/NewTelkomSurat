@@ -109,6 +109,7 @@ class AdminController extends Controller
                 'no_surat' => $surat->no_surat,
                 'tanggal' => $surat->tanggal,
                 'nama_surat' => $surat->nama_surat,
+                'customer' => $surat->customer,
                 'jenis_surat' => $jenissurat->nama_surat,
                 'pembuat' => $surat->name,
                 'status' => $status,
