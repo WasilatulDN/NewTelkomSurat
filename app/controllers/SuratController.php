@@ -89,11 +89,33 @@ class SuratController extends Controller
                 );
                 if($ceksetelah)
                 {
+                    // $tanggal1 = strtotime($tanggal);
+                    // $tanggal2 = strtotime($ceksetelah->tanggal);
+                    // $diff = abs($tanggal2 - $tanggal1)/60/60/24;  
+                    // $diff--;           
+                    // $nomorbaru = $ceksetelah->nomor - $data->nomor -(10*$diff);
+
+
                     $tanggal1 = strtotime($tanggal);
                     $tanggal2 = strtotime($ceksetelah->tanggal);
-                    $diff = abs($tanggal2 - $tanggal1)/60/60/24;  
-                    $diff--;           
-                    $nomorbaru = $ceksetelah->nomor - $data->nomor -(10*$diff);
+                    $tanggalcek = $ceksetelah->tanggal;
+                    $diff = abs($tanggal1 - $tanggal2)/60/60/24;
+                    $counter = 0;
+                    for ($x = 0; $x < $diff; $x++) {
+                        $tanggalcek = date('Y-m-d', strtotime($tanggalcek .' -1 day'));
+                        echo $tanggalcek;
+                        $cekhari = strtotime($tanggalcek);
+                        $day = date('l', $cekhari);
+                        echo $day;
+                        if($day != "Saturday" && $day != "Sunday")
+                        {
+                            $counter++;
+                        }
+                    } 
+
+                    $nomorbaru = $ceksetelah->nomor - $data->nomor -(10*$counter);
+
+
                     if($nomorbaru == 1)
                     {
                         $cekhuruf = nomor_surat::findFirst(
@@ -148,10 +170,30 @@ class SuratController extends Controller
                 if($ceksetelah)
                 {
                     // echo("ada tanggal setelah"); die();
+                    // $tanggal1 = strtotime($tanggal);
+                    // $tanggal2 = strtotime($ceksetelah->tanggal);
+                    // $diff = abs($tanggal2 - $tanggal1)/60/60/24;
+                    // $nomor = $ceksetelah->nomor - (10*$counter);
+                    // $nomor = $ceksebelum->nomor + (10*$counter) + 1;
+
                     $tanggal1 = strtotime($tanggal);
                     $tanggal2 = strtotime($ceksetelah->tanggal);
-                    $diff = abs($tanggal2 - $tanggal1)/60/60/24;
-                    $nomor = $ceksetelah->nomor - (10*$diff);
+                    $tanggalcek = $ceksetelah->tanggal;
+                    $diff = abs($tanggal1 - $tanggal2)/60/60/24;
+                    $counter = 0;
+                    for ($x = 0; $x < $diff; $x++) {
+                        $tanggalcek = date('Y-m-d', strtotime($tanggalcek .' -1 day'));
+                        echo $tanggalcek;
+                        $cekhari = strtotime($tanggalcek);
+                        $day = date('l', $cekhari);
+                        echo $day;
+                        if($day != "Saturday" && $day != "Sunday")
+                        {
+                            $counter++;
+                        }
+                    } 
+
+                    $nomor = $ceksetelah->nomor - (10*$counter);
 
                 }
                 else
