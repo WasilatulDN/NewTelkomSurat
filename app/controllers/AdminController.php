@@ -104,6 +104,14 @@ class AdminController extends Controller
             {
                 $verifikasi = "Belum Verifikasi";
             }
+
+            if($surat->deleted == 1)
+            {
+                $status_surat = "Tidak Aktif";
+            }
+            else{
+                $status_surat = "Aktif";
+            }
             
             $data[] = array(
                 'no_surat' => $surat->no_surat,
@@ -114,6 +122,7 @@ class AdminController extends Controller
                 'pembuat' => $surat->name,
                 'status' => $status,
                 'verifikasi' => $verifikasi,
+                'status_surat' => $status_surat,
                 'link' => $surat->id,
             );
         }
@@ -390,6 +399,16 @@ class AdminController extends Controller
             $jenis_surat->save();
             $this->response->redirect('admin/jenissurat');
         }
+
+    }
+
+    public function deletesuratAction($id)
+    {
+        $surat = nomor_surat::findFirst("id='$id'");
+        $surat->deleted = 1;
+        $surat->update();
+        $this->flashSession->success("Surat berhasil dihapus.");
+        return $this->response->redirect('admin/list');
 
     }
 

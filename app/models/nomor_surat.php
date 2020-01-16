@@ -14,6 +14,7 @@ class nomor_surat extends Model
     public $nama_pengupload;
     public $customer;
     public $pengecekan;
+    public $deleted;
     public $file;
 
 }

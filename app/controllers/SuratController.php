@@ -263,6 +263,7 @@ class SuratController extends Controller
             $surat->no_surat = $nomorsurat;
             $surat->customer = $this->request->getPost('customer');
             $surat->pengecekan = 0;
+            $surat->deleted = 0;
             $surat->tanggal = $this->request->getPost('tanggal');
             if($pakaihuruf)
             {

@@ -154,7 +154,10 @@
 
 
 
-
+    <div style="margin-left: 0px; margin-top: 30px; width: 30%; font-family:'GothamRounded-Medium';">
+            <p><?php echo $this->flashSession->output() ?></p>
+            
+    </div>
     <div class="home-content">
         <h2 class="dashboard-title"></h2>
         <div id="example-table"></div>
@@ -182,13 +185,22 @@
                 {title: "Nama Customer", field: "customer", headerFilter:"input"},
                 {title: "Jenis Surat", field: "jenis_surat", headerFilter:"input"},
                 {title: "Pembuat", field: "pembuat", headerFilter:"input"},
-                {title: "Status Unggah", field: "status", headerFilter:"input"},
+                {title: "Upload", field: "status", headerFilter:"input"},
                 {title: "Verifikasi", field: "verifikasi", headerFilter:"input"},
+                {title: "Status", field: "status_surat", headerFilter:"input"},
                 {
-                    title: "Lihat Detail", field: "link", formatter: "link", formatterParams: {
+                    title: "Detail", field: "link", formatter: "link", formatterParams: {
                         labelField: "name",
-                        label: "Lihat Detail",
+                        label: "Detail",
                         urlPrefix: "{{ url('admin/detail/') }}",
+                        // target: "_blank",
+                    }
+                },
+                {
+                    title: "Hapus", field: "link", formatter: "link", formatterParams: {
+                        labelField: "name",
+                        label: "Hapus",
+                        urlPrefix: "{{ url('admin/deletesurat/') }}",
                         // target: "_blank",
                     }
                 },
