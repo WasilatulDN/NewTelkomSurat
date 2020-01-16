@@ -112,7 +112,7 @@ class SuratController extends Controller
                             $counter++;
                         }
                     } 
-
+                    $counter--;
                     $nomorbaru = $ceksetelah->nomor - $data->nomor -(10*$counter);
 
 
