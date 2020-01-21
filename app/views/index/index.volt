@@ -191,7 +191,7 @@
 
                 <div class="form-group">
                     <label>Tanggal Surat</label>
-                    <input type="date" class="form-control" name="tanggal" required>
+                    <input type="date" class="form-control" name="tanggal" value="<?php echo date('Y-m-d'); ?>" required>
                 </div>
 
                 
