@@ -89,6 +89,14 @@ class SuratRoutes extends RouterGroup
                 'action' => 'datadaftarsurat'
             ]
         );
+
+        $this->addGet(
+            '/dateerror',
+            [
+                'controller' => 'surat',
+                'action' => 'dateerror'
+            ]
+        );
         
     }
 }

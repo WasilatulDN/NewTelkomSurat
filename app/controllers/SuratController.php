@@ -472,5 +472,10 @@ class SuratController extends Controller
         }
 
      }
+
+     public function dateerrorAction()
+    {
+
+    }
     
 }
