@@ -254,25 +254,31 @@ class SuratController extends Controller
                 $nomorsurat = "TEL.".($nomor)."/".$kodesurat->kode_surat."/".$ttd_oleh."/2020";
             }
 
-            $surat = new nomor_surat();
-            $surat->name = $this->request->getPost('nama');
-            $surat->id_user = $this->session->get('user')['id'];
-            $surat->nama_surat = $this->request->getPost('namasurat');
-            $surat->jenis_surat = $jenissurat;
-            $surat->nomor = $nomor;
-            $surat->no_surat = $nomorsurat;
-            $surat->customer = $this->request->getPost('customer');
-            $surat->pengecekan = 0;
-            $surat->deleted = 0;
-            $surat->tanggal = $this->request->getPost('tanggal');
-            if($pakaihuruf)
-            {
-                $surat->huruf=$huruf;
+            if($nomor <= 0)
+            {   
+                $this->response->redirect('surat/dateerror');
             }
-            // var_dump($surat); die();
-            $surat->save();
-            $this->response->redirect('surat/nomor');
 
+            else{
+                $surat = new nomor_surat();
+                $surat->name = $this->request->getPost('nama');
+                $surat->id_user = $this->session->get('user')['id'];
+                $surat->nama_surat = $this->request->getPost('namasurat');
+                $surat->jenis_surat = $jenissurat;
+                $surat->nomor = $nomor;
+                $surat->no_surat = $nomorsurat;
+                $surat->customer = $this->request->getPost('customer');
+                $surat->pengecekan = 0;
+                $surat->deleted = 0;
+                $surat->tanggal = $this->request->getPost('tanggal');
+                if($pakaihuruf)
+                {
+                    $surat->huruf=$huruf;
+                }
+                // var_dump($surat); die();
+                $surat->save();
+                $this->response->redirect('surat/nomor');
+            }
         }
 
     }

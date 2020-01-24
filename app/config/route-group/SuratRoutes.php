@@ -97,6 +97,5 @@ class SuratRoutes extends RouterGroup
                 'action' => 'dateerror'
             ]
         );
-        
     }
 }
