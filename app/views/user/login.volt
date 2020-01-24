@@ -50,7 +50,7 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
+            <a href="http://haloges.com/"><img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block"></a>
             <div class="sidebar-header">
               
                 <h6 style="text-align: center; color: black; background-color: white; border-radius: 30px; width: 90%;">Website Nomor Surat</h6>

@@ -50,7 +50,7 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block">
+            <a href="http://haloges.com/"><img style="height: 100px; margin-top: 30px;" src="../logo.png" class="rounded mx-auto d-block"></a>
             <div class="sidebar-header">
                 <h3></h3>
             </div>
