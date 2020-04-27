@@ -3,9 +3,12 @@
 */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+
+/*@font-face {font-family: "GothamRounded-Medium"; src: url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.eot"); src: url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.woff") format("woff"), url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.svg#Gotham Rounded") format("svg"); }*/
+
 @font-face {
         font-family:'GothamRounded-Medium';
-        src:url('https://assets.lydian.io/fonts/GothamRounded-Medium.eot?#iefix') format('embedded-opentype'), url('https://assets.lydian.io/fonts/GothamRounded-Medium.otf') format('opentype'), url('https://assets.lydian.io/fonts/GothamRounded-Medium.woff') format('woff'), url('https://assets.lydian.io/fonts/GothamRounded-Medium.ttf') format('truetype'), url('https://assets.lydian.io/fonts/GothamRounded-Medium.svg#GothamRounded-Medium') format('svg');
+        src:url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.eot"); src: url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.woff") format("woff"), url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/dffb2b80813d195d26fa4d2aad48b059.svg#Gotham Rounded") format("svg"); 
         font-weight:400;
         font-style:normal
         }
