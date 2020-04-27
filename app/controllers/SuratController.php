@@ -74,7 +74,7 @@ class SuratController extends Controller
             $data = nomor_surat::findFirst(
                 [
                     "tanggal='$tanggal'",
-                    'order' => 'id DESC',
+                    'order' => 'nomor DESC',
                     'limit' => 1,
                 ]
             );
@@ -83,7 +83,7 @@ class SuratController extends Controller
                 $ceksetelah = nomor_surat::findFirst(
                     [
                         "tanggal>'$tanggal'",
-                        'order' => 'id ASC',
+                        'order' => 'nomor ASC',
                         'limit' => 1,
                     ]
                 );
@@ -163,7 +163,7 @@ class SuratController extends Controller
                 $ceksetelah = nomor_surat::findFirst(
                     [
                         "tanggal>'$tanggal'",
-                        'order' => 'id ASC',
+                        'order' => 'nomor ASC',
                         'limit' => 1,
                     ]
                 );
@@ -202,7 +202,7 @@ class SuratController extends Controller
                     $ceksebelum = nomor_surat::findFirst(
                         [
                             "tanggal<'$tanggal'",
-                            'order' => 'id DESC',
+                            'order' => 'nomor DESC',
                             'limit' => 1,
                         ]
                     );
